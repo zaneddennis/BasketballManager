@@ -1,0 +1,359 @@
+[gd_scene load_steps=19 format=3 uid="uid://dgmh05rrgoaja"]
+
+[ext_resource type="Script" path="res://ActiveGame/active_game.gd" id="1_wvce3"]
+[ext_resource type="Script" path="res://ActiveGame/page_manager.gd" id="2_1fsc3"]
+[ext_resource type="Script" path="res://ActiveGame/UI/ui_manager.gd" id="2_4pb0l"]
+[ext_resource type="Texture2D" uid="uid://ct7jvd3fmexmt" path="res://pattern_0015.png" id="2_dfv4p"]
+[ext_resource type="Texture2D" uid="uid://bjcc3onapjf0c" path="res://ActiveGame/UI/Icons/gear.png" id="2_hu2r3"]
+[ext_resource type="PackedScene" uid="uid://015l6etqqkt5" path="res://ActiveGame/UI/Calendar/calendar.tscn" id="5_67f3r"]
+[ext_resource type="PackedScene" uid="uid://v7iw8k1rdl7r" path="res://ActiveGame/UI/Pages/system_page.tscn" id="5_ra7ov"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/home.gd" id="6_ogthx"]
+[ext_resource type="PackedScene" uid="uid://dnlktf7si2bfw" path="res://ActiveGame/UI/Pages/school_page.tscn" id="7_rldno"]
+[ext_resource type="PackedScene" uid="uid://b2v2k2sn4kea2" path="res://ActiveGame/UI/Widgets/standings_widget.tscn" id="7_uw5i7"]
+[ext_resource type="PackedScene" uid="uid://bekrwounlumth" path="res://ActiveGame/UI/Pages/character_page.tscn" id="8_dv4v8"]
+[ext_resource type="PackedScene" uid="uid://b1jkm0ducc1e3" path="res://ActiveGame/UI/Pages/standings_page.tscn" id="9_28iu2"]
+[ext_resource type="PackedScene" uid="uid://w4da13q5n7qy" path="res://ActiveGame/UI/Pages/team_page.tscn" id="13_hlbns"]
+[ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="14_k0exi"]
+[ext_resource type="PackedScene" uid="uid://cetcjyi0jmqpe" path="res://ActiveGame/UI/Pages/Events/practice_event_page.tscn" id="15_618b4"]
+[ext_resource type="PackedScene" uid="uid://d1hbt8dytmxj1" path="res://ActiveGame/UI/Pages/Events/press_event_page.tscn" id="16_oon8r"]
+[ext_resource type="PackedScene" uid="uid://cvhkxj1365ms8" path="res://ActiveGame/UI/Pages/Events/game_event_page.tscn" id="17_g7e61"]
+[ext_resource type="PackedScene" uid="uid://deeow1lbijrdv" path="res://ActiveGame/UI/Pages/conference_page.tscn" id="18_2uv1d"]
+
+[node name="ActiveGame" type="Node"]
+script = ExtResource("1_wvce3")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.0980392)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dfv4p")
+stretch_mode = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_4pb0l")
+
+[node name="TopBar" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="SystemButton" type="TextureButton" parent="UI/TopBar"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+texture_normal = ExtResource("2_hu2r3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Time" type="Label" parent="UI/TopBar"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YYYY-PHASE-W-DAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Advance" type="Button" parent="UI/TopBar"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "Advance Time >"
+
+[node name="Event" type="Button" parent="UI/TopBar"]
+visible = false
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -208.0
+offset_bottom = 48.0
+grow_horizontal = 0
+text = "GO TO [EVENT]"
+
+[node name="PageManager" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1fsc3")
+
+[node name="Home" type="Control" parent="UI/PageManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_ogthx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PageManager/Home"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContentLeft" type="Control" parent="UI/PageManager/Home/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="StandingsWidget" parent="UI/PageManager/Home/HBoxContainer/ContentLeft" instance=ExtResource("7_uw5i7")]
+custom_minimum_size = Vector2(192, 512)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -256.0
+offset_right = 96.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContentCenter" type="VBoxContainer" parent="UI/PageManager/Home/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Legend" type="HBoxContainer" parent="UI/PageManager/Home/HBoxContainer/ContentCenter"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Monday" type="Label" parent="UI/PageManager/Home/HBoxContainer/ContentCenter/Legend"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Monday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tuesday" type="Label" parent="UI/PageManager/Home/HBoxContainer/ContentCenter/Legend"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tuesday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wednesday" type="Label" parent="UI/PageManager/Home/HBoxContainer/ContentCenter/Legend"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Wednesday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Thursday" type="Label" parent="UI/PageManager/Home/HBoxContainer/ContentCenter/Legend"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Thursday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Friday" type="Label" parent="UI/PageManager/Home/HBoxContainer/ContentCenter/Legend"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Friday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Saturday" type="Label" parent="UI/PageManager/Home/HBoxContainer/ContentCenter/Legend"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Saturday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sunday" type="Label" parent="UI/PageManager/Home/HBoxContainer/ContentCenter/Legend"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sunday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Calendar" parent="UI/PageManager/Home/HBoxContainer/ContentCenter" instance=ExtResource("5_67f3r")]
+custom_minimum_size = Vector2(0, 384)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ContentRight" type="Control" parent="UI/PageManager/Home/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Team" parent="UI/PageManager" instance=ExtResource("13_hlbns")]
+visible = false
+layout_mode = 1
+
+[node name="Standings" parent="UI/PageManager" instance=ExtResource("9_28iu2")]
+visible = false
+layout_mode = 1
+
+[node name="School" parent="UI/PageManager" instance=ExtResource("7_rldno")]
+visible = false
+layout_mode = 1
+
+[node name="Character" parent="UI/PageManager" instance=ExtResource("8_dv4v8")]
+visible = false
+layout_mode = 1
+
+[node name="System" parent="UI/PageManager" instance=ExtResource("5_ra7ov")]
+visible = false
+layout_mode = 1
+
+[node name="TestEvent" parent="UI/PageManager" instance=ExtResource("14_k0exi")]
+visible = false
+layout_mode = 1
+
+[node name="PracticeEvent" parent="UI/PageManager" instance=ExtResource("15_618b4")]
+visible = false
+layout_mode = 1
+
+[node name="PressEvent" parent="UI/PageManager" instance=ExtResource("16_oon8r")]
+visible = false
+layout_mode = 1
+
+[node name="GameEvent" parent="UI/PageManager" instance=ExtResource("17_g7e61")]
+visible = false
+layout_mode = 1
+
+[node name="Conference" parent="UI/PageManager" instance=ExtResource("18_2uv1d")]
+visible = false
+layout_mode = 1
+
+[node name="PageButtons" type="GridContainer" parent="UI"]
+custom_minimum_size = Vector2(0, 96)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 6
+
+[node name="Home" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "HOME"
+
+[node name="Inbox" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "INBOX"
+
+[node name="News" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "NEWS"
+
+[node name="Team" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "MY TEAM"
+
+[node name="Staff" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "STAFF"
+
+[node name="Strategy" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "STRATEGY"
+
+[node name="Schedule" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "SCHEDULE"
+
+[node name="Standings" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "STANDINGS"
+
+[node name="Recruiting" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "RECRUITING"
+
+[node name="Statistics" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "STATISTICS"
+
+[node name="School" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "MY SCHOOL"
+
+[node name="Profile" type="Button" parent="UI/PageButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PageButton"
+text = "MY PROFILE"
+
+[connection signal="advance_time" from="UI" to="." method="_on_ui_advance_time"]
+[connection signal="pressed" from="UI/TopBar/SystemButton" to="UI" method="_on_system_button_pressed"]
+[connection signal="pressed" from="UI/TopBar/Advance" to="UI" method="_on_advance_pressed"]
+[connection signal="pressed" from="UI/TopBar/Event" to="UI" method="_on_event_pressed"]
+[connection signal="conference_link" from="UI/PageManager/Home/HBoxContainer/ContentLeft/StandingsWidget" to="UI/PageManager/Home" method="_on_standings_widget_conference_link"]
+[connection signal="team_link" from="UI/PageManager/Home/HBoxContainer/ContentLeft/StandingsWidget" to="UI/PageManager/Home" method="_on_standings_widget_team_link"]
+[connection signal="event_completed" from="UI/PageManager/PracticeEvent" to="UI" method="_on_event_completed"]
+[connection signal="event_completed" from="UI/PageManager/PressEvent" to="UI" method="_on_event_completed"]
+[connection signal="event_completed" from="UI/PageManager/GameEvent" to="UI" method="_on_event_completed"]
+[connection signal="pressed" from="UI/PageButtons/Home" to="UI" method="_on_home_pressed"]
+[connection signal="pressed" from="UI/PageButtons/Team" to="UI" method="_on_team_pressed"]
+[connection signal="pressed" from="UI/PageButtons/Standings" to="UI" method="_on_standings_pressed"]
+[connection signal="pressed" from="UI/PageButtons/School" to="UI" method="_on_school_pressed"]
+[connection signal="pressed" from="UI/PageButtons/Profile" to="UI" method="_on_profile_pressed"]

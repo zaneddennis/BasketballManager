@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://v7iw8k1rdl7r"]
+
+[ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_865qb"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/system_page.gd" id="2_ps7ue"]
+
+[node name="System" instance=ExtResource("1_865qb")]
+script = ExtResource("2_ps7ue")
+
+[node name="Label" parent="Title" index="0"]
+text = "System "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Subpages" type="VBoxContainer" parent="Content/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(288, 0)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="Content/HBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Menu" type="VBoxContainer" parent="Content/HBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="MainMenu" type="Button" parent="Content/HBoxContainer/Menu" index="0"]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Exit to Main Menu"
+
+[node name="Desktop" type="Button" parent="Content/HBoxContainer/Menu" index="1"]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Exit to Desktop"
+
+[connection signal="pressed" from="Content/HBoxContainer/Menu/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Content/HBoxContainer/Menu/Desktop" to="." method="_on_desktop_pressed"]

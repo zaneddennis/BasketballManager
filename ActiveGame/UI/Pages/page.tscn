@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://di2ftgsfkvj33"]
+
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/page.gd" id="1_cmciv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atteb"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0b81"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+
+[node name="Page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cmciv")
+
+[node name="Title" type="Panel" parent="."]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_atteb")
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLabel"
+text = "PAGE "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Content" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 56.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h0b81")

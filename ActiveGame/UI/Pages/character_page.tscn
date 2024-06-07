@@ -1,0 +1,194 @@
+[gd_scene load_steps=5 format=3 uid="uid://bekrwounlumth"]
+
+[ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_her3g"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/character_page.gd" id="2_ue2oa"]
+[ext_resource type="Texture2D" uid="uid://b4fy2kd3e4ce8" path="res://Data/singleplayer.png" id="3_v4y4s"]
+[ext_resource type="PackedScene" uid="uid://cp18h0tru2v8j" path="res://ActiveGame/UI/Widgets/outer_justify_widget.tscn" id="4_sh4vi"]
+
+[node name="Character" instance=ExtResource("1_her3g")]
+script = ExtResource("2_ue2oa")
+
+[node name="Title" parent="." index="0"]
+custom_minimum_size = Vector2(288, 0)
+
+[node name="Label" parent="Title" index="0"]
+text = "Character Info "
+
+[node name="Summary" type="Panel" parent="Content" index="0"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 256.0
+grow_horizontal = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Summary" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="Content/Summary/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Face" type="Panel" parent="Content/Summary/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Content/Summary/HBoxContainer/Face" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v4y4s")
+expand_mode = 1
+
+[node name="Spacer2" type="Control" parent="Content/Summary/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Summary/HBoxContainer" index="3"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="Content/Summary/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 56
+text = "CHARACTER NAME"
+
+[node name="School" type="Label" parent="Content/Summary/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 40
+text = "Unemployed"
+
+[node name="Role" type="Label" parent="Content/Summary/HBoxContainer/VBoxContainer" index="2"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 28
+text = "[TODO: Role]"
+
+[node name="Age" type="Label" parent="Content/Summary/HBoxContainer/VBoxContainer" index="3"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 28
+text = "99 y.o."
+
+[node name="Coach" type="HBoxContainer" parent="Content" index="1"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 304.0
+offset_bottom = 560.0
+grow_horizontal = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Attributes" type="Panel" parent="Content/Coach" index="0"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"PanelFlat"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Coach/Attributes" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Offense" parent="Content/Coach/Attributes/VBoxContainer" index="0" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Offense:"
+right = "0"
+
+[node name="Defense" parent="Content/Coach/Attributes/VBoxContainer" index="1" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Defense:"
+right = "0"
+
+[node name="Mental" parent="Content/Coach/Attributes/VBoxContainer" index="2" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Mental:"
+right = "0"
+
+[node name="Physical" parent="Content/Coach/Attributes/VBoxContainer" index="3" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Physical:"
+right = "0"
+
+[node name="Technical" parent="Content/Coach/Attributes/VBoxContainer" index="4" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Technical:"
+right = "0"
+
+[node name="Evaluation" parent="Content/Coach/Attributes/VBoxContainer" index="5" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Evaluation:"
+right = "0"
+
+[node name="Scouting" parent="Content/Coach/Attributes/VBoxContainer" index="6" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Scouting:"
+right = "0"
+
+[node name="Stats" type="Panel" parent="Content/Coach" index="1"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"PanelFlat"
+
+[node name="Biography" type="Panel" parent="Content/Coach" index="2"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"PanelFlat"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Coach/Biography" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="Content/Coach/Biography/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="Content/Coach/Biography/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="AlmaMater" parent="Content/Coach/Biography/VBoxContainer" index="2" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Alma Mater:"
+right = "???"
+
+[node name="Hometown" parent="Content/Coach/Biography/VBoxContainer" index="3" instance=ExtResource("4_sh4vi")]
+layout_mode = 2
+left = "Hometown:"
+right = "???"

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dreyor245ypdm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjihp"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="CalendarCell" type="Control"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjihp")
+
+[node name="IsToday" type="ReferenceRect" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0.203922, 0.203922, 0.466667, 1)
+border_width = 4.0
+editor_only = false

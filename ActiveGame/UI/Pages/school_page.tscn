@@ -1,0 +1,198 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnlktf7si2bfw"]
+
+[ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_4b0hg"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/school_page.gd" id="2_gpu2y"]
+[ext_resource type="Texture2D" uid="uid://di2i6lo42utg5" path="res://Data/TestLogo.png" id="2_hsowi"]
+[ext_resource type="PackedScene" uid="uid://cp18h0tru2v8j" path="res://ActiveGame/UI/Widgets/outer_justify_widget.tscn" id="4_6ii5f"]
+
+[node name="School" instance=ExtResource("1_4b0hg")]
+script = ExtResource("2_gpu2y")
+
+[node name="Label" parent="Title" index="0"]
+text = "School Info "
+
+[node name="Summary" type="Panel" parent="Content" index="0"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 256.0
+grow_horizontal = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Summary" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="Content/Summary/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Logo" type="Panel" parent="Content/Summary/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Content/Summary/HBoxContainer/Logo" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hsowi")
+expand_mode = 1
+
+[node name="Spacer2" type="Control" parent="Content/Summary/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Summary/HBoxContainer" index="3"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Core" type="VBoxContainer" parent="Content/Summary/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="Content/Summary/HBoxContainer/VBoxContainer/Core" index="0"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 48
+text = "UNIVERSITY OF GODOT"
+
+[node name="Mascot" type="Label" parent="Content/Summary/HBoxContainer/VBoxContainer/Core" index="1"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 40
+text = "Coders"
+
+[node name="Location" type="Label" parent="Content/Summary/HBoxContainer/VBoxContainer/Core" index="2"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 28
+text = "City, ST"
+
+[node name="HSeparator" type="HSeparator" parent="Content/Summary/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Conference" type="Label" parent="Content/Summary/HBoxContainer/VBoxContainer" index="2"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 28
+text = "Gamedev Conference"
+
+[node name="Details" type="HBoxContainer" parent="Content" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 320.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="CurrentTeam" type="Panel" parent="Content/Details" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Details/CurrentTeam" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Team" type="Label" parent="Content/Details/CurrentTeam/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Current Team"
+
+[node name="HSeparator" type="HSeparator" parent="Content/Details/CurrentTeam/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="History" type="Panel" parent="Content/Details" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Details/History" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="History" type="Label" parent="Content/Details/History/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Program History"
+
+[node name="HSeparator" type="HSeparator" parent="Content/Details/History/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Current" parent="Content/Details/History/VBoxContainer" index="2" instance=ExtResource("4_6ii5f")]
+layout_mode = 2
+left = "Prestige (Current):"
+right = "0"
+
+[node name="Historic" parent="Content/Details/History/VBoxContainer" index="3" instance=ExtResource("4_6ii5f")]
+layout_mode = 2
+left = "Prestige (Historic):"
+right = "0"
+
+[node name="Record" parent="Content/Details/History/VBoxContainer" index="4" instance=ExtResource("4_6ii5f")]
+layout_mode = 2
+left = "All-Time Record:"
+right = "0-0 (0-0)"
+
+[node name="Trophies" type="GridContainer" parent="Content/Details/History/VBoxContainer" index="5"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 4
+
+[node name="School" type="Panel" parent="Content/Details" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Details/School" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="School" type="Label" parent="Content/Details/School/VBoxContainer" index="0"]
+layout_mode = 2
+text = "School"
+
+[node name="HSeparator" type="HSeparator" parent="Content/Details/School/VBoxContainer" index="1"]
+layout_mode = 2

@@ -1,0 +1,170 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvhkxj1365ms8"]
+
+[ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="1_xrgof"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/Events/game_event_page.gd" id="2_5hgkj"]
+[ext_resource type="Texture2D" uid="uid://cchrb1gokiggb" path="res://Data/court.jpg" id="3_acf25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvm5p"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="GameEvent" instance=ExtResource("1_xrgof")]
+script = ExtResource("2_5hgkj")
+
+[node name="Label" parent="Title" index="0"]
+text = "GAME "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Scoreboard" type="Panel" parent="Content/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/Scoreboard" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Home" type="Label" parent="Content/VBoxContainer/Scoreboard/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "HOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HomeScore" type="Label" parent="Content/VBoxContainer/Scoreboard/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Clock" type="Label" parent="Content/VBoxContainer/Scoreboard/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_wvm5p")
+text = "00: 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AwayScore" type="Label" parent="Content/VBoxContainer/Scoreboard/HBoxContainer" index="3"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Away" type="Label" parent="Content/VBoxContainer/Scoreboard/HBoxContainer" index="4"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "AWAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Left" type="VBoxContainer" parent="Content/VBoxContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Team" type="Label" parent="Content/VBoxContainer/HBoxContainer/Left" index="0"]
+layout_mode = 2
+text = "Home Team"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Center" type="VBoxContainer" parent="Content/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Court" type="TextureRect" parent="Content/VBoxContainer/HBoxContainer/Center" index="0"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("3_acf25")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Content/VBoxContainer/HBoxContainer/Center/Court" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer" index="0"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(600, 400)
+render_target_update_mode = 4
+
+[node name="Start" type="Button" parent="Content/VBoxContainer/HBoxContainer/Center" index="1"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Tip Off"
+
+[node name="Complete" type="Button" parent="Content/VBoxContainer/HBoxContainer/Center" index="2"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Complete Game"
+
+[node name="Queue" type="ScrollContainer" parent="Content/VBoxContainer/HBoxContainer/Center" index="3"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/HBoxContainer/Center/Queue" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Right" type="VBoxContainer" parent="Content/VBoxContainer/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Team" type="Label" parent="Content/VBoxContainer/HBoxContainer/Right" index="0"]
+layout_mode = 2
+text = "Away Team"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+[connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/Center/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/Center/Complete" to="." method="_on_complete_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

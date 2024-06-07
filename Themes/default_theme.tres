@@ -1,0 +1,82 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dbungtn24k1kf"]
+
+[ext_resource type="FontFile" uid="uid://bhq5s425dflg4" path="res://Themes/Fonts/Freshman-POdx.ttf" id="1_i7f7l"]
+[ext_resource type="FontFile" uid="uid://cnwkk3qhbbdvo" path="res://Themes/Fonts/Roboto-Regular.ttf" id="2_h3sby"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_groh5"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qaifs"]
+bg_color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2wvy"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vdsm"]
+bg_color = Color(0.34902, 0.34902, 0.34902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syc3h"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k752"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpl21"]
+bg_color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pr5is"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+skew = Vector2(0.5, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yahsc"]
+bg_color = Color(0.34902, 0.34902, 0.34902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2qhe"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bvm3"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[resource]
+default_font = ExtResource("2_h3sby")
+Button/styles/disabled = SubResource("StyleBoxFlat_groh5")
+Button/styles/hover = SubResource("StyleBoxFlat_qaifs")
+Button/styles/normal = SubResource("StyleBoxFlat_g2wvy")
+Button/styles/pressed = SubResource("StyleBoxFlat_3vdsm")
+HeaderLabel/base_type = &"Label"
+HeaderLabel/font_sizes/font_size = 32
+HeaderLabel/fonts/font = ExtResource("1_i7f7l")
+LightPanel/base_type = &"Panel"
+LightPanel/styles/panel = SubResource("StyleBoxFlat_syc3h")
+PageButton/base_type = &"Button"
+PageButton/styles/disabled = SubResource("StyleBoxFlat_4k752")
+PageButton/styles/hover = SubResource("StyleBoxFlat_vpl21")
+PageButton/styles/normal = SubResource("StyleBoxFlat_pr5is")
+PageButton/styles/pressed = SubResource("StyleBoxFlat_yahsc")
+Panel/styles/panel = SubResource("StyleBoxFlat_s2qhe")
+PanelFlat/base_type = &"Panel"
+PanelFlat/styles/panel = SubResource("StyleBoxFlat_4bvm3")

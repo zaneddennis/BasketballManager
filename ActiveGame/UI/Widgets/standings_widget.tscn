@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2v2k2sn4kea2"]
+
+[ext_resource type="Script" path="res://ActiveGame/UI/Widgets/standings_widget.gd" id="1_p4a0c"]
+[ext_resource type="PackedScene" uid="uid://b5h5rbb4caglb" path="res://ActiveGame/UI/Widgets/Table/table.tscn" id="2_sbdt8"]
+
+[node name="StandingsWidget" type="Panel"]
+custom_minimum_size = Vector2(256, 512)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_p4a0c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Conference Name"
+fit_content = true
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 22
+text = " Conference Name"
+vertical_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Table" parent="VBoxContainer" instance=ExtResource("2_sbdt8")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="meta_clicked" from="VBoxContainer/Title" to="." method="_on_title_meta_clicked"]

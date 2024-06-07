@@ -1,0 +1,7 @@
+res://ActiveGame/UI/Pages/Events/game_event_page.tscn
+res://Themes/default_theme.tres
+res://MainMenu/main_menu.tscn
+res://ActiveGame/active_game.tscn
+res://ActiveGame/UI/Pages/Events/game_event_page.gd
+res://ActiveGame/UI/ui_manager.gd
+res://ActiveGame/page_manager.gd

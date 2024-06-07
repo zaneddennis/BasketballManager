@@ -1,0 +1,747 @@
+[gd_scene load_steps=8 format=3 uid="uid://w4da13q5n7qy"]
+
+[ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_64i70"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/team_page.gd" id="2_4r3gs"]
+[ext_resource type="Texture2D" uid="uid://di2i6lo42utg5" path="res://Data/TestLogo.png" id="2_e7e2j"]
+[ext_resource type="PackedScene" uid="uid://cp18h0tru2v8j" path="res://ActiveGame/UI/Widgets/outer_justify_widget.tscn" id="4_yfcn4"]
+[ext_resource type="Texture2D" uid="uid://b4fy2kd3e4ce8" path="res://Data/singleplayer.png" id="5_w0ho1"]
+[ext_resource type="PackedScene" uid="uid://b5h5rbb4caglb" path="res://ActiveGame/UI/Widgets/Table/table.tscn" id="6_8qrte"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tqiwj"]
+
+[node name="Team" instance=ExtResource("1_64i70")]
+script = ExtResource("2_4r3gs")
+
+[node name="Label" parent="Title" index="0"]
+text = "TEAM "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="Panel" parent="Content/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="Logo" type="Panel" parent="Content/VBoxContainer/Header" index="0"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 112.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBoxContainer/Header/Logo" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e7e2j")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Header" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Content/VBoxContainer/Header/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 48
+text = "1999 Montana Tech Tigerbears"
+vertical_alignment = 1
+
+[node name="Record" type="Label" parent="Content/VBoxContainer/Header/VBoxContainer" index="1"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 20
+text = "0 - 0 (0 - 0 CONF)"
+vertical_alignment = 1
+
+[node name="Tabs" type="HBoxContainer" parent="Content/VBoxContainer" index="1"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="Summary" type="Button" parent="Content/VBoxContainer/Tabs" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_tqiwj")
+text = "Summary"
+
+[node name="Roster" type="Button" parent="Content/VBoxContainer/Tabs" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tqiwj")
+text = "Roster"
+
+[node name="Schedule" type="Button" parent="Content/VBoxContainer/Tabs" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tqiwj")
+text = "Full Schedule"
+
+[node name="Stats" type="Button" parent="Content/VBoxContainer/Tabs" index="3"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tqiwj")
+text = "Stats"
+
+[node name="Summary" type="HBoxContainer" parent="Content/VBoxContainer" index="2"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Miscellaneous" type="VBoxContainer" parent="Content/VBoxContainer/Summary" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Coaches" type="Panel" parent="Content/VBoxContainer/Summary/Miscellaneous" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Miscellaneous/Coaches" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Summary/Miscellaneous/Coaches/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Coaching Staff"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Miscellaneous/Coaches/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Head" parent="Content/VBoxContainer/Summary/Miscellaneous/Coaches/VBoxContainer" index="2" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Head Coach:"
+right = "First Last"
+
+[node name="Assistant" parent="Content/VBoxContainer/Summary/Miscellaneous/Coaches/VBoxContainer" index="3" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Assistant Coach:"
+right = "First Last"
+
+[node name="Coach" parent="Content/VBoxContainer/Summary/Miscellaneous/Coaches/VBoxContainer" index="4" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Coach:"
+right = "First Last"
+
+[node name="Coach2" parent="Content/VBoxContainer/Summary/Miscellaneous/Coaches/VBoxContainer" index="5" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Coach:"
+right = "First Last"
+
+[node name="Projections" type="Panel" parent="Content/VBoxContainer/Summary/Miscellaneous" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Miscellaneous/Projections" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Summary/Miscellaneous/Projections/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Postseason Projections"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Miscellaneous/Projections/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="OuterJustifyWidget" parent="Content/VBoxContainer/Summary/Miscellaneous/Projections/VBoxContainer" index="2" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Projector A"
+right = "5 Seed"
+
+[node name="OuterJustifyWidget2" parent="Content/VBoxContainer/Summary/Miscellaneous/Projections/VBoxContainer" index="3" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Projector B"
+right = "6 Seed"
+
+[node name="OuterJustifyWidget3" parent="Content/VBoxContainer/Summary/Miscellaneous/Projections/VBoxContainer" index="4" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Projector C"
+right = "5 Seed"
+
+[node name="Expectations" type="Panel" parent="Content/VBoxContainer/Summary/Miscellaneous" index="2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Miscellaneous/Expectations" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Summary/Miscellaneous/Expectations/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Preseason Expectations"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Miscellaneous/Expectations/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="AD" parent="Content/VBoxContainer/Summary/Miscellaneous/Expectations/VBoxContainer" index="2" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Athletic Director:"
+right = "Miss Tournament"
+
+[node name="Fans" parent="Content/VBoxContainer/Summary/Miscellaneous/Expectations/VBoxContainer" index="3" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Fans:"
+right = "Miss Tournament"
+
+[node name="Media" parent="Content/VBoxContainer/Summary/Miscellaneous/Expectations/VBoxContainer" index="4" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Media:"
+right = "Miss Tournament"
+
+[node name="Players" type="VBoxContainer" parent="Content/VBoxContainer/Summary" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Key" type="Panel" parent="Content/VBoxContainer/Summary/Players" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Players/Key" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Key Players"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Player" type="Panel" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Portrait" type="Panel" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer/Portrait" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_w0ho1")
+expand_mode = 1
+
+[node name="Spacer2" type="Control" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer" index="3"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "First Last"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Attributes" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "20 Ball Handling, 19 Shooting"
+
+[node name="Accolades" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player/HBoxContainer/VBoxContainer" index="3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "1998 Dean's List"
+
+[node name="Player2" type="Panel" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer" index="3"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Portrait" type="Panel" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer/Portrait" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_w0ho1")
+expand_mode = 1
+
+[node name="Spacer2" type="Control" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer" index="3"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "First Last"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Attributes" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "20 Ball Handling, 19 Shooting"
+
+[node name="Accolades" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player2/HBoxContainer/VBoxContainer" index="3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "1998 Dean's List"
+
+[node name="Player3" type="Panel" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer" index="4"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Portrait" type="Panel" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer/Portrait" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_w0ho1")
+expand_mode = 1
+
+[node name="Spacer2" type="Control" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer" index="3"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "First Last"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Attributes" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "20 Ball Handling, 19 Shooting"
+
+[node name="Accolades" type="Label" parent="Content/VBoxContainer/Summary/Players/Key/VBoxContainer/Player3/HBoxContainer/VBoxContainer" index="3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "1998 Dean's List"
+
+[node name="Schedule" type="VBoxContainer" parent="Content/VBoxContainer/Summary" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Last5" type="Panel" parent="Content/VBoxContainer/Summary/Schedule" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Schedule/Last5" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Summary/Schedule/Last5/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Last 5 Games"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Schedule/Last5/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Table" parent="Content/VBoxContainer/Summary/Schedule/Last5/VBoxContainer" index="2" instance=ExtResource("6_8qrte")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Key" type="Panel" parent="Content/VBoxContainer/Summary/Schedule" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Schedule/Key" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Summary/Schedule/Key/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Key Results"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Schedule/Key/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Stats" type="VBoxContainer" parent="Content/VBoxContainer/Summary" index="3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Team" type="Panel" parent="Content/VBoxContainer/Summary/Stats" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Stats/Team" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Team Stats"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="OPPG" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="2" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "OPPG:"
+right = "00.0"
+
+[node name="DPPG" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="3" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "DPPG:"
+right = "00.0"
+
+[node name="HSeparator2" type="HSeparator" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="OPPP" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="5" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "OPPP:"
+right = "0.00"
+
+[node name="DPPP" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="6" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "DPPP:"
+right = "0.00"
+
+[node name="HSeparator3" type="HSeparator" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="7"]
+layout_mode = 2
+
+[node name="FG" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="8" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "FG%:"
+right = "00.0"
+
+[node name="3PT" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="9" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "3PT%:"
+right = "00.0"
+
+[node name="REB" parent="Content/VBoxContainer/Summary/Stats/Team/VBoxContainer" index="10" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "REB%:"
+right = "00.0"
+
+[node name="Leaders" type="Panel" parent="Content/VBoxContainer/Summary/Stats" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/Stats/Leaders" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Summary/Stats/Leaders/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Statistical Leaders"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/Stats/Leaders/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="PTS" parent="Content/VBoxContainer/Summary/Stats/Leaders/VBoxContainer" index="2" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Points:"
+right = "First Last (00.0)"
+
+[node name="REB" parent="Content/VBoxContainer/Summary/Stats/Leaders/VBoxContainer" index="3" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Rebounds:"
+right = "First Last (0.0)"
+
+[node name="AST" parent="Content/VBoxContainer/Summary/Stats/Leaders/VBoxContainer" index="4" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Assists:"
+right = "First Last (0.0)"
+
+[node name="STL" parent="Content/VBoxContainer/Summary/Stats/Leaders/VBoxContainer" index="5" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Steals:"
+right = "First Last (0.0)"
+
+[node name="BLK" parent="Content/VBoxContainer/Summary/Stats/Leaders/VBoxContainer" index="6" instance=ExtResource("4_yfcn4")]
+layout_mode = 2
+left = "Blocks:"
+right = "First Last (0.0)"
+
+[node name="Roster" type="HBoxContainer" parent="Content/VBoxContainer" index="3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/Roster" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Players" type="Panel" parent="Content/VBoxContainer/Roster/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Table" parent="Content/VBoxContainer/Roster/HBoxContainer/Players" index="0" instance=ExtResource("6_8qrte")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+
+[node name="PlayerDetails" type="VBoxContainer" parent="Content/VBoxContainer/Roster/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Bio" type="Panel" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"PanelFlat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Panel" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Portrait" type="Panel" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Panel/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Panel/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 40
+text = "Firstname Lastname"
+vertical_alignment = 1
+
+[node name="Summary" type="Label" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+text = " X'XX\" - G/W/F/C - R.FR"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Physical" type="Label" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer" index="3"]
+layout_mode = 2
+size_flags_vertical = 3
+text = " 00 AGL | 00 STR | 00 VER"
+vertical_alignment = 1
+
+[node name="Technical" type="Label" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer" index="4"]
+layout_mode = 2
+size_flags_vertical = 3
+text = " 00 HND | 00 FIN | 00 SHO | 00 REB | 00 PER | 00 INT"
+vertical_alignment = 1
+
+[node name="Mental" type="Label" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer" index="5"]
+layout_mode = 2
+size_flags_vertical = 3
+text = " 00 VIS | 00 OFF | 00 POS"
+vertical_alignment = 1
+
+[node name="Stats" type="Panel" parent="Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Schedule" type="HBoxContainer" parent="Content/VBoxContainer" index="4"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Stats" type="HBoxContainer" parent="Content/VBoxContainer" index="5"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="Content/VBoxContainer/Tabs/Summary" to="." method="_on_summary_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/Tabs/Roster" to="." method="_on_roster_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/Tabs/Schedule" to="." method="_on_schedule_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/Tabs/Stats" to="." method="_on_stats_pressed"]
+[connection signal="row_hovered" from="Content/VBoxContainer/Roster/HBoxContainer/Players/Table" to="." method="_on_table_row_hovered"]

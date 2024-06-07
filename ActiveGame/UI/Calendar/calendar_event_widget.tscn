@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbkvilj3n8d85"]
+
+[ext_resource type="Script" path="res://ActiveGame/UI/Calendar/calendar_event_widget.gd" id="1_excvg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1tox"]
+bg_color = Color(0.458824, 0.458824, 0.458824, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Event" type="Panel"]
+custom_minimum_size = Vector2(0, 48)
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r1tox")
+script = ExtResource("1_excvg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "EVENT TITLE"
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "- Event Subtitle"
+vertical_alignment = 1

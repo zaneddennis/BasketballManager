@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="BasketballManager"
+run/main_scene="res://MainMenu/main_menu.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Constants="*res://Util/constants.gd"
+TransitionManager="*res://Util/transition_manager.tscn"
+Database="*res://Data/database.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+
+[gui]
+
+theme/custom="res://Themes/default_theme.tres"
+theme/custom_font="res://Themes/Fonts/Roboto-Regular.ttf"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0117647, 0.0117647, 0.133333, 1)

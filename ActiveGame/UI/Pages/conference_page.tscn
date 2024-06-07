@@ -1,0 +1,157 @@
+[gd_scene load_steps=5 format=3 uid="uid://deeow1lbijrdv"]
+
+[ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_8uv04"]
+[ext_resource type="PackedScene" uid="uid://b2v2k2sn4kea2" path="res://ActiveGame/UI/Widgets/standings_widget.tscn" id="2_qu88q"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/conference_page.gd" id="2_ws3d3"]
+[ext_resource type="Texture2D" uid="uid://c3dobdc1rpw6c" path="res://Data/US-Blank-map.jpg.webp" id="3_icuan"]
+
+[node name="Conference" instance=ExtResource("1_8uv04")]
+script = ExtResource("2_ws3d3")
+
+[node name="Label" parent="Title" index="0"]
+text = "CONFERENCE "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="Panel" parent="Content/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="Label" type="Label" parent="Content/VBoxContainer/Header" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 52
+text = "Conference Full Name"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Summary" type="HBoxContainer" parent="Content/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StandingsWidget" parent="Content/VBoxContainer/Summary" index="0" instance=ExtResource("2_qu88q")]
+layout_mode = 2
+size_flags_horizontal = 3
+override_title = "Standings"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="News" type="Panel" parent="Content/VBoxContainer/Summary/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/VBoxContainer/News" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Content/VBoxContainer/Summary/VBoxContainer/News/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[url]News[/url]"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/VBoxContainer/News/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="History" type="Panel" parent="Content/VBoxContainer/Summary/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Summary/VBoxContainer/History" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Content/VBoxContainer/Summary/VBoxContainer/History/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[url]History[/url]"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Summary/VBoxContainer/History/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Content/VBoxContainer/Summary" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Map" type="Panel" parent="Content/VBoxContainer/Summary/VBoxContainer2" index="0"]
+custom_minimum_size = Vector2(640, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBoxContainer/Summary/VBoxContainer2/Map" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_icuan")
+expand_mode = 1
+
+[node name="Idk" type="Panel" parent="Content/VBoxContainer/Summary/VBoxContainer2" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Standings" type="Control" parent="Content/VBoxContainer" index="3"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="News" type="Control" parent="Content/VBoxContainer" index="4"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="History" type="Control" parent="Content/VBoxContainer" index="5"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="team_link" from="Content/VBoxContainer/Summary/StandingsWidget" to="." method="_on_standings_widget_team_link"]

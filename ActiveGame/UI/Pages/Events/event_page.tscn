@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://1heabk5mac2p"]
+
+[ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_nvwmd"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/Events/event_page.gd" id="2_37vmq"]
+
+[node name="EventPage" instance=ExtResource("1_nvwmd")]
+script = ExtResource("2_37vmq")
+
+[node name="Label" parent="Title" index="0"]
+text = "EVENT "

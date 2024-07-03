@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_8uv04"]
 [ext_resource type="PackedScene" uid="uid://b2v2k2sn4kea2" path="res://ActiveGame/UI/Widgets/standings_widget.tscn" id="2_qu88q"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/conference_page.gd" id="2_ws3d3"]
-[ext_resource type="Texture2D" uid="uid://c3dobdc1rpw6c" path="res://Data/US-Blank-map.jpg.webp" id="3_icuan"]
+[ext_resource type="Texture2D" uid="uid://c3dobdc1rpw6c" path="res://Data/Images/Miscellaneous/US-Blank-map.jpg.webp" id="3_icuan"]
 
 [node name="Conference" instance=ExtResource("1_8uv04")]
 script = ExtResource("2_ws3d3")

@@ -22,6 +22,7 @@ func _ready():
 	LoadFromSlot(slot)
 	
 	Database.active_game = self
+	Database.Activate(slot)
 	
 	page_manager.RenderHome()
 	

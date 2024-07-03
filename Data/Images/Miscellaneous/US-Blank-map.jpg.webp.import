@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cchrb1gokiggb"
-path="res://.godot/imported/court.jpg-82f859362fffce04f4ae3e2663b742fe.ctex"
+uid="uid://c3dobdc1rpw6c"
+path="res://.godot/imported/US-Blank-map.jpg.webp-3ac804748657a89c419f8624ac9380c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/court.jpg"
-dest_files=["res://.godot/imported/court.jpg-82f859362fffce04f4ae3e2663b742fe.ctex"]
+source_file="res://Data/Images/Miscellaneous/US-Blank-map.jpg.webp"
+dest_files=["res://.godot/imported/US-Blank-map.jpg.webp-3ac804748657a89c419f8624ac9380c9.ctex"]
 
 [params]
 

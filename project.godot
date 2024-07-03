@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Constants="*res://Util/constants.gd"
 TransitionManager="*res://Util/transition_manager.tscn"
 Database="*res://Data/database.gd"
+Constants="*res://Util/constants.tscn"
 
 [display]
 

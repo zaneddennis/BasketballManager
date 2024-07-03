@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_4b0hg"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/school_page.gd" id="2_gpu2y"]
-[ext_resource type="Texture2D" uid="uid://di2i6lo42utg5" path="res://Data/TestLogo.png" id="2_hsowi"]
+[ext_resource type="Texture2D" uid="uid://di2i6lo42utg5" path="res://Data/Images/Miscellaneous/TestLogo.png" id="2_hsowi"]
 [ext_resource type="PackedScene" uid="uid://cp18h0tru2v8j" path="res://ActiveGame/UI/Widgets/outer_justify_widget.tscn" id="4_6ii5f"]
 
 [node name="School" instance=ExtResource("1_4b0hg")]

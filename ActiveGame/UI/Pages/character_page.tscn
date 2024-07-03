@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_her3g"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/character_page.gd" id="2_ue2oa"]
-[ext_resource type="Texture2D" uid="uid://b4fy2kd3e4ce8" path="res://Data/singleplayer.png" id="3_v4y4s"]
+[ext_resource type="Texture2D" uid="uid://b4fy2kd3e4ce8" path="res://Data/Images/Miscellaneous/singleplayer.png" id="3_v4y4s"]
 [ext_resource type="PackedScene" uid="uid://cp18h0tru2v8j" path="res://ActiveGame/UI/Widgets/outer_justify_widget.tscn" id="4_sh4vi"]
 
 [node name="Character" instance=ExtResource("1_her3g")]

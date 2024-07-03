@@ -8,7 +8,8 @@ var CalendarEventWidget = preload("res://ActiveGame/UI/Calendar/calendar_event_w
 const NUM_DAYS = 7
 const WEEK_HEIGHT = 192
 
-var events = {
+var events = {}
+var events_OLD = {
 	Timestamp.FromStr("2025-2-1-2"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRACTICE, "Practice"),
 	Timestamp.FromStr("2025-2-1-3"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRESS, ""),
 	Timestamp.FromStr("2025-2-1-5"): CalendarEventGame.new(CalendarEvent.EVENT_TYPE.GAME, "Non-Conference", 1),
@@ -53,7 +54,7 @@ func RenderEvents():
 		var event = events[timestamp]
 		
 		var widget = CalendarEventWidget.instantiate()
-		var cell = GetCell(timestamp)
+		var cell = GetCell(timestamp)  # todo: handle events not from this phase
 		cell.add_child(widget)
 		
 		widget.Activate(event)

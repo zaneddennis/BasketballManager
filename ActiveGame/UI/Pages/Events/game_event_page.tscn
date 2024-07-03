@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="1_xrgof"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/Events/game_event_page.gd" id="2_5hgkj"]
-[ext_resource type="Texture2D" uid="uid://cchrb1gokiggb" path="res://Data/court.jpg" id="3_acf25"]
+[ext_resource type="Texture2D" uid="uid://cchrb1gokiggb" path="res://Data/Images/Miscellaneous/court.jpg" id="3_acf25"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvm5p"]
 draw_center = false

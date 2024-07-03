@@ -22,7 +22,8 @@ func ClearTabs():
 		n.hide()
 
 func ActivateSummary():
-	var hc_character = Character.FromDatabase(team.head_coach.character_id)
+	#var hc_character = Character.FromDatabase(team.head_coach.character_id)
+	var hc_character = team.head_coach.character
 	$Content/VBoxContainer/Summary/Miscellaneous/Coaches/VBoxContainer/Head.right = hc_character.FullName()
 	
 	$Content/VBoxContainer/Summary/Schedule/Last5/VBoxContainer/Table.data = DataFrame.New(
@@ -47,7 +48,7 @@ func ActivateRoster():
 
 func ActivateRosterPlayer(player_ix: int):
 	var player = team.players[player_ix]
-	$Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Panel/HBoxContainer/Label.text = player.GetCharacter().FullName()
+	$Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Panel/HBoxContainer/Label.text = player.character.FullName()
 	$Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Physical.text = \
 	" %d AGL | %d STR | %d VER" % [player.agility, player.strength, player.vertical_reach]
 	$Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Technical.text = \

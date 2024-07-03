@@ -124,10 +124,10 @@ static func PlayersTable(players: Array[Player]):
 	var columns = ["Name", "Age", "Position", "MPG", "Avg. Rating"]
 	
 	for player in players:
-		var character = Character.FromDatabase(player.character_id)
+		#var character = Character.FromDatabase(player.character_id)
 		
 		data.append([
-			character.FullName(),
+			player.character.FullName(),
 			Player.ELIGIBILITY.keys()[player.eligibility],
 			"???",
 			"0.0",

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs3t2r1obyhh5"]
+
+[ext_resource type="Script" path="res://Util/constants.gd" id="1_oqxux"]
+
+[sub_resource type="Curve" id="Curve_wffa2"]
+min_value = 68.0
+max_value = 88.0
+_data = [Vector2(0, 68), 0.0, 80.0, 0, 1, Vector2(0.05, 72), 0.0, 8.88889, 0, 1, Vector2(0.5, 76), 0.0, 0.0, 0, 0, Vector2(0.98, 84), 16.6667, 0.0, 1, 0, Vector2(1, 88), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="Constants" type="Node"]
+script = ExtResource("1_oqxux")
+height_gen_curve = SubResource("Curve_wffa2")

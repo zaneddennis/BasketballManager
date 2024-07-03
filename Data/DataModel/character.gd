@@ -34,6 +34,22 @@ static func FromDatabase(character_id: int) -> Character:
 	
 	return c
 
+func ToDatabase():
+	var dict = {}
+	
+	dict["ID"] = id
+	dict["First"] = first
+	dict["Last"] = last
+	dict["Birth"] = birth
+	dict["Hometown"] = hometown.id
+	dict["AlmaMater"] = alma_mater.id
+	dict["CoachID"] = coach_id
+	
+	Database.database.insert_row(
+		"Characters",
+		dict
+	)
+
 
 func Age():
 	return Database.active_game.current_time.year - birth

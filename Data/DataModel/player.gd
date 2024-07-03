@@ -3,7 +3,8 @@ class_name Player
 
 
 var id: int
-var character_id: int
+#var character_id: int
+var character: Character
 
 enum ELIGIBILITY {FR, SO, JR, SR, SU}
 var eligibility: ELIGIBILITY
@@ -38,7 +39,8 @@ static func FromDatabase(player_id: int) -> Player:
 	var dict = Database.GetPlayer(player_id)
 	
 	p.id = dict["ID"]
-	p.character_id = dict["CharacterID"]
+	#p.character_id = dict["CharacterID"]
+	p.character = Character.FromDatabase(dict["CharacterID"])
 	
 	p.eligibility = ELIGIBILITY.keys().find(dict["Eligibility"])
 	
@@ -62,10 +64,6 @@ static func FromDatabase(player_id: int) -> Player:
 	p.school_id = dict["SchoolID"]
 	
 	return p
-
-
-func GetCharacter():
-	return Character.FromDatabase(character_id)
 
 
 func _to_string():

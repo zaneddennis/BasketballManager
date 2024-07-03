@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_64i70"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/team_page.gd" id="2_4r3gs"]
-[ext_resource type="Texture2D" uid="uid://di2i6lo42utg5" path="res://Data/TestLogo.png" id="2_e7e2j"]
+[ext_resource type="Texture2D" uid="uid://di2i6lo42utg5" path="res://Data/Images/Miscellaneous/TestLogo.png" id="2_e7e2j"]
 [ext_resource type="PackedScene" uid="uid://cp18h0tru2v8j" path="res://ActiveGame/UI/Widgets/outer_justify_widget.tscn" id="4_yfcn4"]
-[ext_resource type="Texture2D" uid="uid://b4fy2kd3e4ce8" path="res://Data/singleplayer.png" id="5_w0ho1"]
+[ext_resource type="Texture2D" uid="uid://b4fy2kd3e4ce8" path="res://Data/Images/Miscellaneous/singleplayer.png" id="5_w0ho1"]
 [ext_resource type="PackedScene" uid="uid://b5h5rbb4caglb" path="res://ActiveGame/UI/Widgets/Table/table.tscn" id="6_8qrte"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_tqiwj"]

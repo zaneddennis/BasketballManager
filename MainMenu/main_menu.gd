@@ -38,10 +38,13 @@ func GetSaves() -> Array:
 	return result
 
 
-func LoadGame(save: Dictionary):
-	TransitionManager.slot = save["slot_name"]
-	
+func LoadGame(slot_name: String):
+	TransitionManager.slot = slot_name
 	get_tree().change_scene_to_file("res://ActiveGame/active_game.tscn")
+
+func StartNewGame(slot_name: String):
+	TransitionManager.slot = slot_name
+	get_tree().change_scene_to_file("res://MainMenu/new_game_loading.tscn")
 
 
 func _on_exit_pressed():
@@ -61,4 +64,7 @@ func _on_options_pressed():
 
 
 func _on_continue_load_continue():
-	LoadGame(saves[0])
+	LoadGame(saves[0]["slot_name"])
+
+func _on_new_start(slot_name: String):
+	StartNewGame(slot_name)

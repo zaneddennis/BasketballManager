@@ -19,6 +19,7 @@ var coach: Coach
 func Activate(mm: MainMenu):
 	super(mm)
 	CloseAll()
+	sequence_ix = -1
 	ActivateNext()
 
 
@@ -33,7 +34,7 @@ func ActivateNext():
 	call("Activate" + sequence[sequence_ix].name)
 
 func ActivateWorld():
-	# todo: generate default slot name
+	$World/VBoxContainer/Content/Slot/LineEdit.text = "new_career_" + Time.get_date_string_from_system()
 	$World.show()
 
 func ActivateCharacter():
@@ -137,13 +138,12 @@ func CreateSaveSlot():
 	var meta = JSON.stringify({
 		"slot_name": slot_name,
 		"last_played": Time.get_date_string_from_system(),
-		"player_id": 1  # todo: move to game_status
 	}, "\t", false)
-	meta_file.store_line(meta)
+	meta_file.store_string(meta)
 	
 	var gs_file = FileAccess.open("user://save_data/%s/game_status.json" % slot_name, FileAccess.WRITE)
 	var game_status = JSON.stringify({"current_time": "2025-0-0-0"}, "\t", false)
-	gs_file.store_line(game_status)
+	gs_file.store_string(game_status)
 	
 	Database.Create(slot_name)
 	Database.Activate(slot_name)
@@ -164,5 +164,13 @@ func _on_start_game_pressed():
 	var school_ob = $Finalize/VBoxContainer/Content/SchoolSelect  # todo: make an inherited scene+class from OptionButton with a better add/get interface
 	coach.school_id = school_ob.get_selected_metadata()
 	coach.ToDatabase()
+	
+	var filepath_partial = Constants.SAVES_LOCATION + "/" + slot_name
+	var gs_file = FileAccess.open(filepath_partial + "/game_status.json", FileAccess.READ)
+	var gs_dict = JSON.parse_string(gs_file.get_as_text())
+	gs_dict["character_name"] = character.FullName()
+	gs_dict["current_school"] = school_ob.get_item_text(school_ob.get_selected_id())
+	gs_file = FileAccess.open(filepath_partial + "/game_status.json", FileAccess.WRITE)
+	gs_file.store_string(JSON.stringify(gs_dict, "\t", false))
 	
 	new_start.emit(slot_name)

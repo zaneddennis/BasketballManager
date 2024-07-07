@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1jkm0ducc1e3"]
+[gd_scene load_steps=3 format=3 uid="uid://b1jkm0ducc1e3"]
 
 [ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_whglo"]
-[ext_resource type="PackedScene" uid="uid://b2v2k2sn4kea2" path="res://ActiveGame/UI/Widgets/standings_widget.tscn" id="2_p3egi"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/standings_page.gd" id="2_r66sf"]
 
 [node name="Standings" instance=ExtResource("1_whglo")]
@@ -25,39 +24,3 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/v_separation = 32
 columns = 3
-
-[node name="XII" parent="Content/ScrollContainer/GridContainer" index="0" instance=ExtResource("2_p3egi")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-default_conference_id = "XII"
-
-[node name="ACC" parent="Content/ScrollContainer/GridContainer" index="1" instance=ExtResource("2_p3egi")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-default_conference_id = "ACC"
-
-[node name="AAC" parent="Content/ScrollContainer/GridContainer" index="2" instance=ExtResource("2_p3egi")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-default_conference_id = "AAC"
-
-[node name="MWC" parent="Content/ScrollContainer/GridContainer" index="3" instance=ExtResource("2_p3egi")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-default_conference_id = "MWC"
-
-[node name="HZN" parent="Content/ScrollContainer/GridContainer" index="4" instance=ExtResource("2_p3egi")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-default_conference_id = "HZN"
-
-[node name="AME" parent="Content/ScrollContainer/GridContainer" index="5" instance=ExtResource("2_p3egi")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-default_conference_id = "AME"

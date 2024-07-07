@@ -4,7 +4,7 @@ extends Control
 func Activate():
 	show()
 	
-	var coach_id = Database.active_game.player_id
+	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)
 	var school_id = coach.school_id
 	var conference = Database.GetSchool(school_id)["Conference"]

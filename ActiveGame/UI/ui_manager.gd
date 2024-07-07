@@ -64,14 +64,14 @@ func _on_standings_pressed():
 	$PageManager.RenderPage($PageManager/Standings, "")
 
 func _on_school_pressed():
-	var coach_id = Database.active_game.player_id
+	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)
 	var school_id = coach.school_id
 	if school_id:
 		$PageManager.RenderPage($PageManager/School, school_id)
 
 func _on_profile_pressed():
-	$PageManager.RenderPage($PageManager/Character, Database.active_game.player_id)
+	$PageManager.RenderPage($PageManager/Character, Database.active_game.PLAYER_ID)
 
 
 func _on_event_completed(event_page: EventPage):

@@ -10,7 +10,7 @@ enum DAY {
 }
 
 
-const PHASE_LENGTHS = {
+const PHASE_LENGTHS = {  # weeks
 	PHASE.OFFSEASON: 2,
 	PHASE.PRESEASON: 2,
 	PHASE.REGULAR_SEASON: 8,
@@ -32,19 +32,25 @@ func _init(y: int, p: PHASE, w: int, d: DAY):
 	day = d
 
 
-func Advance():
+func Advance() -> Array:
+	var new_things = []
+	
 	day += 1
 	if day >= 7:
 		day = 0
+		new_things.append("week")
 		
 		week += 1
 		if week >= PHASE_LENGTHS[phase]:
 			week = 0
+			new_things.append("phase")
 			
 			phase += 1
 			if phase >= len(PHASE.keys()):
 				phase = 0
 				year += 1
+				new_things.append("season")
+	return new_things
 
 
 func Equals(other: Timestamp):
@@ -54,7 +60,7 @@ func Equals(other: Timestamp):
 
 
 # format: YYYY-P_ix-W-D_ix
-static func FromStr(s: String):
+static func FromStr(s: String) -> Timestamp:
 	var vals = s.split("-")
 	return Timestamp.new(
 		int(vals[0]),
@@ -63,6 +69,9 @@ static func FromStr(s: String):
 		int(vals[3])
 	)
 
+
+func ToISOStr():
+	return "%d-%d-%d-%d" % [year, phase, week, day]
 
 func ToPrettyStr():
 	return "%d | %s | Week %d | %s" % [

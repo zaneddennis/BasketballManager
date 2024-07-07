@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://btyyj0u6xl3x2"]
+[gd_scene load_steps=10 format=3 uid="uid://btyyj0u6xl3x2"]
 
 [ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_sdxab"]
 [ext_resource type="Script" path="res://MainMenu/main_menu_continue.gd" id="2_6t311"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://MainMenu/main_menu_content.gd" id="2_cfoiq"]
 [ext_resource type="Texture2D" uid="uid://ct7jvd3fmexmt" path="res://pattern_0015.png" id="2_nj2io"]
 [ext_resource type="Script" path="res://MainMenu/main_menu_new.gd" id="5_godv8"]
+[ext_resource type="PackedScene" uid="uid://ciop6prkbkyqd" path="res://MainMenu/mm_save_summary_widget.tscn" id="5_kclqb"]
+[ext_resource type="Script" path="res://MainMenu/main_menu_load.gd" id="7_vfkji"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_lkgum"]
 
@@ -121,64 +123,26 @@ anchor_right = 1.0
 offset_bottom = 40.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderLabel"
-text = "CONTINUE"
+text = "Continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="Content/Continue"]
-custom_minimum_size = Vector2(192, 320)
+[node name="MMSaveSummaryWidget" parent="Content/Continue" instance=ExtResource("5_kclqb")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -192.0
+offset_top = -96.0
+offset_right = 192.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_type_variation = &"LightPanel"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/Continue/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="SlotName" type="Label" parent="Content/Continue/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-text = "SlotName"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="Content/Continue/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Last Played: 2000-01-01"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Load" type="Button" parent="Content/Continue"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = -40.0
-offset_right = -12.0
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Load"
 
 [node name="New" type="Control" parent="Content"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,7 +152,6 @@ grow_vertical = 2
 script = ExtResource("5_godv8")
 
 [node name="World" type="Control" parent="Content/New"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -576,6 +539,7 @@ layout_mode = 2
 text = "Next >"
 
 [node name="Finalize" type="Control" parent="Content/New"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -656,14 +620,43 @@ layout_mode = 2
 text = "Next >"
 
 [node name="Load" type="Control" parent="Content"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_cfoiq")
+script = ExtResource("7_vfkji")
+
+[node name="Header" type="Label" parent="Content/Load"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLabel"
+text = "Load Career"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Content/Load"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = -32.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Load/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
 
 [node name="Options" type="Control" parent="Content"]
 visible = false
@@ -681,10 +674,11 @@ script = ExtResource("2_cfoiq")
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="load_continue" from="Content/Continue" to="." method="_on_continue_load_continue"]
-[connection signal="pressed" from="Content/Continue/Load" to="Content/Continue" method="_on_load_pressed"]
+[connection signal="load_pressed" from="Content/Continue/MMSaveSummaryWidget" to="Content/Continue" method="_on_load_pressed"]
 [connection signal="new_start" from="Content/New" to="." method="_on_new_start"]
 [connection signal="pressed" from="Content/New/World/VBoxContainer/Navigation/Next" to="Content/New" method="_on_next_pressed"]
 [connection signal="item_selected" from="Content/New/Character/VBoxContainer/Content/Character/Hometown/HBoxContainer/State" to="Content/New" method="_on_state_item_selected"]
 [connection signal="pressed" from="Content/New/Character/VBoxContainer/Navigation/Next" to="Content/New" method="_on_next_pressed"]
 [connection signal="pressed" from="Content/New/Finalize/VBoxContainer/Content/StartGame" to="Content/New" method="_on_start_game_pressed"]
 [connection signal="pressed" from="Content/New/Finalize/VBoxContainer/Navigation/Next" to="Content/New" method="_on_next_pressed"]
+[connection signal="load_load" from="Content/Load" to="." method="_on_load_load_load"]

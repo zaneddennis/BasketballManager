@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciop6prkbkyqd"]
+
+[ext_resource type="Script" path="res://MainMenu/mm_save_summary_widget.gd" id="1_aut1i"]
+
+[node name="MMSaveSummaryWidget" type="Panel"]
+custom_minimum_size = Vector2(384, 192)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_aut1i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SlotName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 20
+text = "SAVE SLOT NAME"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Character" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "First Last"
+horizontal_alignment = 2
+
+[node name="School" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Baylor"
+horizontal_alignment = 2
+
+[node name="Timestamp" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "2000 | Offseason | Week 0 | Monday"
+horizontal_alignment = 2
+
+[node name="LastPlayed" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Last Played: 2000-1-1"
+horizontal_alignment = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "Load Career"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

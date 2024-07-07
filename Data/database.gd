@@ -24,7 +24,7 @@ func Activate(slot: String):
 		[
 			{"ID": "XII", "Name": "Big 12 Conference", "ShortName": "Big 12", "Prestige": 9},
 			{"ID": "ACC", "Name": "Atlantic Coast Conference", "ShortName": "ACC", "Prestige": 9},
-			{"ID": "OTH", "Name": "Other Conference", "ShortName": "Other", "Prestige": 4}
+			{"ID": "OTH", "Name": "Other Conference", "ShortName": "Other", "Prestige": 4},
 		]
 	)
 	database.insert_rows(

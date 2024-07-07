@@ -29,9 +29,16 @@ func GetSaves() -> Array:
 				Constants.SAVES_LOCATION + "/" + save_name + "/meta.json", FileAccess.READ
 			).get_as_text()
 		)
+		var save_status = JSON.parse_string(
+			FileAccess.open(
+				Constants.SAVES_LOCATION + "/" + save_name + "/game_status.json", FileAccess.READ
+			).get_as_text()
+		)
 		
-		if save_meta:
-			result.append(save_meta)
+		if save_meta and save_status:
+			var save_data = save_meta.duplicate()
+			save_data.merge(save_status)
+			result.append(save_data)
 	
 	result.sort_custom(func(a, b): return a["last_played"] > b["last_played"])
 	
@@ -68,3 +75,6 @@ func _on_continue_load_continue():
 
 func _on_new_start(slot_name: String):
 	StartNewGame(slot_name)
+
+func _on_load_load_load(slot_name):
+	LoadGame(slot_name)

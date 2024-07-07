@@ -4,11 +4,11 @@ extends MainMenuContent
 signal load_continue
 
 
-func Activate(mm: MainMenu):  # just pass the save, not the whole MM
+func Activate(mm: MainMenu):
 	super(mm)
 	
-	$Panel/VBoxContainer/SlotName.text = mm.saves[0]["slot_name"]
+	$MMSaveSummaryWidget.Activate(mm.saves[0])
 
 
-func _on_load_pressed():
+func _on_load_pressed(slot_name: String):
 	load_continue.emit()

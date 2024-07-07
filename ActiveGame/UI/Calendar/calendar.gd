@@ -8,6 +8,7 @@ var CalendarEventWidget = preload("res://ActiveGame/UI/Calendar/calendar_event_w
 const NUM_DAYS = 7
 const WEEK_HEIGHT = 192
 
+# deprecated?
 var events = {}
 var events_OLD = {
 	Timestamp.FromStr("2025-2-1-2"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRACTICE, "Practice"),
@@ -40,15 +41,20 @@ func Render(today: Timestamp):
 		for d in NUM_DAYS:
 			var cell = CalendarCell.instantiate()
 			$Background/Grid.add_child(cell)
+			
+			var event_this_day = CalendarEventScheduler.Schedule(Timestamp.new(today.year, today.phase, w, d))
+			if event_this_day:
+				var widget = CalendarEventWidget.instantiate()
+				cell.add_child(widget)
+				widget.Activate(event_this_day)
 	
 	var today_cell = $Background/Grid.get_child(
 		today.week * NUM_DAYS + today.day
 	)
 	today_cell.get_node("IsToday").show()
-	
-	RenderEvents()
 
 
+# deprecated
 func RenderEvents():
 	for timestamp in events:
 		var event = events[timestamp]

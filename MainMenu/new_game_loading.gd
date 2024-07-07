@@ -152,4 +152,5 @@ func ThreadRecruitPlayers():
 
 
 func _on_start_pressed():
+	TransitionManager.first_time_load = true
 	get_tree().change_scene_to_file("res://ActiveGame/active_game.tscn")

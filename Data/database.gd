@@ -24,6 +24,7 @@ func Activate(slot: String):
 		[
 			{"ID": "XII", "Name": "Big 12 Conference", "ShortName": "Big 12", "Prestige": 9},
 			{"ID": "ACC", "Name": "Atlantic Coast Conference", "ShortName": "ACC", "Prestige": 9},
+			{"ID": "SEC", "Name": "Southeastern Conference", "ShortName": "SEC", "Prestige": 7},
 			{"ID": "OTH", "Name": "Other Conference", "ShortName": "Other", "Prestige": 4},
 		]
 	)
@@ -37,7 +38,15 @@ func Activate(slot: String):
 			{"ID": 5, "City": "Norman", "State": "OK", "StateName": "Oklahoma", "Population": 200000},
 			{"ID": 6, "City": "Hoboken", "State": "NJ", "StateName": "New Jersey", "Population": 60000},
 			{"ID": 7, "City": "Jersey City", "State": "NJ", "StateName": "New Jersey", "Population": 1000000},
-			{"ID": 8, "City": "Nashville", "State": "TN", "StateName": "Tennessee", "Population": 2000000}
+			{"ID": 8, "City": "Nashville", "State": "TN", "StateName": "Tennessee", "Population": 1000000},
+			{"ID": 9, "City": "Lexington", "State": "KY", "StateName": "Kentucky", "Population": 320000},
+			{"ID": 10, "City": "Tuscaloosa", "State": "AL", "StateName": "Alabama", "Population": 100000},
+			{"ID": 11, "City": "Auburn", "State": "AL", "StateName": "Alabama", "Population": 80000},
+			{"ID": 12, "City": "Knoxville", "State": "TN", "StateName": "Tennessee", "Population": 200000},
+			{"ID": 13, "City": "Stillwater", "State": "OK", "StateName": "Oklahoma", "Population": 50000},
+			{"ID": 14, "City": "Chapel Hill", "State": "NC", "StateName": "North Carolina", "Population": 60000},
+			{"ID": 15, "City": "Raleigh", "State": "NC", "StateName": "North Carolina", "Population": 500000},
+			{"ID": 16, "City": "Durham", "State": "NC", "StateName": "North Carolina", "Population": 300000}
 		]
 	)
 	database.insert_rows(
@@ -46,11 +55,19 @@ func Activate(slot: String):
 			{"ID": "SMU", "FullName": "Southern Methodist University", "ShortName": "SMU", "Mascot": "Mustangs", "Location": 1, "Conference": "ACC", "PrestigeHistoric": 3, "PrestigeCurrent": 4},
 			{"ID": "TCU", "FullName": "Texas Cocaine University", "ShortName": "TCU", "Mascot": "Horny Toads", "Location": 1, "Conference": "XII", "PrestigeHistoric": 4, "PrestigeCurrent": 6},
 			{"ID": "TUL", "FullName": "University of Tulsa", "ShortName": "Tulsa", "Mascot": "Golden Hurricane", "Location": 2, "Conference": "OTH", "PrestigeHistoric": 4, "PrestigeCurrent": 3},
-			{"ID": "BAY", "FullName": "Baylor University", "ShortName": "Baylor", "Mascot": "Bears", "Location": 3, "Conference": "XII", "PrestigeHistoric": 8, "PrestigeCurrent": 9},
+			{"ID": "BAY", "FullName": "Baylor University", "ShortName": "Baylor", "Mascot": "Bears", "Location": 3, "Conference": "XII", "PrestigeHistoric": 7, "PrestigeCurrent": 9},
 			{"ID": "OKLA", "FullName": "University of Oklahoma", "ShortName": "Oklahoma", "Mascot": "Sooners", "Location": 5, "Conference": "XII", "PrestigeHistoric": 8, "PrestigeCurrent": 7},
 			{"ID": "STEV", "FullName": "Stevens Institute of Technology", "ShortName": "Stevens", "Mascot": "Ducks", "Location": 6, "Conference": "OTH", "PrestigeHistoric": 1, "PrestigeCurrent": 1},
 			{"ID": "PETE", "FullName": "Saint Peter's University", "ShortName": "St Peter's", "Mascot": "Peacocks", "Location": 7, "Conference": "OTH", "PrestigeHistoric": 1, "PrestigeCurrent": 2},
-			{"ID": "VAND", "FullName": "Vanderbilt University", "ShortName": "Vanderbilt", "Mascot": "Commodores", "Location": 8, "Conference": "ACC", "PrestigeHistoric": 5, "PrestigeCurrent": 5}
+			{"ID": "VAND", "FullName": "Vanderbilt University", "ShortName": "Vanderbilt", "Mascot": "Commodores", "Location": 8, "Conference": "SEC", "PrestigeHistoric": 5, "PrestigeCurrent": 5},
+			{"ID": "KTKY", "FullName": "University of Kentucky", "ShortName": "Kentucky", "Mascot": "Wildcats", "Location": 9, "Conference": "SEC", "PrestigeHistoric": 9, "PrestigeCurrent": 7},
+			{"ID": "BAMA", "FullName": "University of Alabama", "ShortName": "Alabama", "Mascot": "Crimson Tide", "Location": 10, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 7},
+			{"ID": "AUB", "FullName": "Auburn University", "ShortName": "Auburn", "Mascot": "Tigers", "Location": 11, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 6},
+			{"ID": "TENN", "FullName": "University of Tennessee", "ShortName": "Tennessee", "Mascot": "Volunteers", "Location": 12, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 7},
+			{"ID": "OKST", "FullName": "Oklahoma State University", "ShortName": "Oklahoma State", "Mascot": "Cowboys", "Location": 13, "Conference": "XII", "PrestigeHistoric": 8, "PrestigeCurrent": 6},
+			{"ID": "UNC", "FullName": "University of North Carolina", "ShortName": "North Carolina", "Mascot": "Tar Heels", "Location": 14, "Conference": "ACC", "PrestigeHistoric": 10, "PrestigeCurrent": 10},
+			{"ID": "NCST", "FullName": "North Carolina State University", "ShortName": "NC State", "Mascot": "Wolfpack", "Location": 15, "Conference": "ACC", "PrestigeHistoric": 6, "PrestigeCurrent": 7},
+			{"ID": "DUKE", "FullName": "Duke University", "ShortName": "Duke", "Mascot": "Blue Devils", "Location": 16, "Conference": "ACC", "PrestigeHistoric": 10, "PrestigeCurrent": 10}
 		]
 	)
 	database.insert_rows(
@@ -75,17 +92,17 @@ func Activate(slot: String):
 			{"Year": 1995, "Name": "Matthew", "Freq": 1.0},
 			{"Year": 1995, "Name": "Christopher", "Freq": 1.0},
 			{"Year": 2003, "Name": "John", "Freq": 1.0},
-			{"Year": 2003, "Name": "Mike", "Freq": 1.0},
+			{"Year": 2003, "Name": "Michael", "Freq": 1.0},
 			{"Year": 2003, "Name": "Liam", "Freq": 1.0},
-			{"Year": 2004, "Name": "John", "Freq": 1.0},
-			{"Year": 2004, "Name": "Mike", "Freq": 1.0},
-			{"Year": 2004, "Name": "Liam", "Freq": 1.0},
-			{"Year": 2005, "Name": "John", "Freq": 1.0},
-			{"Year": 2005, "Name": "Mike", "Freq": 1.0},
-			{"Year": 2005, "Name": "Liam", "Freq": 1.0},
-			{"Year": 2006, "Name": "John", "Freq": 1.0},
-			{"Year": 2006, "Name": "Mike", "Freq": 1.0},
-			{"Year": 2006, "Name": "Liam", "Freq": 1.0},
+			{"Year": 2003, "Name": "Jacob", "Freq": 1.0},
+			{"Year": 2003, "Name": "Joshua", "Freq": 1.0},
+			{"Year": 2003, "Name": "Matthew", "Freq": 1.0},
+			{"Year": 2003, "Name": "Andrew", "Freq": 1.0},
+			{"Year": 2003, "Name": "Joseph", "Freq": 1.0},
+			{"Year": 2003, "Name": "Ethan", "Freq": 1.0},
+			{"Year": 2003, "Name": "Daniel", "Freq": 1.0},
+			{"Year": 2003, "Name": "Christopher", "Freq": 1.0},
+			{"Year": 2003, "Name": "Anthony", "Freq": 1.0}
 		]
 	)
 	database.insert_rows(
@@ -102,7 +119,12 @@ func Activate(slot: String):
 			{"Surname": "Rodriguez", "Per100k": 371.19},
 			{"Surname": "Wilson", "Per100k": 271.84},
 			{"Surname": "Anderson", "Per100k": 265.92},
-			{"Surname": "Thomas", "Per100k": 256.34}
+			{"Surname": "Thomas", "Per100k": 256.34},
+			{"Surname": "Taylor", "Per100k": 254.67},
+			{"Surname": "Moore", "Per100k": 245.57},
+			{"Surname": "Jackson", "Per100k": 240.05},
+			{"Surname": "Martin", "Per100k": 238.19},
+			{"Surname": "Thompson", "Per100k": 225.32}
 		]
 	)
 	
@@ -196,8 +218,11 @@ func GetTeamFromSchool(school_id: String, year: int):
 	return result[0]
 
 
-func GetColumnAsList(table: String, column: String, order_by: String) -> Array:
-	database.query("SELECT %s FROM %s ORDER BY %s" % [column, table, order_by])
+func GetColumnAsList(table: String, column: String, order_by: String, where: String = "") -> Array:
+	if where:  # todo: clean this up to not have the if branch, make order_by optional as well
+		database.query("SELECT %s FROM %s WHERE %s ORDER BY %s" % [column, table, where, order_by])
+	else:
+		database.query("SELECT %s FROM %s ORDER BY %s" % [column, table, order_by])
 	var result = database.query_result
 	var ret_val = []
 	for row in result:

@@ -1,33 +1,33 @@
-,Name_Original,ID,Name,ShortName,Prestige
-0,America East Conference,AME,America Eastern Conference,America Eastern,1
-1,American Athletic Conference,AMC,American Conference,American,6
-2,Atlantic Sun Conference,,,,
-3,Atlantic 10 Conference,A15,Atlantic Fifteen,A-15,4
-4,Atlantic Coast Conference,AOC,Atlantic Ocean Conference,Atlantic,9
-5,Big 12 Conference,,,,
-6,Big East Conference,,,,
-7,Big Sky Conference,,,,
-8,Big South Conference,,,,
-9,Big Ten Conference,,,,
-10,Big West Conference,,,,
-11,Coastal Athletic Association,,,,
-12,Conference USA,,,,
-13,Horizon League,,,,
-14,Ivy League,,,,
-15,Metro Atlantic Athletic Conference,,,,
-16,Mid-American Conference,,,,
-17,Mid-Eastern Athletic Conference,,,,
-18,Missouri Valley Conference,,,,
-19,Mountain West Conference,,,,
-20,Northeast Conference,,,,
-21,Ohio Valley Conference,,,,
-22,Pac-12 Conference,,,,
-23,Patriot League,,,,
-24,Southeastern Conference,,,,
-25,Southern Conference,,,,
-26,Southland Conference,,,,
-27,Southwestern Athletic Conference,,,,
-28,Summit League,,,,
-29,Sun Belt Conference,,,,
-30,West Coast Conference,,,,
-31,Western Athletic Conference,,,,
+Name_Original,ID,Name,ShortName,Prestige
+America East Conference,AME,American Eastern Conference,American Eastern,2
+American Athletic Conference,AMC,American Conference,American,6
+Atlantic Sun Conference,,,,
+Atlantic 10 Conference,,,,
+Atlantic Coast Conference,AOC,Atlantic Ocean Conference,Atlantic,9
+Big 12 Conference,XIV,Big XIV Conference,Big XIV,10
+Big East Conference,,,,
+Big Sky Conference,,,,
+Big South Conference,,,,
+Big Ten Conference,B11,Big Eleven Conference,Big 11,8
+Big West Conference,,,,
+Coastal Athletic Association,,,,
+Conference USA,USA,USA Conference,USAC,3
+Horizon League,,,,
+Ivy League,,,,
+Metro Atlantic Athletic Conference,,,,
+Mid-American Conference,,,,
+Mid-Eastern Athletic Conference,,,,
+Missouri Valley Conference,,,,
+Mountain West Conference,RMC,Rocky Mountain Conference,Rocky Mountain,5
+Northeast Conference,,,,
+Ohio Valley Conference,,,,
+Pac-12 Conference,,,,
+Patriot League,,,,
+Southeastern Conference,,,,
+Southern Conference,,,,
+Southland Conference,,,,
+Southwestern Athletic Conference,,,,
+Summit League,,,,
+Sun Belt Conference,,,,
+West Coast Conference,,,,
+Western Athletic Conference,,,,

@@ -1,54 +1,7 @@
 ID,FullName,ShortName,Mascot,Location,Conference,PrestigeHistoric,PrestigeCurrent
-ALB,University of Albany,Albany,Dobermans,5841.0,AME,2.0,1.0
-BING,University of Binghamton,Binghamton,Wildcats,5872.0,AME,1.0,1.0
-BRIA,Briant University,Briant,Bulls,8280.0,AME,1.0,1.0
-UME,Maine University,Maine,Bears,3864.0,AME,1.0,1.0
-UMB,University of Maryland at Baltimore,UMB,Labradors,3875.0,AME,1.0,3.0
-LOW,Lowell University,Lowell,Hawks,3991.0,AME,1.0,1.0
-NHU,New Hampshire University,New Hampshire,Bobcats,5459.0,AME,1.0,1.0
-NJT,New Jersey Polytechnic University,New Jersey Tech,Scots,5641.0,AME,1.0,1.0
-VMNT,Vermont University,Vermont,Cougars,9735.0,AME,2.0,3.0
-CHAR,University of Charlotte,Charlotte,Miners,6326.0,AMC,2.0,2.0
-ECA,Eastern Carolina University,Eastern Carolina,Buccaneers,6395.0,AMC,2.0,2.0
-FACU,Florida Atlantic Coast University,Florida Atlantic Coast,Hawks,1269.0,AMC,2.0,5.0
-MEM,Memphis University,Memphis,Wildcats,8652.0,AMC,7.0,5.0
-NTU,North Texas University,North Texas,Green,8943.0,AMC,2.0,2.0
-BRIC,Brice University,Brice,Owls,9096.0,AMC,2.0,2.0
-SFU,Southern Florida University,Southern Florida,Toros,1541.0,AMC,2.0,2.0
-DMU,Dallas Methodist University,DMU,Stallions,9521.0,AMC,3.0,3.0
-PHIL,Philadelphia University,Philadelphia,Owls,8091.0,AMC,4.0,2.0
-BHAM,Birmingham University,Birmingham,Dragons,23.0,AMC,2.0,3.0
-SAN,San Antonio University,San Antonio,Coyotes,9418.0,AMC,2.0,2.0
-NWO,New Orleans University,New Orleans,Tsunami,3798.0,AMC,2.0,2.0
-TUL,Tulsa University,Tulsa,Hurricane,7448.0,AMC,3.0,2.0
-WICH,Wichita University,Wichita,Lightning,3450.0,AMC,5.0,3.0
-CBOS,College of Boston,College of Boston,Eagles,3975.0,AOC,4.0,4.0
-CLEM,University of Clemson,Clemson,Bengals,8308.0,AOC,6.0,6.0
-DURH,Durham University,Durham,Devils,6350.0,AOC,10.0,10.0
-FLAT,Florida-Tallahassee University,Florida-Tallahassee,Warriors,1539.0,AOC,6.0,6.0
-GPOL,Georgia Polytechnic University,Georgia Poly,Hornets,1587.0,AOC,6.0,5.0
-LOU,Louisville University,Louisville,Redbirds,3645.0,AOC,8.0,6.0
-UCG,University of Coral Gables,Coral Gables,Typhoons,1299.0,AOC,6.0,7.0
-NCAR,North Carolina University,North Carolina,Rams,6325.0,AOC,10.0,10.0
-NCLG,North Carolina Land-Grant University,North Carolina LG,Wolves,6513.0,AOC,6.0,8.0
-STPA,Saint Patrick University,St Patrick,Leprechauns,2917.0,AOC,7.0,6.0
-PITT,Pittsburgh University,Pittsburgh,Pumas,8096.0,AOC,7.0,5.0
-SYR,University of Syracuse,Syracuse,Vermillion,6212.0,AOC,9.0,6.0
-VIR,Virginia University,Virginia,Musketeers,9780.0,AOC,7.0,8.0
-VIT,Virginia Institute of Technology,VIT,Turkeys,9765.0,AOC,5.0,5.0
-WISA,Winston-Salem University,Winston-Salem,Demons,6613.0,AOC,6.0,4.0
-DAV,Davidson University,Davidson,Tigers,6345.0,A15,3.0,3.0
-DAY,Dayton University,Dayton,Pilots,6816.0,A15,3.0,4.0
-PITC,Pittsburgh Catholic University,Pittsburgh Catholic,Kings,8096.0,A15,2.0,3.0
-BRNX,Bronx Jesuit University,Bronx Jesuit,Stags,6268.0,A15,1.0,1.0
-FAIR,Fairfax University,Fairfax,Revolutionaries,9806.0,A15,4.0,2.0
-DCU,District of Columbia University,DCU,Patriots,1243.0,A15,3.0,2.0
-JEAN,Saint Jean-Baptiste University,St Jean-Baptiste,Pioneers,8091.0,A15,1.0,1.0
-CHIJ,Chicago Jesuit University,Chicago Jesuit,Rattlers,2088.0,A15,5.0,4.0
-MASS,Massachusetts University,Massachusetts,Patriots,4001.0,A15,1.0,1.0
-RHOD,Rhode Island University,Rhode Island,Rovers,8279.0,A15,2.0,1.0
-RICH,Richmond University,Richmond,Vipers,9872.0,A15,2.0,2.0
-BONA,St Bonaventure College,St Bonaventure,Browns,6119.0,A15,1.0,2.0
-PJU,Philadelphia Jesuit University,Philadelphia Jesuit,Redhawks,8091.0,A15,4.0,3.0
-MJU,Missouri Jesuit University,Missouri Jesuit,Benders,4946.0,A15,4.0,4.0
-VMU,Virginia Medical University,Virginia Medical,Gold,9872.0,A15,5.0,5.0
+ALB,Albany University,Albany,Dobermans,5841.0,AME,2.0,1.0
+BING,University of Binghamton,Binghamton,Bears,5872.0,AME,1.0,1.0
+BRYA,Bryan University,Bryan,Bulls,99990.0,AME,1.0,1.0
+CHAR,University of Charlotte,Charlotte,Miners,6326.0,AMC,3.0,3.0
+ECAR,Eastern Carolina University,Eastern Carolina,Buccaneers,6395.0,AMC,3.0,3.0
+FACU,Florida Atlantic Coast University,Florida Atlantic Coast,Hawks,1269.0,AMC,3.0,5.0

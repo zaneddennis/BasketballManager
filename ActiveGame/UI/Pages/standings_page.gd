@@ -14,11 +14,11 @@ func Activate(id):
 	for n in $Content/ScrollContainer/GridContainer.get_children():
 		n.queue_free()
 	
-	var conferences_list = Database.GetColumnAsList("Conferences", "ID", "Prestige")
+	var conferences_list = Database.GetColumnAsList("Conferences", "ID", "Prestige DESC")
 	for conference_id: String in conferences_list:
 		var widget: StandingsWidget = StandingsWidgetScene.instantiate()
 		$Content/ScrollContainer/GridContainer.add_child(widget)
-		widget.size_flags_horizontal = SIZE_EXPAND
+		widget.size_flags_horizontal = SIZE_EXPAND | SIZE_SHRINK_CENTER
 		widget.Render(conference_id)
 		
 		if not widget.team_link.is_connected(_on_standings_widget_team_link):

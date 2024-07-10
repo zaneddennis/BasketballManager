@@ -30,7 +30,8 @@ static func FromDatabase(character_id: int) -> Character:
 	if dict["AlmaMater"]:
 		c.alma_mater = School.FromDatabase(dict["AlmaMater"])
 	
-	c.coach_id = dict["CoachID"]
+	if dict["CoachID"]:
+		c.coach_id = dict["CoachID"]
 	
 	return c
 

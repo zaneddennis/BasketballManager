@@ -64,7 +64,7 @@ STATE_NAME_TO_ABBR = {
 
 # no business logic needed here
 def preprocess_conferences():
-    df = pd.read_csv("Data/Raw/conferences.csv")
+    df = pd.read_csv("Data/Raw/conferences.txt")
     return df
 
 
@@ -89,7 +89,8 @@ def preprocess_locations():
     df = df[["City", "State", "StateName", "Population", "Latitude", "Longitude", "Timezone"]]
 
     # add ID column
-
+    #df["ID"] = df.index + 1
+    df.insert(0, "ID", df.index + 1)
     return df
 
 
@@ -97,7 +98,7 @@ def preprocess_all():
     print("Preprocessing Conferences...")
     conferences = preprocess_conferences()
     print(conferences)
-    conferences.to_csv("Data/Preprocessed/conferences.csv", index=False)
+    conferences.to_csv("Data/Preprocessed/conferences.txt", index=False)
 
     print("Preprocessing Schools...")
     schools = preprocess_schools()

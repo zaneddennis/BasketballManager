@@ -12,12 +12,8 @@ def create_template(df, manual_cols=[]) -> pd.DataFrame:
 
 
 def create_all():
-    os.system(r"copy .\Data\ManualTemplates\conferences.csv .\Data\ManualTemplates\Backups\conferences.csv")
-    os.system(r"copy .\Data\ManualTemplates\schools.csv .\Data\ManualTemplates\Backups\schools.csv")
-
-
     conferences = create_template(
-        pd.read_csv("Data/Preprocessed/conferences.csv"),
+        pd.read_csv("Data/Preprocessed/conferences.txt"),
         ["ID", "Name", "ShortName", "Prestige"]
     )
     conferences.to_csv("Data/ManualTemplates/conferences.csv", index=False)
@@ -27,3 +23,6 @@ def create_all():
         ["ID", "FullName", "ShortName", "Mascot", "Location", "Conference", "PrestigeHistoric", "PrestigeCurrent"]
     )
     schools.to_csv("Data/ManualTemplates/schools.csv", index=False)
+
+    # just copy so I can make manual additions/edits directly
+    os.system(r"copy .\Data\Preprocessed\locations.csv .\Data\ManualTemplates\locations.csv")

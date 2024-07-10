@@ -95,7 +95,6 @@ func ThreadHireCoaches():
 	for i in range(num_coaches - len(schools_list)):
 		schools_list.append(null)
 	schools_list.shuffle()
-	print(schools_list)
 	
 	for i in range(len(schools_list)):
 		var school_id = schools_list[i]

@@ -53,7 +53,7 @@ func _on_home_pressed():
 	$PageManager.RenderHome()
 
 func _on_team_pressed():
-	var coach_id = Database.active_game.player_id
+	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)
 	var school_id = coach.school_id
 	var year = Database.active_game.current_time.year

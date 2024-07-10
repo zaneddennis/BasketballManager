@@ -15,9 +15,13 @@ const MAX_PLAYER_AGE = 22
 
 
 func _init():
-	location_picker = WeightedChoice.new(  # todo: data pipeline
-		range(1, 9),
-		[13.0, 4.0, 1.5, 1.0, 2.0, 0.6, 10.0, 12.0]
+	#location_picker = WeightedChoice.new(  # todo: data pipeline
+	#	range(1, 9),
+	#	[13.0, 4.0, 1.5, 1.0, 2.0, 0.6, 10.0, 12.0]
+	#)
+	location_picker = WeightedChoice.new(
+		Database.GetColumnAsList("Locations", "ID", "ID"),
+		Database.GetColumnAsList("Locations", "Population", "ID")
 	)
 
 
@@ -50,9 +54,10 @@ func GenerateCoach(id: int, coach_id: int) -> Dictionary:
 
 
 func GeneratePlayer(id: int, player_id: int):
-	var min_year = GAME_YEAR - MAX_PLAYER_AGE
-	var max_year = GAME_YEAR - MIN_PLAYER_AGE
-	var year = randi_range(min_year, max_year)
+	#var min_year = GAME_YEAR - MAX_PLAYER_AGE
+	#var max_year = GAME_YEAR - MIN_PLAYER_AGE
+	#var year = randi_range(min_year, max_year)
+	var year = 2003
 	
 	var firsts = Database.GetFirstNamesForYear(year)
 	var first_picker = WeightedChoice.new(

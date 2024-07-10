@@ -3,7 +3,7 @@ import pandas as pd
 
 from scrape import scrape
 from preprocess import preprocess
-from template import template
+from templating import template
 from finalize import finalize
 
 

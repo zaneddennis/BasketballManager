@@ -21,11 +21,11 @@ func _ready():
 	
 	LoadFromSlot(slot)
 	
-	if TransitionManager.first_time_load:
-		NewSeason()
-	
 	Database.active_game = self
 	Database.Activate(slot)
+	
+	if TransitionManager.first_time_load:
+		NewSeason()
 	
 	page_manager.RenderHome()
 	
@@ -54,10 +54,22 @@ func NewSeason():
 	var rows = []
 	for i in range(len(school_ids)):
 		var school_id = school_ids[i]
+		var player_ids = Database.GetColumnAsList("Players", "ID", "ID", "SchoolID = '%s'" % school_id)
+		var coach_id = Database.Get("SELECT ID FROM Coaches WHERE SchoolID = '%s'" % school_id)[0]["ID"]
 		rows.append(
-			{"ID": i + 1, "SchoolID": school_id, "Year": current_time.year, "Wins": 0, "Losses": 0}
+			{"ID": i + 1, "SchoolID": school_id, "Year": current_time.year, "Wins": 0, "Losses": 0, "HeadCoach": coach_id, "Players": str(player_ids)}
 		)
 	Database.database.insert_rows("Teams", rows)
+	
+	# schedule Games
+	var conference_list = Database.GetColumnAsList("Conferences", "ID", "ID")
+	var games = GameScheduler.GenerateNonconSchedule(1)
+	for conference_id in conference_list:
+		games += GameScheduler.GenerateConferenceSchedule(conference_id, len(games) + 1)
+	
+	for game in games:
+		print(game)
+	Database.database.insert_rows("Games", games)
 
 
 func NewPhase():

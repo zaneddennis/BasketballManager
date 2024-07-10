@@ -54,7 +54,7 @@ def scrape_all():
     locations_census = fetch_locations_census()
     print(locations_census)
 
-    conferences.to_csv("Data/Raw/conferences.csv", index=False)
+    conferences.to_csv("Data/Raw/conferences.txt", index=False)
     schools.to_csv("Data/Raw/schools.csv", index=False)
     locations_geonames.to_csv("Data/Raw/locations_geonames.csv", index=False)
     locations_census.to_csv("Data/Raw/locations_census.csv", index=False)

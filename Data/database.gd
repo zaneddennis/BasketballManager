@@ -133,10 +133,25 @@ func Activate(slot: String):
 	print("---")
 
 
-func Get(query: String):
+func Get(query: String) -> Array[Dictionary]:
 	database.query(query)
 	var result = database.query_result
 	return result
+
+func GetDataFrame(query: String) -> DataFrame:
+	database.query(query)
+	var result = database.query_result
+	var result_as_rows = []
+	
+	if len(result) > 0:
+		for row in result:
+			result_as_rows.append(row.values())
+		return DataFrame.New(
+			result_as_rows,
+			result[0].keys()
+		)
+	else:
+		return DataFrame.New([], [])
 
 
 func GetCharacter(id: int):
@@ -181,8 +196,8 @@ func GetSchool(id: String):
 	assert(len(result) == 1)
 	return result[0]
 
-func GetTeam(id: int):
-	database.query("SELECT * FROM Teams WHERE ID = %d" % id)
+func GetTeam(id: String):
+	database.query("SELECT * FROM Teams WHERE ID = '%s'" % id)
 	var result = database.query_result
 	assert(len(result) == 1)
 	return result[0]
@@ -229,6 +244,12 @@ func GetColumnAsList(table: String, column: String, order_by: String, where: Str
 		ret_val.append(row[column])
 	return ret_val
 
+func GetValue(query: String) -> Variant:
+	database.query(query)
+	var qr = database.query_result
+	return qr[0][qr[0].keys()[0]]
+
+
 func GetSchoolsList() -> Array[String]:
 	database.query("SELECT ShortName FROM Schools ORDER BY ShortName")
 	var result = database.query_result
@@ -258,11 +279,12 @@ func GetCitiesInState(state: String) -> Array[String]:
 func GetConferenceStandings(conference: String) -> DataFrame:
 	database.query(
 		"""
-		SELECT ShortName, Schools.ID, Wins, Losses
+		SELECT ShortName, Schools.ID, Wins, Losses, ROUND(COALESCE(Wins / (Wins * 1.0 + Losses), 0.0), 3) AS Pct
 		FROM Teams JOIN Schools
 			ON Teams.SchoolID = Schools.ID
-		WHERE Conference = '%s'
-		""" % conference
+		WHERE Conference = '%s' AND YEAR = %d
+		ORDER BY Pct DESC
+		""" % [conference, active_game.current_time.year]
 	)
 	var result = database.query_result
 	var result_as_rows = []
@@ -270,5 +292,5 @@ func GetConferenceStandings(conference: String) -> DataFrame:
 		result_as_rows.append(row.values())
 	return DataFrame.New(
 		result_as_rows,
-		["Team", "Team_tablemeta", "W", "L"]
+		["Team", "_tablemeta_Team", "W", "L", "Pct"]
 	)

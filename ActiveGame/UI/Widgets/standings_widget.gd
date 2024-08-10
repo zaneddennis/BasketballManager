@@ -2,7 +2,7 @@ extends Panel
 class_name StandingsWidget
 
 
-signal team_link(team_id: int)
+signal team_link(team_id: String)
 signal conference_link(conference_id: String)
 
 

@@ -16,7 +16,7 @@ static func FromDatabase(game_id: int) -> Game:
 	
 	g.id = dict["ID"]
 	g.timestamp = Timestamp.FromStr(dict["Timestamp"])
-	g.home = Team.FromDatabase(dict["Home"])
-	g.away = Team.FromDatabase(dict["Away"])
+	g.home = Team.FromDatabase(dict["Home"] + str(g.timestamp.year))
+	g.away = Team.FromDatabase(dict["Away"] + str(g.timestamp.year))
 	
 	return g

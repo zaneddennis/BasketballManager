@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddgorxhp6eskm"]
+
+[ext_resource type="Script" path="res://ActiveGame/UI/Widgets/dropdown_widget.gd" id="1_q2b8b"]
+
+[node name="DropdownWidget" type="OptionButton"]
+offset_right = 18.0
+offset_bottom = 14.0
+script = ExtResource("1_q2b8b")

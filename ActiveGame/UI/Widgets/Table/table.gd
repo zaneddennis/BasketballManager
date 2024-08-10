@@ -40,7 +40,7 @@ func Render(formatting: Dictionary = {}):
 				var cell = TableCell.instantiate()
 				
 				if col_name in formatting:
-					var col_name_meta = col_name + "_tablemeta"
+					var col_name_meta = "_tablemeta_" + col_name
 					var metastr = ""
 					if col_name_meta in data.columns:
 						metastr = "=%s" % data.GetColumn(col_name_meta)[r]

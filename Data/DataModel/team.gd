@@ -2,7 +2,8 @@ extends Object
 class_name Team
 
 
-var id: int
+#var id: int
+var id: String
 var school: School
 var year: int
 
@@ -10,8 +11,12 @@ var head_coach: Coach
 var players: Array[Player]
 
 
-static func FromDatabase(team_id: int) -> Team:
+static func FromDatabase(team_id: String) -> Team:
 	var dict = Database.GetTeam(team_id)
+	return _from_dict(dict)
+
+
+static func _from_dict(dict: Dictionary) -> Team:
 	var t = Team.new()
 	
 	t.id = dict["ID"]
@@ -32,4 +37,4 @@ static func FromDatabase(team_id: int) -> Team:
 
 
 func _to_string():
-	return "<Team:%d:%s:%d>" % [id, school.id, year]
+	return "<Team:%s:%s:%d>" % [id, school.id, year]

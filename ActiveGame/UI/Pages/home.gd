@@ -17,7 +17,7 @@ func Refresh():
 	Activate()
 
 
-func _on_standings_widget_team_link(team_id: int):
+func _on_standings_widget_team_link(team_id: String):
 	%UI.OpenTeamPage(team_id)
 
 func _on_standings_widget_conference_link(conference_id: String):

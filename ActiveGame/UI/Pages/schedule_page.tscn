@@ -1,0 +1,247 @@
+[gd_scene load_steps=7 format=3 uid="uid://i06fw3qiodaf"]
+
+[ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_8jado"]
+[ext_resource type="PackedScene" uid="uid://b5h5rbb4caglb" path="res://ActiveGame/UI/Widgets/Table/table.tscn" id="2_3qlg0"]
+[ext_resource type="Script" path="res://ActiveGame/UI/Pages/schedule_page.gd" id="2_4ilyk"]
+[ext_resource type="PackedScene" uid="uid://ddgorxhp6eskm" path="res://ActiveGame/UI/Widgets/dropdown_widget.tscn" id="3_ofhck"]
+[ext_resource type="Texture2D" uid="uid://di2i6lo42utg5" path="res://Data/Images/Miscellaneous/TestLogo.png" id="4_p5tlf"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_fhlwo"]
+
+[node name="Schedule" instance=ExtResource("1_8jado")]
+script = ExtResource("2_4ilyk")
+
+[node name="Label" parent="Title" index="0"]
+text = "SCHEDULES "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Tabs" type="HBoxContainer" parent="Content/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Team" type="Button" parent="Content/VBoxContainer/Tabs" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fhlwo")
+text = "Team Schedule"
+
+[node name="Daily" type="Button" parent="Content/VBoxContainer/Tabs" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fhlwo")
+text = "Daily Schedule"
+
+[node name="ConfTourney" type="Button" parent="Content/VBoxContainer/Tabs" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fhlwo")
+text = "Conference Tournament"
+
+[node name="NatTourney" type="Button" parent="Content/VBoxContainer/Tabs" index="3"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+toggle_mode = true
+button_group = SubResource("ButtonGroup_fhlwo")
+text = "National Tournament"
+
+[node name="Team" type="HBoxContainer" parent="Content/VBoxContainer" index="1"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Schedule" type="VBoxContainer" parent="Content/VBoxContainer/Team" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controls" type="HBoxContainer" parent="Content/VBoxContainer/Team/Schedule" index="0"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+alignment = 1
+
+[node name="TeamSelect" parent="Content/VBoxContainer/Team/Schedule/Controls" index="0" instance=ExtResource("3_ofhck")]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Table" parent="Content/VBoxContainer/Team/Schedule" index="1" instance=ExtResource("2_3qlg0")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="Content/VBoxContainer/Team" index="1"]
+layout_mode = 2
+
+[node name="GameDetails" type="VBoxContainer" parent="Content/VBoxContainer/Team" index="2"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Logos" type="HBoxContainer" parent="Content/VBoxContainer/Team/GameDetails" index="0"]
+layout_mode = 2
+alignment = 1
+
+[node name="Home" type="TextureRect" parent="Content/VBoxContainer/Team/GameDetails/Logos" index="0"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_p5tlf")
+expand_mode = 1
+
+[node name="Vs" type="Label" parent="Content/VBoxContainer/Team/GameDetails/Logos" index="1"]
+layout_mode = 2
+text = "vs"
+
+[node name="Away" type="TextureRect" parent="Content/VBoxContainer/Team/GameDetails/Logos" index="2"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_p5tlf")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/Team/GameDetails" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="Home" type="Label" parent="Content/VBoxContainer/Team/GameDetails/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Home"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Vs" type="Label" parent="Content/VBoxContainer/Team/GameDetails/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "vs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Away" type="Label" parent="Content/VBoxContainer/Team/GameDetails/HBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Away"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Team/GameDetails" index="2"]
+layout_mode = 2
+
+[node name="Daily" type="HBoxContainer" parent="Content/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Schedule" type="VBoxContainer" parent="Content/VBoxContainer/Daily" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controls" type="HBoxContainer" parent="Content/VBoxContainer/Daily/Schedule" index="0"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="PrevDay" type="Button" parent="Content/VBoxContainer/Daily/Schedule/Controls" index="0"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+text = "< Previous Gameday"
+
+[node name="DaySelect" parent="Content/VBoxContainer/Daily/Schedule/Controls" index="1" instance=ExtResource("3_ofhck")]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NextDay" type="Button" parent="Content/VBoxContainer/Daily/Schedule/Controls" index="2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Next Gameday >"
+
+[node name="Table" parent="Content/VBoxContainer/Daily/Schedule" index="1" instance=ExtResource("2_3qlg0")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="Content/VBoxContainer/Daily" index="1"]
+layout_mode = 2
+
+[node name="GameDetails" type="VBoxContainer" parent="Content/VBoxContainer/Daily" index="2"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Logos" type="HBoxContainer" parent="Content/VBoxContainer/Daily/GameDetails" index="0"]
+layout_mode = 2
+alignment = 1
+
+[node name="Home" type="TextureRect" parent="Content/VBoxContainer/Daily/GameDetails/Logos" index="0"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_p5tlf")
+expand_mode = 1
+
+[node name="Vs" type="Label" parent="Content/VBoxContainer/Daily/GameDetails/Logos" index="1"]
+layout_mode = 2
+text = "vs"
+
+[node name="Away" type="TextureRect" parent="Content/VBoxContainer/Daily/GameDetails/Logos" index="2"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_p5tlf")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/Daily/GameDetails" index="1"]
+layout_mode = 2
+alignment = 1
+
+[node name="Home" type="Label" parent="Content/VBoxContainer/Daily/GameDetails/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Home"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Vs" type="Label" parent="Content/VBoxContainer/Daily/GameDetails/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "vs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Away" type="Label" parent="Content/VBoxContainer/Daily/GameDetails/HBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Away"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/Daily/GameDetails" index="2"]
+layout_mode = 2
+
+[connection signal="pressed" from="Content/VBoxContainer/Tabs/Team" to="." method="_on_team_tab_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/Tabs/Daily" to="." method="_on_daily_tab_pressed"]
+[connection signal="item_selected" from="Content/VBoxContainer/Team/Schedule/Controls/TeamSelect" to="." method="_on_team_select_item_selected"]
+[connection signal="row_hovered" from="Content/VBoxContainer/Team/Schedule/Table" to="." method="_on_table_row_hovered"]
+[connection signal="item_selected" from="Content/VBoxContainer/Daily/Schedule/Controls/DaySelect" to="." method="_on_day_select_day_selected"]

@@ -53,6 +53,11 @@ func Advance() -> Array:
 	return new_things
 
 
+func Copy() -> Timestamp:
+	return Timestamp.new(
+		year, phase, week, day
+	)
+
 func Equals(other: Timestamp):
 	if year == other.year and phase == other.phase and week == other.week and day == other.day:
 			return true
@@ -77,6 +82,10 @@ func ToPrettyStr():
 	return "%d | %s | Week %d | %s" % [
 		year, PHASE.keys()[phase].capitalize(), week, DAY.keys()[day].capitalize()
 	]
+
+
+func DayName():
+	return DAY.keys()[day].capitalize()
 
 
 func _to_string():

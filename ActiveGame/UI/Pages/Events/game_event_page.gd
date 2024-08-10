@@ -1,13 +1,19 @@
 extends EventPage
+class_name GameEventPage
 
 
 var game: Game
+var gs: GameSimulator
+var result: GameResult
 
-# todo: separate GameProgress object that handles game logic and this just visualizes it
+# todo: separate GameSimulator object that handles game status and logic and this node just visualizes it
 var time = 0
 
 
-func Activate(event):
+func Activate(e: CalendarEventGame):
+	event = e
+	gs = GameSimulator.new()
+	
 	var game_id = event.game_id
 	game = Game.FromDatabase(game_id)
 	
@@ -40,6 +46,7 @@ func _on_complete_pressed():
 	event_completed.emit(self)
 
 
+# todo: Tick() function
 func _on_timer_timeout():
 	time -= 30
 	
@@ -49,4 +56,5 @@ func _on_timer_timeout():
 	
 	if time == 0:
 		$Timer.stop()
+		result = gs.Simulate()
 		$Content/VBoxContainer/HBoxContainer/Center/Complete.show()

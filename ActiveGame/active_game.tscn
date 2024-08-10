@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgmh05rrgoaja"]
+[gd_scene load_steps=22 format=3 uid="uid://dgmh05rrgoaja"]
 
 [ext_resource type="Script" path="res://ActiveGame/active_game.gd" id="1_wvce3"]
 [ext_resource type="Script" path="res://ActiveGame/page_manager.gd" id="2_1fsc3"]
@@ -12,12 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://b2v2k2sn4kea2" path="res://ActiveGame/UI/Widgets/standings_widget.tscn" id="7_uw5i7"]
 [ext_resource type="PackedScene" uid="uid://bekrwounlumth" path="res://ActiveGame/UI/Pages/character_page.tscn" id="8_dv4v8"]
 [ext_resource type="PackedScene" uid="uid://b1jkm0ducc1e3" path="res://ActiveGame/UI/Pages/standings_page.tscn" id="9_28iu2"]
+[ext_resource type="PackedScene" uid="uid://i06fw3qiodaf" path="res://ActiveGame/UI/Pages/schedule_page.tscn" id="10_f37d8"]
 [ext_resource type="PackedScene" uid="uid://w4da13q5n7qy" path="res://ActiveGame/UI/Pages/team_page.tscn" id="13_hlbns"]
 [ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="14_k0exi"]
 [ext_resource type="PackedScene" uid="uid://cetcjyi0jmqpe" path="res://ActiveGame/UI/Pages/Events/practice_event_page.tscn" id="15_618b4"]
 [ext_resource type="PackedScene" uid="uid://d1hbt8dytmxj1" path="res://ActiveGame/UI/Pages/Events/press_event_page.tscn" id="16_oon8r"]
 [ext_resource type="PackedScene" uid="uid://cvhkxj1365ms8" path="res://ActiveGame/UI/Pages/Events/game_event_page.tscn" id="17_g7e61"]
 [ext_resource type="PackedScene" uid="uid://deeow1lbijrdv" path="res://ActiveGame/UI/Pages/conference_page.tscn" id="18_2uv1d"]
+[ext_resource type="PackedScene" uid="uid://6a8re8sad8ie" path="res://ActiveGame/UI/Pages/Events/meeting_event_page.tscn" id="18_k1ey6"]
+[ext_resource type="PackedScene" uid="uid://dwap5c0sh612l" path="res://ActiveGame/UI/Widgets/Announcements/announcement.tscn" id="21_x61tu"]
 
 [node name="ActiveGame" type="Node"]
 script = ExtResource("1_wvce3")
@@ -89,6 +92,18 @@ offset_left = -208.0
 offset_bottom = 48.0
 grow_horizontal = 0
 text = "GO TO [EVENT]"
+
+[node name="Games" type="Button" parent="UI/TopBar"]
+visible = false
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -208.0
+offset_bottom = 48.0
+grow_horizontal = 0
+text = "Game Results >"
 
 [node name="PageManager" type="Control" parent="UI"]
 layout_mode = 3
@@ -212,6 +227,10 @@ layout_mode = 2
 visible = false
 layout_mode = 1
 
+[node name="Schedule" parent="UI/PageManager" instance=ExtResource("10_f37d8")]
+visible = false
+layout_mode = 1
+
 [node name="Standings" parent="UI/PageManager" instance=ExtResource("9_28iu2")]
 visible = false
 layout_mode = 1
@@ -233,6 +252,10 @@ visible = false
 layout_mode = 1
 
 [node name="PracticeEvent" parent="UI/PageManager" instance=ExtResource("15_618b4")]
+visible = false
+layout_mode = 1
+
+[node name="MeetingEvent" parent="UI/PageManager" instance=ExtResource("18_k1ey6")]
 visible = false
 layout_mode = 1
 
@@ -343,17 +366,25 @@ size_flags_vertical = 3
 theme_type_variation = &"PageButton"
 text = "MY PROFILE"
 
+[node name="Announcement" parent="UI" instance=ExtResource("21_x61tu")]
+visible = false
+
 [connection signal="advance_time" from="UI" to="." method="_on_ui_advance_time"]
+[connection signal="game_results" from="UI" to="." method="_on_ui_game_results"]
+[connection signal="user_game_complete" from="UI" to="." method="_on_complete_user_game"]
 [connection signal="pressed" from="UI/TopBar/SystemButton" to="UI" method="_on_system_button_pressed"]
 [connection signal="pressed" from="UI/TopBar/Advance" to="UI" method="_on_advance_pressed"]
 [connection signal="pressed" from="UI/TopBar/Event" to="UI" method="_on_event_pressed"]
+[connection signal="pressed" from="UI/TopBar/Games" to="UI" method="_on_games_pressed"]
 [connection signal="conference_link" from="UI/PageManager/Home/HBoxContainer/ContentLeft/StandingsWidget" to="UI/PageManager/Home" method="_on_standings_widget_conference_link"]
 [connection signal="team_link" from="UI/PageManager/Home/HBoxContainer/ContentLeft/StandingsWidget" to="UI/PageManager/Home" method="_on_standings_widget_team_link"]
 [connection signal="event_completed" from="UI/PageManager/PracticeEvent" to="UI" method="_on_event_completed"]
+[connection signal="event_completed" from="UI/PageManager/MeetingEvent" to="UI" method="_on_event_completed"]
 [connection signal="event_completed" from="UI/PageManager/PressEvent" to="UI" method="_on_event_completed"]
 [connection signal="event_completed" from="UI/PageManager/GameEvent" to="UI" method="_on_event_completed"]
 [connection signal="pressed" from="UI/PageButtons/Home" to="UI" method="_on_home_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Team" to="UI" method="_on_team_pressed"]
+[connection signal="pressed" from="UI/PageButtons/Schedule" to="UI" method="_on_schedule_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Standings" to="UI" method="_on_standings_pressed"]
 [connection signal="pressed" from="UI/PageButtons/School" to="UI" method="_on_school_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Profile" to="UI" method="_on_profile_pressed"]

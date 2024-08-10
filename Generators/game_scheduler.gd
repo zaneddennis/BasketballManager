@@ -6,7 +6,14 @@ const CONF_START = 4  # week of regular season that conference play starts
 const REG_GAMEDAYS = [0, 2, 5]  # Monday, Wednesday, Saturday
 
 
-static func GenerateConferenceSchedule(conference_id: String, next_game_id: int) -> Array[Dictionary]:  # list of games
+static func GenerateConferenceSchedule(conference_id: String, next_game_id: int) -> Array[Dictionary]:
+	var games = AttemptGenerateConferenceSchedule(conference_id, next_game_id)
+	while not games:
+		games = AttemptGenerateConferenceSchedule(conference_id, next_game_id)
+	return games
+
+
+static func AttemptGenerateConferenceSchedule(conference_id: String, next_game_id: int) -> Array[Dictionary]:  # list of games
 	var teams = Database.GetColumnAsList("Schools", "ID", "ID", "Conference = '%s'" % conference_id)
 	
 	var games_needed = []
@@ -34,6 +41,9 @@ static func GenerateConferenceSchedule(conference_id: String, next_game_id: int)
 			if s in slots[game[1]]:
 				valid_slots.append(s)
 		
+		if not valid_slots:
+			return []
+		
 		var slot = valid_slots.pick_random()
 		slots[game[0]].erase(slot)
 		slots[game[1]].erase(slot)
@@ -48,6 +58,13 @@ static func GenerateConferenceSchedule(conference_id: String, next_game_id: int)
 
 
 static func GenerateNonconSchedule(next_game_id: int) -> Array[Dictionary]:
+	var games = AttemptGenerateNonconSchedule(next_game_id)
+	while not games:
+		games = AttemptGenerateNonconSchedule(next_game_id)
+	return games
+	
+
+static func AttemptGenerateNonconSchedule(next_game_id: int) -> Array[Dictionary]:
 	var teams_list = Database.GetColumnAsList("Schools", "ID", "ID")
 	var conferences_list = Database.GetColumnAsList("Schools", "Conference", "ID")
 	
@@ -66,6 +83,9 @@ static func GenerateNonconSchedule(next_game_id: int) -> Array[Dictionary]:
 			for other in teams_list:
 				if counts[other] < 5 and conferences[other] != conferences[team]:
 					candidates.append(other)
+			
+			if candidates.is_empty():
+				return []
 			
 			var opp = candidates.pick_random()
 			if randf() < 0.5:
@@ -92,6 +112,9 @@ static func GenerateNonconSchedule(next_game_id: int) -> Array[Dictionary]:
 		for s in slots[game[0]]:
 			if s in slots[game[1]]:
 				valid_slots.append(s)
+		
+		if not valid_slots:
+			return []
 		
 		var slot = valid_slots.pick_random()
 		slots[game[0]].erase(slot)

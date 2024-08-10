@@ -42,19 +42,27 @@ func GetColumn(col: String):
 	
 	return result
 
-func GetRow(i):
+func GetRow(i: int, include_hidden: bool = false):
 	var row = []
 	for j in range(len(columns)):
 		var col = columns[j]
-		if not "_tablemeta" in col:
+		#if not "_tablemeta" in col:
+		if include_hidden or not col.begins_with("_"):
 			row.append(data[i][j])
 	return row
 
-func GetColumns():
+func GetValue(r: int, col: String):
+	assert(r < len(data))
+	assert(col in columns)
+	var ix = columns.find(col)
+	return data[r][ix]
+
+func GetColumns(include_hidden: bool = false):
 	var r = []
-	for c in columns:
-		if "_tablemeta" not in c:
-			r.append(c)
+	for col in columns:
+		#if "_tablemeta" not in c:
+		if include_hidden or not col.begins_with("_"):
+			r.append(col)
 	return r
 
 
@@ -77,6 +85,16 @@ func SortBy(col: String, desc=false):
 	data.sort_custom(_sort_by.bind(ix, desc))
 
 
+# in place
+func MapToColumn(col: String, f: Callable):
+	assert(col in columns)
+	var ix = columns.find(col)
+	
+	for r in len(data):
+		var val = data[r][ix]
+		data[r][ix] = f.call(val)
+
+
 static func EvalColumns(c1: Array, operand: String, c2: Array, convert_to_float: bool = false):
 	assert(len(c1) == len(c2))
 	
@@ -96,10 +114,11 @@ static func EvalColumns(c1: Array, operand: String, c2: Array, convert_to_float:
 
 
 # attributes
-func NumColumns():
+func NumColumns(include_hidden: bool = false):
 	var i = 0
-	for c in columns:
-		if not "_tablemeta" in c:
+	for col in columns:
+		#if not "_tablemeta" in c:
+		if include_hidden or not col.begins_with("_"):
 			i += 1
 	return i
 

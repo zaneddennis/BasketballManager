@@ -8,20 +8,6 @@ var CalendarEventWidget = preload("res://ActiveGame/UI/Calendar/calendar_event_w
 const NUM_DAYS = 7
 const WEEK_HEIGHT = 192
 
-# deprecated?
-var events = {}
-var events_OLD = {
-	Timestamp.FromStr("2025-2-1-2"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRACTICE, "Practice"),
-	Timestamp.FromStr("2025-2-1-3"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRESS, ""),
-	Timestamp.FromStr("2025-2-1-5"): CalendarEventGame.new(CalendarEvent.EVENT_TYPE.GAME, "Non-Conference", 1),
-	Timestamp.FromStr("2025-2-2-2"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRACTICE, "Practice"),
-	Timestamp.FromStr("2025-2-2-3"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRESS, ""),
-	Timestamp.FromStr("2025-2-2-5"): CalendarEventGame.new(CalendarEvent.EVENT_TYPE.GAME, "Conference", 2),
-	Timestamp.FromStr("2025-2-3-2"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRACTICE, "Practice"),
-	Timestamp.FromStr("2025-2-3-3"): CalendarEvent.new(CalendarEvent.EVENT_TYPE.PRESS, ""),
-	Timestamp.FromStr("2025-2-3-5"): CalendarEventGame.new(CalendarEvent.EVENT_TYPE.GAME, "Conference", 3),
-}
-
 
 func _ready():
 	pass
@@ -42,7 +28,7 @@ func Render(today: Timestamp):
 			var cell = CalendarCell.instantiate()
 			$Background/Grid.add_child(cell)
 			
-			var event_this_day = CalendarEventScheduler.Schedule(Timestamp.new(today.year, today.phase, w, d))
+			var event_this_day = CalendarEventScheduler.Schedule(Timestamp.new(today.year, today.phase, w, d), Database.active_game.player_school_id)
 			if event_this_day:
 				var widget = CalendarEventWidget.instantiate()
 				cell.add_child(widget)
@@ -54,26 +40,8 @@ func Render(today: Timestamp):
 	today_cell.get_node("IsToday").show()
 
 
-# deprecated
-func RenderEvents():
-	for timestamp in events:
-		var event = events[timestamp]
-		
-		var widget = CalendarEventWidget.instantiate()
-		var cell = GetCell(timestamp)  # todo: handle events not from this phase
-		cell.add_child(widget)
-		
-		widget.Activate(event)
-
-
 func GetCell(date: Timestamp):
 	return $Background/Grid.get_child(
 		date.week * NUM_DAYS + date.day
 	)
 
-
-func GetEventAtTime(date: Timestamp):
-	for e in events.keys():
-		if date.Equals(e):
-			return events[e]
-	return null

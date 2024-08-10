@@ -1,12 +1,14 @@
+res://ActiveGame/UI/Widgets/Announcements
+res://ActiveGame/UI/Widgets
+res://ActiveGame/UI/Pages/Events
+res://Data/Images/Miscellaneous
+res://ActiveGame/UI/Pages
 res://MainMenu
 res://Util
 res://
 res://Data
 res://ActiveGame/UI/Widgets/Table
-res://ActiveGame/UI/Pages
-res://ActiveGame/UI/Pages/Events
 res://Data/DataModel
-res://ActiveGame/UI/Widgets
 res://ActiveGame/UI/Calendar
 res://ActiveGame/UI
 res://ActiveGame

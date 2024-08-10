@@ -8,10 +8,15 @@ class_name ActiveGame
 var slot: String
 
 var current_time: Timestamp
-const PLAYER_ID: int = 1
+const PLAYER_ID: int = 1  # todo: change these to "user" for consistency
+var player_school_id: String
 
 
 func _ready():
+	var seed = randi()
+	print("Random seed: ", seed)
+	seed(seed)
+	
 	if TransitionManager.slot:
 		print("Loading Game: ", TransitionManager.slot)
 		slot = TransitionManager.slot
@@ -24,12 +29,14 @@ func _ready():
 	Database.active_game = self
 	Database.Activate(slot)
 	
+	player_school_id = Database.GetCoach(PLAYER_ID)["SchoolID"]
+	
 	if TransitionManager.first_time_load:
 		NewSeason()
 	
 	page_manager.RenderHome()
-	
-	ui.Refresh(self)
+
+	NewDay()
 
 
 func LoadFromSlot(slot: String):
@@ -46,6 +53,37 @@ func LoadFromSlot(slot: String):
 	current_time = Timestamp.FromStr(game_status_dict["current_time"])
 
 
+func RecordGameResult(result: GameResult, game: Game):
+	print("Recording Game Result: ", game.home, game.away)
+	var winner = ""
+	var loser = ""
+	if result.home_score >= result.away_score:
+		winner = game.home.school.id
+		loser = game.away.school.id
+	else:
+		winner = game.away.school.id
+		loser = game.home.school.id
+	
+	Database.database.update_rows(
+		"Games", "ID = %d" % game.id, {
+			"HomeScore": result.home_score,
+			"AwayScore": result.away_score
+		}
+	)
+	var s = Database.database.query("""
+		UPDATE Teams
+		SET Wins = Wins + 1
+		WHERE ID = '%s%d'
+	""" % [winner, current_time.year])
+	print("Winner query success: ", s)
+	Database.database.query("""
+		UPDATE Teams
+		SET Losses = Losses + 1
+		WHERE ID = '%s%d'
+	""" % [loser, current_time.year])
+	print("Loser query success: ", s)
+
+
 func NewSeason():
 	print("New Season!")
 	
@@ -57,23 +95,66 @@ func NewSeason():
 		var player_ids = Database.GetColumnAsList("Players", "ID", "ID", "SchoolID = '%s'" % school_id)
 		var coach_id = Database.Get("SELECT ID FROM Coaches WHERE SchoolID = '%s'" % school_id)[0]["ID"]
 		rows.append(
-			{"ID": i + 1, "SchoolID": school_id, "Year": current_time.year, "Wins": 0, "Losses": 0, "HeadCoach": coach_id, "Players": str(player_ids)}
+			{"ID": school_id + str(current_time.year), "SchoolID": school_id, "Year": current_time.year, "Wins": 0, "Losses": 0, "HeadCoach": coach_id, "Players": str(player_ids)}
 		)
-	Database.database.insert_rows("Teams", rows)
+	var s = Database.database.insert_rows("Teams", rows)
+	if not s:
+		print("\tError creating new teams: ", Database.database.error_message)
 	
 	# schedule Games
+	print("Scheduling Games...")
 	var conference_list = Database.GetColumnAsList("Conferences", "ID", "ID")
-	var games = GameScheduler.GenerateNonconSchedule(1)
+	var next_id = Database.GetValue("SELECT COUNT(ID) FROM Games") + 1
+	
+	print("\t", "Generating Noncon Games")
+	var games = GameScheduler.GenerateNonconSchedule(next_id)
 	for conference_id in conference_list:
-		games += GameScheduler.GenerateConferenceSchedule(conference_id, len(games) + 1)
+		next_id = games[len(games) - 1]["ID"] + 1
+		print("\t", "Generating %s Games" % conference_id)
+		games += GameScheduler.GenerateConferenceSchedule(conference_id, next_id)
 	
 	for game in games:
-		print(game)
-	Database.database.insert_rows("Games", games)
+		print("\t", game)
+	s = Database.database.insert_rows("Games", games)
+	if not s:
+		print("\tError creating new games: ", Database.database.error_message)
+
+
+func ConcludeRegularSeason():
+	var conferences = Database.GetColumnAsList("Conferences", "ID", "ID")
+	var content: Array[String] = []
+	for conf in conferences:
+		var standings_df = Database.GetConferenceStandings(conf)
+		var champion = standings_df.GetRow(0)
+		print("%s Champion: " % conf, champion)
+		content.append("%s Champion: %s" % [conf, champion[0]])
+		
+	ui.Announce(
+		"202X CONFERENCE CHAMPIONS:",
+		content
+	)
 
 
 func NewPhase():
-	pass
+	if current_time.phase == Timestamp.PHASE.CONFERENCE_TOURNAMENT:
+		ConcludeRegularSeason()
+
+
+func ConcludeDay():
+	var schools_list = Database.GetColumnAsList("Schools", "ID", "ID")
+	for school_id in schools_list:
+		var event = CalendarEventScheduler.Schedule(current_time, school_id)
+		print("\t", school_id, " ", event)
+		# todo: sim non-game events
+
+
+func NewDay():
+	var user_event_today = CalendarEventScheduler.Schedule(current_time, player_school_id)
+	var games_today = Database.Get("SELECT * FROM Games WHERE Timestamp = '%s'" % current_time.ToISOStr())
+	print(current_time)
+	print("\tUser: ", user_event_today)
+	print("\tGames: ", games_today)
+	ui.Refresh(self, user_event_today, len(games_today) > 0)
 
 
 # updates meta.json and game_status.json
@@ -93,7 +174,23 @@ func SaveGame():
 	gs_file.store_string(JSON.stringify(gs_dict, "\t", false))
 
 
+func _on_complete_user_game(game: Game, result: GameResult):
+	RecordGameResult(result, game)
+
+
+# when going to Game Results screen for the day, simulate all unplayed games
+func _on_ui_game_results():
+	var games = Database.Get("SELECT * FROM Games WHERE Timestamp = '%s'" % current_time.ToISOStr())
+	for game_dict in games:
+		if not player_school_id in [game_dict["Home"], game_dict["Away"]]:
+			var gs = GameSimulator.new()
+			var result = gs.Simulate()
+			RecordGameResult(result, Game.FromDatabase(game_dict["ID"]))
+
+
 func _on_ui_advance_time():
+	ConcludeDay()
+	
 	var new_things = current_time.Advance()
 	if "season" in new_things:
 		NewSeason()
@@ -101,5 +198,5 @@ func _on_ui_advance_time():
 		NewPhase()
 	
 	SaveGame()
-	
-	ui.Refresh(self)
+	NewDay()
+	$UI/PageManager.RenderHome()

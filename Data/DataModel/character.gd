@@ -16,7 +16,7 @@ var coach_id: int
 
 
 static func FromDatabase(character_id: int) -> Character:
-	var dict = Database.GetCharacter(character_id)
+	var dict = Database.GetItem("Characters", character_id)
 	var c = Character.new()
 	
 	c.id = dict["ID"]

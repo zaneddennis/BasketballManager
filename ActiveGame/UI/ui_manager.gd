@@ -25,12 +25,12 @@ func Refresh(ag: ActiveGame, ce: CalendarEvent, g_e_t: bool):
 	
 	$TopBar/Time.text = ag.current_time.ToPrettyStr()
 	
-	if current_event:
+	if current_event and not ag.processed_events_yet:
 		$TopBar/Games.hide()
 		$TopBar/Event.show()
 		$TopBar/Event.text = "Go To %s" % CalendarEvent.EVENT_TYPE.keys()[current_event.event_type]
 		current_event_page = EVENT_PAGES[current_event.event_type]
-	elif games_exist_today:
+	elif games_exist_today and not ag.simmed_games_yet:
 		$TopBar/Event.hide()
 		$TopBar/Games.show()
 	else:
@@ -99,13 +99,14 @@ func _on_profile_pressed():
 	$PageManager.RenderPage($PageManager/Character, Database.active_game.PLAYER_ID)
 
 
+# todo: emit signal and do more of this logic in active_game (as with game_results)
 func _on_event_completed(event_page: EventPage):
 	$PageManager.CompleteEvent(event_page)
+	Database.active_game.processed_events_yet = true
 	if event_page is GameEventPage:
 		user_game_complete.emit(event_page.game, event_page.result)
 	
 	$PageManager.RenderHome()
-	$TopBar/Event.hide()
+	Refresh(Database.active_game, null, games_exist_today)
 	
-	if games_exist_today:
-		$TopBar/Games.show()
+	Database.active_game.SaveGame()

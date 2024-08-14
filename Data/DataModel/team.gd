@@ -12,7 +12,7 @@ var players: Array[Player]
 
 
 static func FromDatabase(team_id: String) -> Team:
-	var dict = Database.GetTeam(team_id)
+	var dict = Database.GetItem("Teams", team_id)
 	return _from_dict(dict)
 
 

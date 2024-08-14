@@ -128,16 +128,18 @@ func Activate(slot: String):
 		]
 	)
 	
-	var test_query = GetConference("XII")
+	var test_query = GetItem("Conferences", "XII")
 	print("Test Query: ", test_query)
 	print("---")
 
 
+# any arbitrary query
 func Get(query: String) -> Array[Dictionary]:
 	database.query(query)
 	var result = database.query_result
 	return result
 
+# any arbitrary query
 func GetDataFrame(query: String) -> DataFrame:
 	database.query(query)
 	var result = database.query_result
@@ -153,8 +155,39 @@ func GetDataFrame(query: String) -> DataFrame:
 	else:
 		return DataFrame.New([], [])
 
+# get one row of a table based on its ID
+func GetItem(table: String, id: Variant) -> Dictionary:
+	if id is int:
+		database.query("SELECT * FROM %s WHERE ID = %s" % [table, id])
+	elif id is String:
+		database.query("SELECT * FROM %s WHERE ID = '%s'" % [table, id])
+	else:
+		print(typeof(id))
+		assert(false)
+	
+	var result = database.query_result
+	assert(len(result) == 1)
+	return result[0]
 
-func GetCharacter(id: int):
+func GetColumnAsList(table: String, column: String, order_by: String, where: String = "") -> Array:
+	if where:  # todo: clean this up to not have the if branch, make order_by optional as well
+		database.query("SELECT %s FROM %s WHERE %s ORDER BY %s" % [column, table, where, order_by])
+	else:
+		database.query("SELECT %s FROM %s ORDER BY %s" % [column, table, order_by])
+	var result = database.query_result
+	var ret_val = []
+	for row in result:
+		ret_val.append(row[column])
+	return ret_val
+
+# get a single "cell" from the database
+func GetValue(query: String) -> Variant:
+	database.query(query)
+	var qr = database.query_result
+	return qr[0][qr[0].keys()[0]]
+
+
+"""func GetCharacter(id: int):
 	database.query("SELECT * FROM Characters WHERE ID = %d" % id)
 	var result = database.query_result
 	assert(len(result) == 1)
@@ -200,7 +233,8 @@ func GetTeam(id: String):
 	database.query("SELECT * FROM Teams WHERE ID = '%s'" % id)
 	var result = database.query_result
 	assert(len(result) == 1)
-	return result[0]
+	return result[0]"""
+
 
 func GetFirstNamesForYear(year: int):
 	database.query("SELECT Name, Freq FROM FirstNames WHERE Year == %d" % year)
@@ -231,23 +265,6 @@ func GetTeamFromSchool(school_id: String, year: int):
 	var result = database.query_result
 	assert(len(result) == 1)
 	return result[0]
-
-
-func GetColumnAsList(table: String, column: String, order_by: String, where: String = "") -> Array:
-	if where:  # todo: clean this up to not have the if branch, make order_by optional as well
-		database.query("SELECT %s FROM %s WHERE %s ORDER BY %s" % [column, table, where, order_by])
-	else:
-		database.query("SELECT %s FROM %s ORDER BY %s" % [column, table, order_by])
-	var result = database.query_result
-	var ret_val = []
-	for row in result:
-		ret_val.append(row[column])
-	return ret_val
-
-func GetValue(query: String) -> Variant:
-	database.query(query)
-	var qr = database.query_result
-	return qr[0][qr[0].keys()[0]]
 
 
 func GetSchoolsList() -> Array[String]:

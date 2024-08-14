@@ -12,7 +12,7 @@ var away_score: int
 
 static func FromDatabase(game_id: int) -> Game:
 	var g = Game.new()
-	var dict = Database.GetGame(game_id)
+	var dict = Database.GetItem("Games", game_id) #Database.GetGame(game_id)
 	
 	g.id = dict["ID"]
 	g.timestamp = Timestamp.FromStr(dict["Timestamp"])

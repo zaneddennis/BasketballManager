@@ -36,7 +36,7 @@ var school_id: String = ""
 
 static func FromDatabase(player_id: int) -> Player:
 	var p = Player.new()
-	var dict = Database.GetPlayer(player_id)
+	var dict = Database.GetItem("Players", player_id)
 	
 	p.id = dict["ID"]
 	#p.character_id = dict["CharacterID"]

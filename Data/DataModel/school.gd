@@ -14,7 +14,7 @@ var prestige: Prestige
 
 
 static func FromDatabase(school_id: String) -> School:
-	var dict = Database.GetSchool(school_id)
+	var dict = Database.GetItem("Schools", school_id)
 	var s = School.new()
 	
 	s.id = dict["ID"]

@@ -7,7 +7,7 @@ var city: String
 var state: String  # just the two-letter code for now
 
 static func FromDatabase(location_id: int):
-	var dict = Database.GetLocation(location_id)
+	var dict = Database.GetItem("Locations", location_id)
 	var l = Location.new()
 	
 	l.id = dict["ID"]

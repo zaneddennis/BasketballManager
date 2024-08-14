@@ -8,6 +8,8 @@ class_name ActiveGame
 var slot: String
 
 var current_time: Timestamp
+var processed_events_yet: bool = false
+var simmed_games_yet: bool = false
 const PLAYER_ID: int = 1  # todo: change these to "user" for consistency
 var player_school_id: String
 
@@ -29,14 +31,14 @@ func _ready():
 	Database.active_game = self
 	Database.Activate(slot)
 	
-	player_school_id = Database.GetCoach(PLAYER_ID)["SchoolID"]
+	player_school_id = Database.GetItem("Coaches", PLAYER_ID)["SchoolID"]
 	
 	if TransitionManager.first_time_load:
 		NewSeason()
 	
 	page_manager.RenderHome()
 
-	NewDay()
+	NewDay(true)
 
 
 func LoadFromSlot(slot: String):
@@ -51,6 +53,8 @@ func LoadFromSlot(slot: String):
 		FileAccess.open(filepath_partial + "/game_status.json", FileAccess.READ).get_as_text()
 	)
 	current_time = Timestamp.FromStr(game_status_dict["current_time"])
+	processed_events_yet = game_status_dict["processed_events_yet"]
+	simmed_games_yet = game_status_dict["simmed_games_yet"]
 
 
 func RecordGameResult(result: GameResult, game: Game):
@@ -145,12 +149,19 @@ func ConcludeDay():
 	for school_id in schools_list:
 		var event = CalendarEventScheduler.Schedule(current_time, school_id)
 		print("\t", school_id, " ", event)
-		# todo: sim non-game events
 
 
-func NewDay():
-	var user_event_today = CalendarEventScheduler.Schedule(current_time, player_school_id)
-	var games_today = Database.Get("SELECT * FROM Games WHERE Timestamp = '%s'" % current_time.ToISOStr())
+func NewDay(loading: bool = false):
+	if not loading:
+		processed_events_yet = false
+		simmed_games_yet = false
+	
+	var user_event_today = null
+	if not processed_events_yet:
+		user_event_today = CalendarEventScheduler.Schedule(current_time, player_school_id)
+	var games_today = []
+	if not simmed_games_yet:
+		games_today = Database.Get("SELECT * FROM Games WHERE Timestamp = '%s'" % current_time.ToISOStr())
 	print(current_time)
 	print("\tUser: ", user_event_today)
 	print("\tGames: ", games_today)
@@ -164,12 +175,14 @@ func SaveGame():
 	var meta_file = FileAccess.open(filepath_partial + "/meta.json", FileAccess.READ)
 	var meta_dict = JSON.parse_string(meta_file.get_as_text())
 	meta_dict["last_played"] = Time.get_date_string_from_system()
-	meta_file = FileAccess.open(filepath_partial + "/meta.json", FileAccess.WRITE)  # to overwrite
+	meta_file = FileAccess.open(filepath_partial + "/meta.json", FileAccess.WRITE)
 	meta_file.store_string(JSON.stringify(meta_dict, "\t", false))
 	
 	var gs_file = FileAccess.open(filepath_partial + "/game_status.json", FileAccess.READ)
 	var gs_dict = JSON.parse_string(gs_file.get_as_text())
 	gs_dict["current_time"] = current_time.ToISOStr()
+	gs_dict["processed_events_yet"] = processed_events_yet
+	gs_dict["simmed_games_yet"] = simmed_games_yet
 	gs_file = FileAccess.open(filepath_partial + "/game_status.json", FileAccess.WRITE)
 	gs_file.store_string(JSON.stringify(gs_dict, "\t", false))
 
@@ -186,6 +199,8 @@ func _on_ui_game_results():
 			var gs = GameSimulator.new()
 			var result = gs.Simulate()
 			RecordGameResult(result, Game.FromDatabase(game_dict["ID"]))
+	simmed_games_yet = true
+	SaveGame()
 
 
 func _on_ui_advance_time():

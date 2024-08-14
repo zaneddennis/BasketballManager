@@ -8,7 +8,7 @@ var short_name: String
 
 
 static func FromDatabase(conference_id: String) -> Conference:
-	var dict = Database.GetConference(conference_id)
+	var dict = Database.GetItem("Conferences", conference_id)
 	var c = Conference.new()
 	
 	c.id = dict["ID"]

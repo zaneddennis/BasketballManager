@@ -2,41 +2,73 @@ extends EventPage
 class_name GameEventPage
 
 
+@export var GSEDescriptionWidget: PackedScene
+
+
 var game: Game
 var in_progress: bool = false
 var gs: GameSimulator
 var result: GameResult
 
-var tick_speed = 1.0  # ticks per second
+var tick_speed = 4.0  # ticks per second
 const MIN_SPEED = 0.25
 const MAX_SPEED = 4.0
 
-# todo: separate GameSimulator object that handles game status and logic and this node just visualizes it
-var time = 0
+
+func _ready():
+	if get_tree().current_scene == self:
+		var g = Game.New(
+			Team.New(
+				School.New(
+					"BAY", "Baylor", "Bears"
+				)
+			),
+			Team.New(
+				School.New(
+					"ZAGA", "Gonzaga", "Bulldogs"
+				)
+			)
+		)
+		ActivateDebug(g)
+		
+		var temp_gs = GameSimulator.new(g)
+		var result = temp_gs.Simulate()
+		print("SIMULATION RESULT: ", result)
 
 
 func Activate(e: CalendarEventGame):
 	if not in_progress:
 		event = e
-		gs = GameSimulator.new()
 		
 		var game_id = event.game_id
 		game = Game.FromDatabase(game_id)
 		
-		$Content/VBoxContainer/Scoreboard/HBoxContainer/Home.text = game.home.school.id
-		$Content/VBoxContainer/Scoreboard/HBoxContainer/Away.text = game.away.school.id
-		$Content/VBoxContainer/HBoxContainer/Left/Team.text = game.home.school.short_name + " " + game.home.school.mascot
-		$Content/VBoxContainer/HBoxContainer/Right/Team.text = game.away.school.short_name + " " + game.away.school.mascot
+		gs = GameSimulator.new(game)
 		
-		$Content/VBoxContainer/HBoxContainer/Center/Complete.hide()
-		$Content/VBoxContainer/HBoxContainer/Center/Start.show()
-		
-		time = 1200
-		UpdateClock()
-		
+		ActivateUI()
 		in_progress = true
 	
 	show()
+
+
+func ActivateDebug(g: Game):
+	game = g
+	gs = GameSimulator.new(game)
+	
+	ActivateUI()
+	in_progress = true
+
+
+func ActivateUI():
+	$Content/VBoxContainer/Scoreboard/HBoxContainer/Home.text = game.home.school.id
+	$Content/VBoxContainer/Scoreboard/HBoxContainer/Away.text = game.away.school.id
+	$Content/VBoxContainer/HBoxContainer/Left/Team.text = game.home.school.short_name + " " + game.home.school.mascot
+	$Content/VBoxContainer/HBoxContainer/Right/Team.text = game.away.school.short_name + " " + game.away.school.mascot
+	
+	$Content/VBoxContainer/HBoxContainer/Center/Complete.hide()
+	$Content/VBoxContainer/HBoxContainer/Center/Start.show()
+	UpdateClock()
+	UpdateScoreboard()
 
 
 func Pause():
@@ -49,9 +81,34 @@ func Resume():
 
 
 func UpdateClock():
+	var time = gs.time
 	var mm = time / 60
 	var ss = time % 60
 	$Content/VBoxContainer/Scoreboard/HBoxContainer/Clock.text = "%d:%02d" % [mm, ss]
+	$Content/VBoxContainer/Scoreboard/HBoxContainer/Clock/Half.text = "%dH" % gs.half
+
+func UpdateScoreboard():
+	$Content/VBoxContainer/Scoreboard/HBoxContainer/HomeScore.text = "%02d" % gs.home_score
+	$Content/VBoxContainer/Scoreboard/HBoxContainer/AwayScore.text = "%02d" % gs.away_score
+
+
+func AddDescription(gse: GameSimulationEvent):
+	var desc = GSEDescriptionWidget.instantiate()
+	var time = gs.time + gse.time_elapsed
+	var mm = time / 60
+	var ss = time % 60
+	desc.text = "[%d:%02d] %s" % [mm, ss, gse.description]
+	$Content/VBoxContainer/HBoxContainer/Center/Queue/VBoxContainer.add_child(desc)
+	$Content/VBoxContainer/HBoxContainer/Center/Queue/VBoxContainer.move_child(desc, 0)
+
+
+func Halftime():
+	$Content/VBoxContainer/HBoxContainer/Center/TimeControls.hide()
+	$Content/VBoxContainer/HBoxContainer/Center/Halftime.show()
+
+func EndGame():
+	$Content/VBoxContainer/HBoxContainer/Center/TimeControls.hide()
+	$Content/VBoxContainer/HBoxContainer/Center/Complete.show()
 
 
 func _on_start_pressed():
@@ -61,24 +118,36 @@ func _on_start_pressed():
 	UpdateClock()
 	$Timer.start()
 
+func _on_halftime_pressed():  # to end halftime
+	$Content/VBoxContainer/HBoxContainer/Center/Halftime.hide()
+	$Content/VBoxContainer/HBoxContainer/Center/TimeControls.show()
+	
+	gs.StartHalf(2)
+	UpdateClock()
+	$Timer.start()
+
 func _on_complete_pressed():
+	result = gs.CompileResult()
 	event_completed.emit(self)
 
 
-# todo: Tick() function
 func _on_timer_timeout():
-	time -= 30
+	var gse = gs.Tick()
 	
-	if time <= 0:
-		time = 0
+	if gse is EndOfHalfGSE:
+		if gs.half == 1:
+			Halftime()
+		elif gs.half == 2:
+			EndGame()
+		else:
+			assert(false)
+	
+	else:
+		$Timer.start(1.0 / tick_speed)
+	
+	AddDescription(gse)
 	UpdateClock()
-	
-	$Timer.start(1.0 / tick_speed)
-	
-	if time == 0:
-		$Timer.stop()
-		result = gs.Simulate()
-		$Content/VBoxContainer/HBoxContainer/Center/Complete.show()
+	UpdateScoreboard()
 
 
 func _on_pause_pressed():

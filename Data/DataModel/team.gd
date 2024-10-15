@@ -11,6 +11,14 @@ var head_coach: Coach
 var players: Array[Player]
 
 
+static func New(s: School) -> Team:
+	var t = Team.new()
+	
+	t.school = s
+	
+	return t
+
+
 static func FromDatabase(team_id: String) -> Team:
 	var dict = Database.GetItem("Teams", team_id)
 	return _from_dict(dict)

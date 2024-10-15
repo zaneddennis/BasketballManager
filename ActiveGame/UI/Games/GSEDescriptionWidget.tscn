@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b6cvyaovkwhjp"]
+
+[node name="GSEDescriptionWidget" type="Label"]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 19.0
+grow_horizontal = 2
+text = "kkkkkkkkkkkkkkkkkkk"

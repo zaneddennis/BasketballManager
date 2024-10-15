@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvhkxj1365ms8"]
+[gd_scene load_steps=6 format=3 uid="uid://cvhkxj1365ms8"]
 
 [ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="1_xrgof"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/Events/game_event_page.gd" id="2_5hgkj"]
 [ext_resource type="Texture2D" uid="uid://cchrb1gokiggb" path="res://Data/Images/Miscellaneous/court.jpg" id="3_acf25"]
+[ext_resource type="PackedScene" uid="uid://b6cvyaovkwhjp" path="res://ActiveGame/UI/Games/GSEDescriptionWidget.tscn" id="4_glh6l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvm5p"]
 draw_center = false
@@ -13,6 +14,7 @@ border_width_bottom = 2
 
 [node name="GameEvent" instance=ExtResource("1_xrgof")]
 script = ExtResource("2_5hgkj")
+GSEDescriptionWidget = ExtResource("4_glh6l")
 
 [node name="Label" parent="Title" index="0"]
 text = "GAME "
@@ -66,6 +68,23 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_wvm5p")
 text = "00: 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Half" type="Label" parent="Content/VBoxContainer/Scoreboard/HBoxContainer/Clock" index="0"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1H"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -135,7 +154,13 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Tip Off"
 
-[node name="TimeControls" type="HBoxContainer" parent="Content/VBoxContainer/HBoxContainer/Center" index="2"]
+[node name="Halftime" type="Button" parent="Content/VBoxContainer/HBoxContainer/Center" index="2"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Start Second Half"
+
+[node name="TimeControls" type="HBoxContainer" parent="Content/VBoxContainer/HBoxContainer/Center" index="3"]
 visible = false
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -158,13 +183,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = ">>"
 
-[node name="Complete" type="Button" parent="Content/VBoxContainer/HBoxContainer/Center" index="3"]
+[node name="Complete" type="Button" parent="Content/VBoxContainer/HBoxContainer/Center" index="4"]
 visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Complete Game"
 
-[node name="Queue" type="ScrollContainer" parent="Content/VBoxContainer/HBoxContainer/Center" index="4"]
+[node name="Queue" type="ScrollContainer" parent="Content/VBoxContainer/HBoxContainer/Center" index="5"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
@@ -187,8 +212,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." index="2"]
+one_shot = true
 
 [connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/Center/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/Center/Halftime" to="." method="_on_halftime_pressed"]
 [connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/Center/TimeControls/Slower" to="." method="_on_slower_pressed"]
 [connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/Center/TimeControls/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="Content/VBoxContainer/HBoxContainer/Center/TimeControls/Faster" to="." method="_on_faster_pressed"]

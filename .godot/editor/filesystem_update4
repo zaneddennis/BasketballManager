@@ -1,7 +1,11 @@
-res://MainMenu/main_menu.tscn
-res://Themes/default_theme.tres
-res://ActiveGame/active_game.tscn
-res://ActiveGame/UI/ui_manager.gd
 res://ActiveGame/UI/Pages/Events/game_event_page.tscn
-res://ActiveGame/page_manager.gd
+res://Themes/default_theme.tres
+res://ActiveGame/Simulators/GameSimulationEvents/end_of_half_gse.gd
+res://MainMenu/main_menu.tscn
+res://ActiveGame/active_game.tscn
+res://ActiveGame/UI/Games/GSEDescriptionWidget.tscn
+res://ActiveGame/Simulators/game_simulator.gd
 res://ActiveGame/UI/Pages/Events/game_event_page.gd
+res://ActiveGame/Simulators/GameSimulationEvents/halfcourt_gse.gd
+res://ActiveGame/Simulators/GameSimulationEvents/shot_gse.gd
+res://ActiveGame/Simulators/game_result.gd

@@ -13,6 +13,16 @@ var conference: Conference
 var prestige: Prestige
 
 
+static func New(abb: String, sn: String, m: String) -> School:
+	var s = School.new()
+	
+	s.id = abb
+	s.short_name = sn
+	s.mascot = m
+	
+	return s
+
+
 static func FromDatabase(school_id: String) -> School:
 	var dict = Database.GetItem("Schools", school_id)
 	var s = School.new()

@@ -1,8 +1,9 @@
+Label
+ProgressBar
 Button
 HBoxContainer
 Control
 HSeparator
-Label
 VBoxContainer
 Panel
 ColorRect
@@ -11,4 +12,3 @@ TextureRect
 VSeparator
 ScrollContainer
 Node
-AnimationPlayer

@@ -15,6 +15,15 @@ var coach_id: int
 # todo: personality
 
 
+static func New(f: String, l: String) -> Character:
+	var c = Character.new()
+	
+	c.first = f
+	c.last = l
+	
+	return c
+
+
 static func FromDatabase(character_id: int) -> Character:
 	var dict = Database.GetItem("Characters", character_id)
 	var c = Character.new()

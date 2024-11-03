@@ -142,7 +142,14 @@ func CreateSaveSlot():
 	meta_file.store_string(meta)
 	
 	var gs_file = FileAccess.open("user://save_data/%s/game_status.json" % slot_name, FileAccess.WRITE)
-	var game_status = JSON.stringify({"current_time": "2025-0-0-0"}, "\t", false)
+	var game_status = JSON.stringify(
+		{
+			"current_time": "2025-0-0-0",
+			"processed_events_yet": false,
+			"simmed_games_yet": false
+		},
+		"\t", false
+	)
 	gs_file.store_string(game_status)
 	
 	Database.Create(slot_name)

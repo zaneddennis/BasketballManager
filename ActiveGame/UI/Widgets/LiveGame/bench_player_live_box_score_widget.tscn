@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bycqrptp0yt77"]
+
+[ext_resource type="PackedScene" uid="uid://bey4ia72ss8ua" path="res://ActiveGame/UI/Widgets/LiveGame/player_live_box_score_widget.tscn" id="1_3hjpv"]
+
+[node name="BenchPlayerLiveBoxScoreWidget" instance=ExtResource("1_3hjpv")]
+custom_minimum_size = Vector2(0, 40)
+offset_bottom = 0.0
+theme_type_variation = &""

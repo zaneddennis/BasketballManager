@@ -79,6 +79,9 @@ func _on_team_pressed():
 	var team_id = Database.GetTeamFromSchool(school_id, year)["ID"]
 	OpenTeamPage(team_id)
 
+func _on_strategy_pressed():
+	pass # Replace with function body.
+
 func _on_schedule_pressed():
 	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)

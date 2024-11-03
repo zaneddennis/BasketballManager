@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvhkxj1365ms8"]
+[gd_scene load_steps=8 format=3 uid="uid://cvhkxj1365ms8"]
 
 [ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="1_xrgof"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/Events/game_event_page.gd" id="2_5hgkj"]
 [ext_resource type="Texture2D" uid="uid://cchrb1gokiggb" path="res://Data/Images/Miscellaneous/court.jpg" id="3_acf25"]
+[ext_resource type="PackedScene" uid="uid://bey4ia72ss8ua" path="res://ActiveGame/UI/Widgets/LiveGame/player_live_box_score_widget.tscn" id="4_7bpae"]
 [ext_resource type="PackedScene" uid="uid://b6cvyaovkwhjp" path="res://ActiveGame/UI/Games/GSEDescriptionWidget.tscn" id="4_glh6l"]
+[ext_resource type="PackedScene" uid="uid://bycqrptp0yt77" path="res://ActiveGame/UI/Widgets/LiveGame/bench_player_live_box_score_widget.tscn" id="5_iak7c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvm5p"]
 draw_center = false
@@ -120,6 +122,43 @@ text = "Home Team"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/HBoxContainer/Left" index="1"]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget" parent="Content/VBoxContainer/HBoxContainer/Left" index="2" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget2" parent="Content/VBoxContainer/HBoxContainer/Left" index="3" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget3" parent="Content/VBoxContainer/HBoxContainer/Left" index="4" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget4" parent="Content/VBoxContainer/HBoxContainer/Left" index="5" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget5" parent="Content/VBoxContainer/HBoxContainer/Left" index="6" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Content/VBoxContainer/HBoxContainer/Left" index="7"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget" parent="Content/VBoxContainer/HBoxContainer/Left" index="8" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget2" parent="Content/VBoxContainer/HBoxContainer/Left" index="9" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget3" parent="Content/VBoxContainer/HBoxContainer/Left" index="10" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget4" parent="Content/VBoxContainer/HBoxContainer/Left" index="11" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget5" parent="Content/VBoxContainer/HBoxContainer/Left" index="12" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
 [node name="Center" type="VBoxContainer" parent="Content/VBoxContainer/HBoxContainer" index="1"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
@@ -210,6 +249,43 @@ layout_mode = 2
 text = "Away Team"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer/HBoxContainer/Right" index="1"]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget" parent="Content/VBoxContainer/HBoxContainer/Right" index="2" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget2" parent="Content/VBoxContainer/HBoxContainer/Right" index="3" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget3" parent="Content/VBoxContainer/HBoxContainer/Right" index="4" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget4" parent="Content/VBoxContainer/HBoxContainer/Right" index="5" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="PlayerLiveBoxScoreWidget5" parent="Content/VBoxContainer/HBoxContainer/Right" index="6" instance=ExtResource("4_7bpae")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Content/VBoxContainer/HBoxContainer/Right" index="7"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget" parent="Content/VBoxContainer/HBoxContainer/Right" index="8" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget2" parent="Content/VBoxContainer/HBoxContainer/Right" index="9" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget3" parent="Content/VBoxContainer/HBoxContainer/Right" index="10" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget4" parent="Content/VBoxContainer/HBoxContainer/Right" index="11" instance=ExtResource("5_iak7c")]
+layout_mode = 2
+
+[node name="BenchPlayerLiveBoxScoreWidget5" parent="Content/VBoxContainer/HBoxContainer/Right" index="12" instance=ExtResource("5_iak7c")]
+layout_mode = 2
 
 [node name="Timer" type="Timer" parent="." index="2"]
 one_shot = true

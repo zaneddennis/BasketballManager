@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqr83mkpl63ye"]
+
+[ext_resource type="PackedScene" uid="uid://di2ftgsfkvj33" path="res://ActiveGame/UI/Pages/page.tscn" id="1_pnwjo"]
+
+[node name="Strategy" instance=ExtResource("1_pnwjo")]
+
+[node name="Label" parent="Title" index="0"]
+text = "STRATEGY "

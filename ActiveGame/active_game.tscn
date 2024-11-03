@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dgmh05rrgoaja"]
+[gd_scene load_steps=23 format=3 uid="uid://dgmh05rrgoaja"]
 
 [ext_resource type="Script" path="res://ActiveGame/active_game.gd" id="1_wvce3"]
 [ext_resource type="Script" path="res://ActiveGame/page_manager.gd" id="2_1fsc3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bekrwounlumth" path="res://ActiveGame/UI/Pages/character_page.tscn" id="8_dv4v8"]
 [ext_resource type="PackedScene" uid="uid://b1jkm0ducc1e3" path="res://ActiveGame/UI/Pages/standings_page.tscn" id="9_28iu2"]
 [ext_resource type="PackedScene" uid="uid://i06fw3qiodaf" path="res://ActiveGame/UI/Pages/schedule_page.tscn" id="10_f37d8"]
+[ext_resource type="PackedScene" uid="uid://bqr83mkpl63ye" path="res://ActiveGame/UI/Pages/strategy_page.tscn" id="10_ybgtx"]
 [ext_resource type="PackedScene" uid="uid://w4da13q5n7qy" path="res://ActiveGame/UI/Pages/team_page.tscn" id="13_hlbns"]
 [ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="14_k0exi"]
 [ext_resource type="PackedScene" uid="uid://cetcjyi0jmqpe" path="res://ActiveGame/UI/Pages/Events/practice_event_page.tscn" id="15_618b4"]
@@ -227,6 +228,10 @@ layout_mode = 2
 visible = false
 layout_mode = 1
 
+[node name="Strategy" parent="UI/PageManager" instance=ExtResource("10_ybgtx")]
+visible = false
+layout_mode = 1
+
 [node name="Schedule" parent="UI/PageManager" instance=ExtResource("10_f37d8")]
 visible = false
 layout_mode = 1
@@ -384,6 +389,7 @@ visible = false
 [connection signal="event_completed" from="UI/PageManager/GameEvent" to="UI" method="_on_event_completed"]
 [connection signal="pressed" from="UI/PageButtons/Home" to="UI" method="_on_home_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Team" to="UI" method="_on_team_pressed"]
+[connection signal="pressed" from="UI/PageButtons/Strategy" to="UI" method="_on_strategy_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Schedule" to="UI" method="_on_schedule_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Standings" to="UI" method="_on_standings_pressed"]
 [connection signal="pressed" from="UI/PageButtons/School" to="UI" method="_on_school_pressed"]

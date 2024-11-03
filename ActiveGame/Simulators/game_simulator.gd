@@ -13,6 +13,8 @@ var half = 1
 var possession: TEAM
 var home_score = 0
 var away_score = 0
+var home_active_lineup: Array[Player]
+var away_active_lineup: Array[Player]
 
 var last_gse: GameSimulationEvent
 var lost_tipoff: TEAM
@@ -20,6 +22,8 @@ var lost_tipoff: TEAM
 
 func _init(g: Game):
 	game = g
+	home_active_lineup = game.home.strategy.lineup.slice(0, 5)
+	away_active_lineup = game.away.strategy.lineup.slice(0, 5)
 	StartHalf(1)
 
 

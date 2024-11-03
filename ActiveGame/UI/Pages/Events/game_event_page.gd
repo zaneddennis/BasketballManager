@@ -10,7 +10,7 @@ var in_progress: bool = false
 var gs: GameSimulator
 var result: GameResult
 
-var tick_speed = 4.0  # ticks per second
+var tick_speed = 1.0  # ticks per second
 const MIN_SPEED = 0.25
 const MAX_SPEED = 4.0
 
@@ -21,16 +21,109 @@ func _ready():
 			Team.New(
 				School.New(
 					"BAY", "Baylor", "Bears"
-				)
+				), [
+					Player.New(
+						Character.New("Jared", "Butler"), 75, 195,
+						15, 9, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Davion", "Mitchell"), 74, 205,
+						16, 11, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Macio", "Teague"), 76, 195,
+						13, 7, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Mark", "Vital"), 77, 250,
+						0, 17, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Flo", "Thamba"), 82, 245,
+						0, 0, 15,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Adam", "Flagler"), 75, 180,
+						0, 0, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Jonathan", "Tchamwa Tchatchoua"), 80, 245,
+						0, 0, 14,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Matthew", "Mayer"), 81, 225,
+						0, 0, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					)
+				]
 			),
 			Team.New(
 				School.New(
 					"ZAGA", "Gonzaga", "Bulldogs"
-				)
+				), [
+					Player.New(
+						Character.New("Jalen", "Suggs"), 76, 205,
+						0, 0, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Joel", "Ayayi"), 77, 180,
+						0, 0, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Andrew", "Nembhard"), 77, 195,
+						0, 0, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Corey", "Kispert"), 79, 220,
+						0, 0, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Drew", "Timme"), 82, 235,
+						0, 0, 17,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Aaron", "Cook"), 73, 180,
+						0, 0, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					),
+					Player.New(
+						Character.New("Anton", "Watson"), 80, 225,
+						0, 0, 0,
+						0, 0, 0, 0, 0, 0,
+						0, 0, 0
+					)
+				]
 			)
 		)
 		ActivateDebug(g)
 		
+		# non-UI simulator
 		var temp_gs = GameSimulator.new(g)
 		var result = temp_gs.Simulate()
 		print("SIMULATION RESULT: ", result)
@@ -60,15 +153,37 @@ func ActivateDebug(g: Game):
 
 
 func ActivateUI():
+	# static info
 	$Content/VBoxContainer/Scoreboard/HBoxContainer/Home.text = game.home.school.id
 	$Content/VBoxContainer/Scoreboard/HBoxContainer/Away.text = game.away.school.id
 	$Content/VBoxContainer/HBoxContainer/Left/Team.text = game.home.school.short_name + " " + game.home.school.mascot
 	$Content/VBoxContainer/HBoxContainer/Right/Team.text = game.away.school.short_name + " " + game.away.school.mascot
 	
+	# team panels
+	ActivateTeamUI(game.home, $Content/VBoxContainer/HBoxContainer/Left)
+	ActivateTeamUI(game.away, $Content/VBoxContainer/HBoxContainer/Right)
+	
+	# miscellaneous
 	$Content/VBoxContainer/HBoxContainer/Center/Complete.hide()
 	$Content/VBoxContainer/HBoxContainer/Center/Start.show()
 	UpdateClock()
 	UpdateScoreboard()
+
+
+func ActivateTeamUI(t: Team, vbox: VBoxContainer):
+	var widgets = []
+	for n in vbox.get_children():
+		if n is PlayerLiveBoxScoreWidget:
+			widgets.append(n)
+	
+	var i = 0
+	for widget: PlayerLiveBoxScoreWidget in widgets:
+		if i < len(t.strategy.lineup):
+			var p: Player = t.strategy.lineup[i]
+			widget.Activate(i, p)
+		else:
+			widget.hide()
+		i += 1
 
 
 func Pause():

@@ -1,11 +1,11 @@
+HSeparator
 Label
+HBoxContainer
+Panel
+VBoxContainer
 ProgressBar
 Button
-HBoxContainer
 Control
-HSeparator
-VBoxContainer
-Panel
 ColorRect
 OptionButton
 TextureRect

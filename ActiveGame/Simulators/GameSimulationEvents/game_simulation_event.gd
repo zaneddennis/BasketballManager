@@ -14,6 +14,8 @@ var possession: GameSimulator.TEAM
 
 var description: String = "DEFAULT GSE DESCRIPTION"
 
+var next = GameSimulationEvent
+
 
 func _init(gs: GameSimulator):
 	team_ids = [
@@ -23,8 +25,13 @@ func _init(gs: GameSimulator):
 	possession = gs.possession
 
 
+func Simulate(gs: GameSimulator):
+	pass
+
+
 func NextGSEType():
-	return GameSimulationEvent
+#	return GameSimulationEvent
+	return next
 
 
 func Turnover():

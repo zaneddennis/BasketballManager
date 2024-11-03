@@ -33,6 +33,7 @@ func _init(gs: GameSimulator):
 	description = "%s - %spt shot %s" % [GetTeamID(), attempt, made]
 	
 	Turnover()
+	next = HalfcourtGSE
 
 
 func Score(points: int, gs: GameSimulator):
@@ -42,5 +43,5 @@ func Score(points: int, gs: GameSimulator):
 		away_score_add = points
 
 
-func NextGSEType():
-	return HalfcourtGSE
+#func NextGSEType():
+#	return HalfcourtGSE

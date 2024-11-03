@@ -9,12 +9,18 @@ var year: int
 
 var head_coach: Coach
 var players: Array[Player]
+var strategy: Strategy
 
 
-static func New(s: School) -> Team:
+# assumes p Array is given in lineup order
+static func New(s: School, p: Array[Player]) -> Team:
 	var t = Team.new()
 	
 	t.school = s
+	t.players = p
+	t.strategy = Strategy.New(
+		t.players
+	)
 	
 	return t
 

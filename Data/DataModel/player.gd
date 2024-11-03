@@ -34,6 +34,33 @@ var positioning: int
 var school_id: String = ""
 
 
+static func New(char: Character, h: int, w: int,
+				agl:int, str: int, vr: int,
+				hdl: int, fin: int, sho: int, reb: int, prd: int, ind: int,
+				vis: int, otb: int, pos: int) -> Player:
+	var p = Player.new()
+	
+	p.character = char
+	
+	p.height = h
+	p.weight = w
+	
+	p.agility = agl
+	p.strength = str
+	p.vertical_reach = vr
+	p.ball_handling = hdl
+	p.finishing = fin
+	p.shooting = sho
+	p.rebounding = reb
+	p.perimeter_defense = prd
+	p.interior_defense = ind
+	p.vision = vis
+	p.off_the_ball = otb
+	p.positioning = pos
+	
+	return p
+
+
 static func FromDatabase(player_id: int) -> Player:
 	var p = Player.new()
 	var dict = Database.GetItem("Players", player_id)
@@ -48,7 +75,7 @@ static func FromDatabase(player_id: int) -> Player:
 	p.weight = dict["Weight"]
 	p.agility = dict["Agility"]
 	p.strength = dict["Strength"]
-	p.vertical_reach = dict["Strength"]
+	p.vertical_reach = dict["VerticalReach"]
 	
 	p.ball_handling = dict["BallHandling"]
 	p.finishing = dict["Finishing"]
@@ -67,4 +94,4 @@ static func FromDatabase(player_id: int) -> Player:
 
 
 func _to_string():
-	return "<Player:%d>" % [id]
+	return "<Player:%d:%s:%s>" % [id, character.first, character.last]

@@ -1,0 +1,12 @@
+res://ActiveGame/UI/Pages/Events/game_event_page.tscn
+res://Themes/default_theme.tres
+res://ActiveGame/Simulators/GameSimulationEvents/shot_gse.gd
+res://ReboundGSE.gd
+res://ActiveGame/Simulators/GameSimulationEvents/rebound_gse.gd
+res://ActiveGame/active_game.tscn
+res://ActiveGame/UI/Pages/page.tscn
+res://ActiveGame/UI/Pages/team_page.tscn
+res://ActiveGame/UI/Pages/strategy_page.tscn
+res://ActiveGame/Simulators/GameSimulationEvents/halfcourt_gse.gd
+res://ActiveGame/UI/Pages/Events/game_event_page.gd
+res://Util/util.gd

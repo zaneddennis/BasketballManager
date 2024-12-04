@@ -5,8 +5,8 @@ class_name TipoffGSE
 var won_by: GameSimulator.TEAM
 
 
-func _init(gs: GameSimulator):
-	super(gs)
+func _init(gs: GameSimulator, config: Dictionary = {}):
+	super(gs, config)
 	Simulate(gs)
 
 

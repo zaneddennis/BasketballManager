@@ -3,7 +3,6 @@ class_name Player
 
 
 var id: int
-#var character_id: int
 var character: Character
 
 enum ELIGIBILITY {FR, SO, JR, SR, SU}
@@ -28,6 +27,7 @@ var interior_defense: int
 var vision: int
 var off_the_ball: int
 var positioning: int
+# todo: decisions?
 
 # todo: tendencies
 

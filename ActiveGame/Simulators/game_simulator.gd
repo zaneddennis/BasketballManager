@@ -48,11 +48,11 @@ func Tick() -> GameSimulationEvent:
 		gse = TipoffGSE.new(self)
 	elif last_gse is EndOfHalfGSE:
 		possession = lost_tipoff
-		gse = HalfcourtGSE.new(self)
+		gse = HalfcourtGSE.new(self, last_gse.next_config)
 	elif time <= 0:
-		gse = EndOfHalfGSE.new(self)
+		gse = EndOfHalfGSE.new(self, last_gse.next_config)
 	else:
-		gse = last_gse.NextGSEType().new(self)
+		gse = last_gse.NextGSEType().new(self, last_gse.next_config)
 	
 	time -= gse.time_elapsed
 	if time <= 0:

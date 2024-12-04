@@ -9,11 +9,17 @@ var breakpoints: Array[float]
 
 func _init(o: Array, w: Array):
 	assert(len(o) == len(w))
-	options = o
+	options = []
+	weights = []
 	
-	var min_weight = float(w.min())
-	w.assign(w.map(func(x): return float(x)))
-	weights.assign(w.map(func(x): return x / min_weight))
+	for i in range(len(o)):
+		if w[i] != 0.0:
+			options.append(o[i])
+			weights.append(w[i])
+	
+	var min_weight = float(weights.min())
+	weights.assign(weights.map(func(x): return float(x)))
+	weights.assign(weights.map(func(x): return x / min_weight))
 	
 	breakpoints = []
 	var sum = 0.0
@@ -28,3 +34,5 @@ func Pick():
 		var b = breakpoints[i]
 		if f <= b:
 			return options[i]
+	
+	assert(false)

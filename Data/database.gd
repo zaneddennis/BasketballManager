@@ -18,6 +18,7 @@ func Activate(slot: String):
 	database.open_db()
 	
 	# fill data
+	# TODO: replace this with loading from data files
 	# Violating unique constraint??? But still appearing to be working???
 	database.insert_rows(
 		"Conferences",

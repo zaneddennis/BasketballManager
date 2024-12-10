@@ -4,11 +4,11 @@ extends "res://ActiveGame/UI/Pages/page.gd"
 var StandingsWidgetScene = preload("res://ActiveGame/UI/Widgets/standings_widget.tscn")
 
 
-var school_id: String
+#var school_id: String TODO
 
 
-func Activate(id):
-	school_id = id
+func Activate(id: Variant = null):
+	#school_id = id
 	super(id)
 	
 	for n in $Content/ScrollContainer/GridContainer.get_children():
@@ -30,7 +30,7 @@ func Activate(id):
 func Refresh():
 	super()
 	
-	Activate(school_id)
+	Activate()
 
 
 func _on_standings_widget_team_link(team_id: String):

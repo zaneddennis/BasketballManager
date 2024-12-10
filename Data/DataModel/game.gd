@@ -35,3 +35,7 @@ static func FromDatabase(game_id: int) -> Game:
 	g.away = Team.FromDatabase(dict["Away"] + str(g.timestamp.year))
 	
 	return g
+
+
+func _to_string() -> String:
+	return "<Game:%s@%s>" % [home.school.id, away.school.id]

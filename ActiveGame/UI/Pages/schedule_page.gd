@@ -4,8 +4,11 @@ extends Page
 var school_id: String
 
 
-func Activate(id):
-	school_id = id
+func Activate(id: Variant = null):
+	if id:
+		school_id = id
+	else:
+		school_id = ""
 	super(id)
 	
 	var school_names = Database.GetColumnAsList("Schools", "ShortName", "ShortName")

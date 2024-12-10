@@ -61,11 +61,11 @@ func _on_event_pressed():
 
 func _on_games_pressed():
 	game_results.emit()
-	$PageManager.RenderPage($PageManager/Schedule, "")
+	$PageManager.RenderPage($PageManager/Schedule)
 	$TopBar/Games.hide()
 
 func _on_system_button_pressed():
-	$PageManager.RenderPage($PageManager/System, "")
+	$PageManager.RenderPage($PageManager/System)
 
 
 func _on_home_pressed():
@@ -80,7 +80,7 @@ func _on_team_pressed():
 	OpenTeamPage(team_id)
 
 func _on_strategy_pressed():
-	pass # Replace with function body.
+	$PageManager.RenderPage($PageManager/Strategy)
 
 func _on_schedule_pressed():
 	var coach_id = Database.active_game.PLAYER_ID
@@ -89,7 +89,7 @@ func _on_schedule_pressed():
 	$PageManager.RenderPage($PageManager/Schedule, school_id)
 
 func _on_standings_pressed():
-	$PageManager.RenderPage($PageManager/Standings, "")
+	$PageManager.RenderPage($PageManager/Standings)
 
 func _on_school_pressed():
 	var coach_id = Database.active_game.PLAYER_ID
@@ -105,6 +105,7 @@ func _on_profile_pressed():
 # todo: emit signal and do more of this logic in active_game (as with game_results)
 func _on_event_completed(event_page: EventPage):
 	$PageManager.CompleteEvent(event_page)
+	print("Setting processed_events_yet")
 	Database.active_game.processed_events_yet = true
 	if event_page is GameEventPage:
 		user_game_complete.emit(event_page.game, event_page.result)

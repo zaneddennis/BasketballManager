@@ -10,7 +10,7 @@ func RenderHome():
 	$Home.Activate()
 
 
-func RenderPage(page: Page, id: Variant):
+func RenderPage(page: Page, id: Variant = null):
 	ClearPages()
 	print("Rendering Page: ", page)
 	current_page = page

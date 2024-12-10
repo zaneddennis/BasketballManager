@@ -99,7 +99,13 @@ func NewSeason():
 		var player_ids = Database.GetColumnAsList("Players", "ID", "ID", "SchoolID = '%s'" % school_id)
 		var coach_id = Database.Get("SELECT ID FROM Coaches WHERE SchoolID = '%s'" % school_id)[0]["ID"]
 		rows.append(
-			{"ID": school_id + str(current_time.year), "SchoolID": school_id, "Year": current_time.year, "Wins": 0, "Losses": 0, "HeadCoach": coach_id, "Players": str(player_ids)}
+			{
+				"ID": school_id + str(current_time.year), "SchoolID": school_id,
+				"Year": current_time.year,
+				"Wins": 0, "Losses": 0,
+				"HeadCoach": coach_id, "Players": str(player_ids),
+				"Strategy": str({"Lineup": player_ids})
+			}
 		)
 	var s = Database.database.insert_rows("Teams", rows)
 	if not s:
@@ -212,6 +218,6 @@ func _on_ui_advance_time():
 	if "phase" in new_things:
 		NewPhase()
 	
-	SaveGame()
 	NewDay()
+	SaveGame()
 	$UI/PageManager.RenderHome()

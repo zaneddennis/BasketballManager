@@ -47,6 +47,8 @@ static func _from_dict(dict: Dictionary) -> Team:
 		players.append(Player.FromDatabase(int(p_id)))
 	t.players = players
 	
+	t.strategy = Strategy.FromDict(JSON.parse_string(dict["Strategy"]))
+	
 	return t
 
 

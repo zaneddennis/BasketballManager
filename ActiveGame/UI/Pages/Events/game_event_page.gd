@@ -130,11 +130,13 @@ func _ready():
 
 
 func Activate(e: CalendarEventGame):
+	print("Activating CalendarEventGame")
 	if not in_progress:
 		event = e
 		
 		var game_id = event.game_id
 		game = Game.FromDatabase(game_id)
+		print("\t", game)
 		
 		gs = GameSimulator.new(game)
 		
@@ -164,6 +166,9 @@ func ActivateUI():
 	ActivateTeamUI(game.away, $Content/VBoxContainer/HBoxContainer/Right)
 	
 	# miscellaneous
+	for n in $Content/VBoxContainer/HBoxContainer/Center/Queue/VBoxContainer.get_children():
+		n.queue_free()
+	
 	$Content/VBoxContainer/HBoxContainer/Center/Complete.hide()
 	$Content/VBoxContainer/HBoxContainer/Center/Start.show()
 	UpdateClock()
@@ -242,6 +247,7 @@ func _on_halftime_pressed():  # to end halftime
 	$Timer.start()
 
 func _on_complete_pressed():
+	in_progress = false
 	result = gs.CompileResult()
 	event_completed.emit(self)
 

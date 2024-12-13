@@ -31,13 +31,15 @@ var positioning: int
 
 # todo: tendencies
 
-var school_id: String = ""
+# var school_id: String = ""  # todo: link to school directly? or was there a reason I didn't?
+var school: School
 
 
 static func New(char: Character, h: int, w: int,
 				agl:int, str: int, vr: int,
 				hdl: int, fin: int, sho: int, reb: int, prd: int, ind: int,
-				vis: int, otb: int, pos: int) -> Player:
+				vis: int, otb: int, pos: int,
+				sch: School = null) -> Player:
 	var p = Player.new()
 	
 	p.character = char
@@ -57,6 +59,8 @@ static func New(char: Character, h: int, w: int,
 	p.vision = vis
 	p.off_the_ball = otb
 	p.positioning = pos
+	
+	p.school = sch
 	
 	return p
 
@@ -88,9 +92,14 @@ static func FromDatabase(player_id: int) -> Player:
 	p.off_the_ball = dict["OffTheBall"]
 	p.positioning = dict["Positioning"]
 	
-	p.school_id = dict["SchoolID"]
+	# p.school_id = dict["SchoolID"]
+	p.school = School.FromDatabase(dict["SchoolID"])
 	
 	return p
+
+
+func GetBodyStr():
+	return "%d'%s\", %d lb" % [height / 12, height % 12, weight]
 
 
 func _to_string():

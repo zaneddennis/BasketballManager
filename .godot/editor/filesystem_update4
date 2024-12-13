@@ -1,9 +1,9 @@
-res://MainMenu/main_menu.tscn
+res://ActiveGame/UI/Widgets/player_card_widget.tscn
 res://Themes/default_theme.tres
+res://MainMenu/main_menu.tscn
 res://ActiveGame/active_game.tscn
-res://ActiveGame/UI/Pages/page.tscn
-res://ActiveGame/UI/Pages/team_page.tscn
-res://ActiveGame/UI/Pages/strategy_page.tscn
+res://ActiveGame/UI/Widgets/portrait_widget.tscn
+res://ActiveGame/UI/Widgets/outer_justify_widget.tscn
+res://ActiveGame/UI/Widgets/player_card_widget.gd
+res://Data/DataModel/player.gd
 res://ActiveGame/UI/Pages/Events/game_event_page.tscn
-res://ActiveGame/UI/Pages/Events/game_event_page.gd
-res://Data/DataModel/game.gd

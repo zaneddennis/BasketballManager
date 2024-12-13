@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://ActiveGame/UI/Widgets/outer_justify_widget.gd" id="1_gwx6n"]
 
 [node name="OuterJustifyWidget" type="HBoxContainer"]
+offset_right = 6.0
+offset_bottom = 19.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 script = ExtResource("1_gwx6n")

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dbungtn24k1kf"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://dbungtn24k1kf"]
 
 [ext_resource type="FontFile" uid="uid://bhq5s425dflg4" path="res://Themes/Fonts/Freshman-POdx.ttf" id="1_i7f7l"]
 [ext_resource type="FontFile" uid="uid://cnwkk3qhbbdvo" path="res://Themes/Fonts/Roboto-Regular.ttf" id="2_h3sby"]
@@ -58,7 +58,17 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bvm3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6r2fw"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euxvd"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdymj"]
 bg_color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [resource]
@@ -78,5 +88,8 @@ PageButton/styles/hover = SubResource("StyleBoxFlat_vpl21")
 PageButton/styles/normal = SubResource("StyleBoxFlat_pr5is")
 PageButton/styles/pressed = SubResource("StyleBoxFlat_yahsc")
 Panel/styles/panel = SubResource("StyleBoxFlat_s2qhe")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_6r2fw")
+PanelContainerFlat/base_type = &"PanelContainer"
+PanelContainerFlat/styles/panel = SubResource("StyleBoxFlat_euxvd")
 PanelFlat/base_type = &"Panel"
-PanelFlat/styles/panel = SubResource("StyleBoxFlat_4bvm3")
+PanelFlat/styles/panel = SubResource("StyleBoxFlat_jdymj")

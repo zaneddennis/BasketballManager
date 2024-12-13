@@ -1,0 +1,196 @@
+[gd_scene load_steps=4 format=3 uid="uid://pcnku2pn5eui"]
+
+[ext_resource type="Script" path="res://ActiveGame/UI/Widgets/player_card_widget.gd" id="1_7dmaw"]
+[ext_resource type="PackedScene" uid="uid://bsaohew1pke2u" path="res://ActiveGame/UI/Widgets/portrait_widget.tscn" id="1_j81ro"]
+[ext_resource type="PackedScene" uid="uid://cp18h0tru2v8j" path="res://ActiveGame/UI/Widgets/outer_justify_widget.tscn" id="2_1lqmo"]
+
+[node name="PlayerCardWidget" type="PanelContainer"]
+offset_right = 344.0
+offset_bottom = 111.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_7dmaw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Bio" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Texts" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Bio"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Bio/Texts"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HeaderLabel"
+text = "First Last"
+vertical_alignment = 1
+
+[node name="SchoolAge" type="Label" parent="MarginContainer/VBoxContainer/Bio/Texts"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Godot U - FR [RS]"
+vertical_alignment = 1
+
+[node name="BodyArchetype" type="Label" parent="MarginContainer/VBoxContainer/Bio/Texts"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "9'9\", 999 lb - Archetype"
+vertical_alignment = 1
+
+[node name="PortraitWidget" parent="MarginContainer/VBoxContainer/Bio" instance=ExtResource("1_j81ro")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Attributes" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Attributes"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Attributes"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Attributes"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Left" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Physical" type="PanelContainer" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left"]
+layout_mode = 2
+theme_type_variation = &"PanelContainerFlat"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer"]
+layout_mode = 2
+text = "Physical"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer"]
+layout_mode = 2
+
+[node name="Agility" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Agility"
+right = "0"
+
+[node name="Strength" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Strength"
+right = "0"
+
+[node name="Vertical" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Vertical Reach"
+right = "0"
+
+[node name="Mental" type="PanelContainer" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left"]
+layout_mode = 2
+theme_type_variation = &"PanelContainerFlat"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer"]
+layout_mode = 2
+text = "Mental"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer"]
+layout_mode = 2
+
+[node name="Vision" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Vision"
+right = "0"
+
+[node name="OffTheBall" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Off Ball Movement"
+right = "0"
+
+[node name="Positioning" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Positioning"
+right = "0"
+
+[node name="Right" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right"]
+layout_mode = 2
+theme_type_variation = &"PanelContainerFlat"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Technical"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Handling" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Ball Handling"
+right = "0"
+
+[node name="Finishing" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Finishing"
+right = "0"
+
+[node name="Shooting" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Shooting"
+right = "0"
+
+[node name="Rebounding" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Rebounding"
+right = "0"
+
+[node name="Perimeter" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Perimeter Defense"
+right = "0"
+
+[node name="Interior" parent="MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer" instance=ExtResource("2_1lqmo")]
+layout_mode = 2
+left = "Interior Defense"
+right = "0"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Stats"]
+layout_mode = 2
+text = "Stats"

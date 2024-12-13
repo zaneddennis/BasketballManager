@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsaohew1pke2u"]
+
+[ext_resource type="Texture2D" uid="uid://b4fy2kd3e4ce8" path="res://Data/Images/Miscellaneous/singleplayer.png" id="1_apgn1"]
+
+[node name="PortraitWidget" type="Panel"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_apgn1")
+expand_mode = 1

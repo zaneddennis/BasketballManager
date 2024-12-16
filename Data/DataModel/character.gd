@@ -69,4 +69,4 @@ func FullName():
 
 
 func _to_string():
-	return "<Character:%s_%s>" % [first, last]
+	return "<Character:%d:%s_%s>" % [id, first, last]

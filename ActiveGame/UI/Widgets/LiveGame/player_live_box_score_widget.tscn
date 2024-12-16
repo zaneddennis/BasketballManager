@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bey4ia72ss8ua"]
+[gd_scene load_steps=3 format=3 uid="uid://bey4ia72ss8ua"]
 
 [ext_resource type="Script" path="res://ActiveGame/UI/Widgets/LiveGame/player_live_box_score_widget.gd" id="1_qheua"]
+[ext_resource type="PackedScene" uid="uid://d24mx5pahbkg2" path="res://ActiveGame/UI/Widgets/player_name_hoverable_widget.tscn" id="2_5rwdj"]
 
 [node name="PlayerLiveBoxScoreWidget" type="Panel"]
 custom_minimum_size = Vector2(0, 64)
@@ -44,14 +45,9 @@ text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="HBoxContainer"]
+[node name="Name" parent="HBoxContainer" instance=ExtResource("2_5rwdj")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "First Last"
-vertical_alignment = 1
-clip_text = true
-text_overrun_behavior = 3
+size_flags_vertical = 4
 
 [node name="Stats" type="Label" parent="HBoxContainer"]
 layout_mode = 2

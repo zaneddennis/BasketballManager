@@ -17,106 +17,109 @@ const MAX_SPEED = 4.0
 
 func _ready():
 	if get_tree().current_scene == self:
+		var baylor = School.New(
+					"BAY", "Baylor", "Bears"
+				)
+		var zaga = School.New(
+					"ZAGA", "Gonzaga", "Bulldogs"
+				)
+		
 		var g = Game.New(
 			Team.New(
-				School.New(
-					"BAY", "Baylor", "Bears"
-				), [
+				baylor, [
 					Player.New(
 						Character.New("Jared", "Butler"), 75, 195,
 						14, 9, 6,
 						14, 16, 17, 10, 16, 8,
-						15, 18, 16
+						15, 18, 16, baylor
 					),
 					Player.New(
 						Character.New("Davion", "Mitchell"), 74, 205,
 						16, 11, 7,
 						13, 14, 15, 11, 19, 12,
-						13, 15, 16
+						13, 15, 16, baylor
 					),
 					Player.New(
 						Character.New("Macio", "Teague"), 76, 195,
 						14, 7, 8,
 						13, 12, 16, 8, 12, 8,
-						12, 17, 12
+						12, 17, 12, baylor
 					),
 					Player.New(
 						Character.New("Mark", "Vital"), 77, 250,
 						12, 17, 10,
 						6, 9, 5, 18, 11, 16,
-						8, 7, 15
+						8, 7, 15, baylor
 					),
 					Player.New(
 						Character.New("Flo", "Thamba"), 82, 245,
 						9, 12, 15,
 						4, 7, 5, 13, 6, 12,
-						3, 6, 10
+						3, 6, 10, baylor
 					),
 					Player.New(
 						Character.New("Adam", "Flagler"), 75, 180,
 						13, 6, 7,
 						14, 13, 14, 8, 11, 6,
-						12, 17, 12
+						12, 17, 12, baylor
 					),
 					Player.New(
 						Character.New("Jonathan", "Tchamwa Tchatchoua"), 80, 245,
 						11, 12, 14,
 						5, 12, 6, 13, 7, 14,
-						6, 8, 10
+						6, 8, 10, baylor
 					),
 					Player.New(
 						Character.New("Matthew", "Mayer"), 81, 225,
 						8, 11, 13,
 						9, 11, 12, 11, 8, 8,
-						7, 10, 10
+						7, 10, 10, baylor
 					)
 				]
 			),
 			Team.New(
-				School.New(
-					"ZAGA", "Gonzaga", "Bulldogs"
-				), [
+				zaga, [
 					Player.New(
 						Character.New("Jalen", "Suggs"), 76, 205,
 						18, 7, 8,
 						17, 15, 13, 12, 10, 7,
-						14, 9, 8
+						14, 9, 8, zaga
 					),
 					Player.New(
 						Character.New("Joel", "Ayayi"), 77, 180,
 						14, 5, 8,
 						13, 13, 12, 10, 10, 10,
-						10, 10, 10
+						10, 10, 10, zaga
 					),
 					Player.New(
 						Character.New("Andrew", "Nembhard"), 77, 195,
 						15, 7, 9,
 						14, 10, 14, 10, 10, 10,
-						10, 12, 10
+						10, 12, 10, zaga
 					),
 					Player.New(
 						Character.New("Corey", "Kispert"), 79, 220,
 						10, 11, 13,
 						10, 12, 16, 10, 9, 12,
-						6, 13, 9
+						6, 13, 9, zaga
 					),
 					Player.New(
 						Character.New("Drew", "Timme"), 82, 235,
 						6, 11, 17,
 						5, 15, 7, 14, 5, 11,
-						7, 9, 12
+						7, 9, 12, zaga
 					),
 					Player.New(
 						Character.New("Aaron", "Cook"), 73, 180,
 						13, 4, 6,
 						11, 10, 10, 10, 8, 8,
-						8, 8, 8
+						8, 8, 8, zaga
 					),
 					Player.New(
 						Character.New("Anton", "Watson"), 80, 225,
 						9, 12, 13,
 						6, 12, 6, 10, 6, 8,
-						8, 8, 8
+						8, 8, 8, zaga
 					)
 				]
 			)

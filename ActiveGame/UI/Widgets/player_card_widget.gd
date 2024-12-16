@@ -15,20 +15,20 @@ func Activate(player: Player):
 	$MarginContainer/VBoxContainer/Bio/Texts/BodyArchetype.text = player.GetBodyStr()
 	
 	# physical
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Agility.right = str(player.agility)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Strength.right = str(player.strength)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Vertical.right = str(player.vertical_reach)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Agility, player.agility)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Strength, player.strength)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Vertical, player.vertical_reach)
 	# mental
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/Vision.right = str(player.vision)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/OffTheBall.right = str(player.off_the_ball)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/Positioning.right = str(player.positioning)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/Vision, player.vision)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/OffTheBall, player.off_the_ball)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/Positioning, player.positioning)
 	# technical
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Handling.right = str(player.ball_handling)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Finishing.right = str(player.finishing)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Shooting.right = str(player.shooting)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Rebounding.right = str(player.rebounding)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Perimeter.right = str(player.perimeter_defense)
-	$MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Interior.right = str(player.interior_defense)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Handling, player.ball_handling)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Finishing, player.finishing)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Shooting, player.shooting)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Rebounding, player.rebounding)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Perimeter, player.perimeter_defense)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Interior, player.interior_defense)
 	
 	show()
 
@@ -44,3 +44,22 @@ func ActivateDebug():
 				)
 			)
 	Activate(p)
+
+
+func SetAttribute(ojw: OuterJustifyWidget, val: int):
+	ojw.right = str(val)
+	var colors = {
+		0: ColorsUtil.ATTRIBUTE_BAD,
+		4: ColorsUtil.ATTRIBUTE_MEH,
+		8: ColorsUtil.ATTRIBUTE_AVG,
+		12: ColorsUtil.ATTRIBUTE_GOOD,
+		16: ColorsUtil.ATTRIBUTE_ELITE
+	}
+	
+	for x in colors.keys():
+		if val >= x:
+			ojw.right_color = colors[x]
+
+
+func _on_mouse_exited() -> void:
+	hide()

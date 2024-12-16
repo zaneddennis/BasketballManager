@@ -1,3 +1,4 @@
+VSeparator
 RichTextLabel
 HSeparator
 OuterJustifyWidget
@@ -12,4 +13,3 @@ Container
 Control
 TextureRect
 ProgressBar
-Button

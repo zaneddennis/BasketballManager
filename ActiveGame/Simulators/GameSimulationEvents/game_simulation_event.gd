@@ -14,8 +14,9 @@ var home_score_add = 0
 var away_score_add = 0
 var possession: GameSimulator.TEAM
 
-var description: String = "DEFAULT GSE DESCRIPTION"
+var player_deltas = {}  # {player_id: Statline}
 
+var description: String = "DEFAULT GSE DESCRIPTION"
 var next = GameSimulationEvent
 var next_config = {}
 

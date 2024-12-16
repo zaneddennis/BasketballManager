@@ -6,3 +6,6 @@
 custom_minimum_size = Vector2(0, 40)
 offset_bottom = 0.0
 theme_type_variation = &""
+
+[node name="VSeparator" parent="HBoxContainer" index="4"]
+custom_minimum_size = Vector2(0, 24)

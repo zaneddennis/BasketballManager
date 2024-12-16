@@ -35,7 +35,7 @@ func Activate(player: Player):
 
 func ActivateDebug():
 	var p = Player.New(
-				Character.New("Jared", "Butler"), 75, 195,
+				Character.New("Jared", "Butler"), 0, 75, 195,
 				14, 9, 6,
 				14, 16, 17, 10, 16, 8,
 				15, 18, 16,

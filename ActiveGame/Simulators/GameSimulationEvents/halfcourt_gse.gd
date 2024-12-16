@@ -67,7 +67,8 @@ func Simulate(gs: GameSimulator):
 			next_config = {
 				"shot_type": _determine_shot_type_catch(most_open_ix),
 				"shooter": recipient,
-				"defender": defender
+				"defender": defender,
+				"passer": primary_handler
 			}
 		
 		# all else fails, try an iso
@@ -81,7 +82,8 @@ func Simulate(gs: GameSimulator):
 				next_config = {
 					"shot_type": _determine_shot_type_iso(),
 					"shooter": dribbler,
-					"defender": defender
+					"defender": defender,
+					"passer": primary_handler
 				}
 			else:
 				description += "Contested"
@@ -89,7 +91,8 @@ func Simulate(gs: GameSimulator):
 				next_config = {
 					"shot_type": _determine_shot_type_iso(),
 					"shooter": dribbler,
-					"defender": defender
+					"defender": defender,
+					"passer": primary_handler
 				}
 
 

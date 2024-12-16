@@ -19,3 +19,14 @@ func Activate(n: int, p: Player):
 	player = p
 	$HBoxContainer/Name.player = p
 	show()
+
+
+func Refresh(statline: Statline):
+	$HBoxContainer/SlashLine.text = "%d / %d / %d / 0 / 0" % [
+		statline.points, statline.rebounds, statline.assists
+	]
+	
+	$HBoxContainer/Splits.text = "%d/%d FG, %d/%d 3Pt" % [
+		statline.shots_made, statline.shots_att,
+		statline.threes_made, statline.threes_att
+	]

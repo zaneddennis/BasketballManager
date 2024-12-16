@@ -42,7 +42,11 @@ func Simulate(gs: GameSimulator):
 	team = winner_team
 	
 	var is_off = (winner_team == gs.possession)
+	
+	player_deltas[winner.id] = Statline.new()
+	player_deltas[winner.id].rebounds = 1
 	description = "%s - %s %s Rebound" % [GetTeamID(), winner.character.last, "Offensive" if is_off else "Defensive"]
+	
 	if not is_off:
 		Turnover()
 	next = HalfcourtGSE

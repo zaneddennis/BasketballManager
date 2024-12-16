@@ -16,11 +16,11 @@ var SHOT_PARAMS = {
 }
 
 
-
 var shot_type: SHOT_TYPE
 var shot_type_text: String
 var shooter: Player
 var defender: Player
+var passer: Player
 
 
 func _init(gs: GameSimulator, config: Dictionary = {}):
@@ -32,6 +32,10 @@ func _init(gs: GameSimulator, config: Dictionary = {}):
 	shot_type_text = SHOT_TYPE.keys()[shot_type].capitalize()
 	shooter = config["shooter"]
 	defender = config["defender"]
+	passer = config["passer"]
+	
+	player_deltas[shooter.id] = Statline.new()
+	player_deltas[passer.id] = Statline.new()
 	
 	Simulate(gs)
 
@@ -50,6 +54,10 @@ func Simulate(gs: GameSimulator):
 	if make:
 		result = "MADE"
 		points = worth
+		player_deltas[shooter.id].shots_made = 1
+		if worth == 3:
+			player_deltas[shooter.id].threes_made = 1
+		player_deltas[passer.id].assists = 1
 		
 		Turnover()
 		next = HalfcourtGSE
@@ -59,6 +67,10 @@ func Simulate(gs: GameSimulator):
 	if points > 0:
 		Score(points, gs)
 	
+	player_deltas[shooter.id].shots_att = 1
+	if worth == 3:
+		player_deltas[shooter.id].threes_att = 1
+	player_deltas[shooter.id].points = points
 	description = "%s - %s %s (%s defends) - %s [+%d]" % [GetTeamID(), shooter.character.last, shot_type_text, defender.character.last, result, points]
 
 

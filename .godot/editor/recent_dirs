@@ -1,3 +1,4 @@
+res://Data/DataModel
 res://ActiveGame/UI/Widgets
 res://Data/Images/Miscellaneous
 res://ActiveGame/UI/Widgets/LiveGame
@@ -10,7 +11,6 @@ res://Util
 res://
 res://Data
 res://ActiveGame/UI/Widgets/Table
-res://Data/DataModel
 res://ActiveGame/UI/Calendar
 res://ActiveGame/UI
 res://ActiveGame

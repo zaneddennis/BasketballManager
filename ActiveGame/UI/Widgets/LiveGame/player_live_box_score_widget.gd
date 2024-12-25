@@ -2,6 +2,9 @@ extends Panel
 class_name PlayerLiveBoxScoreWidget
 
 
+signal name_hovered
+
+
 var player: Player
 
 
@@ -30,3 +33,7 @@ func Refresh(statline: Statline):
 		statline.shots_made, statline.shots_att,
 		statline.threes_made, statline.threes_att
 	]
+
+
+func _on_name_name_hovered(pos: Vector2, pla: Player) -> void:
+	name_hovered.emit(pos, pla)

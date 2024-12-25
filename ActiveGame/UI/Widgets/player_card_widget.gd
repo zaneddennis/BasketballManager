@@ -6,7 +6,8 @@ func _ready():
 		ActivateDebug()
 
 
-func Activate(player: Player):
+func Activate(pos: Vector2, player: Player):
+	position = pos
 	$MarginContainer/VBoxContainer/Bio/Texts/Name.text = player.character.FullName()
 	$MarginContainer/VBoxContainer/Bio/Texts/SchoolAge.text = "%s - %s" % [
 		player.school.short_name,
@@ -43,7 +44,7 @@ func ActivateDebug():
 					"BAY", "Baylor", "Bears"
 				)
 			)
-	Activate(p)
+	Activate(Vector2.ZERO, p)
 
 
 func SetAttribute(ojw: OuterJustifyWidget, val: int):

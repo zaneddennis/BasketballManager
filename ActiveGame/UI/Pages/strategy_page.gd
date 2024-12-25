@@ -1,6 +1,9 @@
 extends Page
 
 
+signal name_hovered
+
+
 var team: Team
 
 
@@ -16,6 +19,8 @@ func Activate(id: Variant = null):
 			w.Activate(player)
 			if not w.lineup_changed.is_connected(_on_lineup_changed):
 				w.lineup_changed.connect(_on_lineup_changed)
+			if not w.name_hovered.is_connected(_on_hover_player_name):
+				w.name_hovered.connect(_on_hover_player_name)
 		else:
 			w.hide()
 		p += 1
@@ -44,3 +49,6 @@ func _get_lineup_widgets() -> Array[PlayerLineupSlotWidget]:
 
 func _on_lineup_changed():
 	Save()
+
+func _on_hover_player_name(pos: Vector2, pla: Player):
+	name_hovered.emit(pos, pla)

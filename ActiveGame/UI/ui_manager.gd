@@ -119,3 +119,13 @@ func _on_event_completed(event_page: EventPage):
 	Refresh(Database.active_game, null, games_exist_today)
 	
 	Database.active_game.SaveGame()
+
+
+func _on_name_hovered(pos: Vector2, pla: Player):
+	var screen_size = get_viewport().get_visible_rect().size
+	var widget_size = $PlayerCardWidget.size
+	var new_pos = Vector2(
+		clamp(pos.x, 0, screen_size.x - widget_size.x),
+		clamp(pos.y, 0, screen_size.y - widget_size.y)
+	)
+	$PlayerCardWidget.Activate(new_pos, pla)

@@ -5,6 +5,9 @@ class_name GameEventPage
 @export var GSEDescriptionWidget: PackedScene
 
 
+signal name_hovered
+
+
 var game: Game
 var in_progress: bool = false
 var gs: GameSimulator
@@ -190,6 +193,9 @@ func ActivateTeamUI(t: Team, vbox: VBoxContainer):
 		if i < len(t.strategy.lineup):
 			var p: Player = t.strategy.lineup[i]
 			widget.Activate(i, p)
+			if not widget.name_hovered.is_connected(_on_hover_player_name):
+				widget.name_hovered.connect(_on_hover_player_name)
+			
 		else:
 			widget.hide()
 		i += 1
@@ -295,3 +301,7 @@ func _on_faster_pressed():
 func _on_slower_pressed():
 	if tick_speed > MIN_SPEED:
 		tick_speed -= 0.25
+
+
+func _on_hover_player_name(pos: Vector2, pla: Player):
+	name_hovered.emit(pos, pla)

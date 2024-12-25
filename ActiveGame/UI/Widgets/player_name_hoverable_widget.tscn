@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d24mx5pahbkg2"]
+[gd_scene load_steps=2 format=3 uid="uid://d24mx5pahbkg2"]
 
 [ext_resource type="Script" path="res://ActiveGame/UI/Widgets/player_name_hoverable_widget.gd" id="1_k86ju"]
-[ext_resource type="PackedScene" uid="uid://pcnku2pn5eui" path="res://ActiveGame/UI/Widgets/player_card_widget.tscn" id="2_3blk4"]
 
 [node name="Name" type="RichTextLabel"]
 clip_contents = false
@@ -15,9 +14,5 @@ bbcode_enabled = true
 text = "[url]First Last[/url]"
 fit_content = true
 script = ExtResource("1_k86ju")
-
-[node name="PlayerCardWidget" parent="." instance=ExtResource("2_3blk4")]
-visible = false
-layout_mode = 0
 
 [connection signal="meta_hover_started" from="." to="." method="_on_meta_hover_started"]

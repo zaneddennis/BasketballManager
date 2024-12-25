@@ -1,3 +1,4 @@
+res://ActiveGame/UI/Pages/Events
 res://ActiveGame/UI/Widgets/Strategy
 res://ActiveGame/UI/Widgets
 res://Data/DataModel
@@ -6,7 +7,6 @@ res://ActiveGame/UI/Widgets/LiveGame
 res://ActiveGame/UI/Pages
 res://ActiveGame/UI/Games
 res://ActiveGame/UI/Widgets/Announcements
-res://ActiveGame/UI/Pages/Events
 res://MainMenu
 res://Util
 res://

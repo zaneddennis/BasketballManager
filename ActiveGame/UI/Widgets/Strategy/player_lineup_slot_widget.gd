@@ -4,6 +4,7 @@ class_name PlayerLineupSlotWidget
 
 
 signal lineup_changed
+signal name_hovered
 
 
 var DragPreviewScene = preload("res://ActiveGame/UI/Widgets/Strategy/player_lineup_drag_preview.tscn")
@@ -38,4 +39,7 @@ func _drop_data(at_position: Vector2, data: Variant):
 	Activate(other.player)
 	other.Activate(current_player)
 	lineup_changed.emit()
-	
+
+
+func _on_name_name_hovered(pos: Vector2, pla: Player) -> void:
+	name_hovered.emit(pos, pla)

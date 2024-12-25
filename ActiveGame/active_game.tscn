@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgmh05rrgoaja"]
+[gd_scene load_steps=24 format=3 uid="uid://dgmh05rrgoaja"]
 
 [ext_resource type="Script" path="res://ActiveGame/active_game.gd" id="1_wvce3"]
 [ext_resource type="Script" path="res://ActiveGame/page_manager.gd" id="2_1fsc3"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://deeow1lbijrdv" path="res://ActiveGame/UI/Pages/conference_page.tscn" id="18_2uv1d"]
 [ext_resource type="PackedScene" uid="uid://6a8re8sad8ie" path="res://ActiveGame/UI/Pages/Events/meeting_event_page.tscn" id="18_k1ey6"]
 [ext_resource type="PackedScene" uid="uid://dwap5c0sh612l" path="res://ActiveGame/UI/Widgets/Announcements/announcement.tscn" id="21_x61tu"]
+[ext_resource type="PackedScene" uid="uid://pcnku2pn5eui" path="res://ActiveGame/UI/Widgets/player_card_widget.tscn" id="23_kpa1k"]
 
 [node name="ActiveGame" type="Node"]
 script = ExtResource("1_wvce3")
@@ -374,6 +375,9 @@ text = "MY PROFILE"
 [node name="Announcement" parent="UI" instance=ExtResource("21_x61tu")]
 visible = false
 
+[node name="PlayerCardWidget" parent="UI" instance=ExtResource("23_kpa1k")]
+visible = false
+
 [connection signal="advance_time" from="UI" to="." method="_on_ui_advance_time"]
 [connection signal="game_results" from="UI" to="." method="_on_ui_game_results"]
 [connection signal="user_game_complete" from="UI" to="." method="_on_complete_user_game"]
@@ -383,10 +387,12 @@ visible = false
 [connection signal="pressed" from="UI/TopBar/Games" to="UI" method="_on_games_pressed"]
 [connection signal="conference_link" from="UI/PageManager/Home/HBoxContainer/ContentLeft/StandingsWidget" to="UI/PageManager/Home" method="_on_standings_widget_conference_link"]
 [connection signal="team_link" from="UI/PageManager/Home/HBoxContainer/ContentLeft/StandingsWidget" to="UI/PageManager/Home" method="_on_standings_widget_team_link"]
+[connection signal="name_hovered" from="UI/PageManager/Strategy" to="UI" method="_on_name_hovered"]
 [connection signal="event_completed" from="UI/PageManager/PracticeEvent" to="UI" method="_on_event_completed"]
 [connection signal="event_completed" from="UI/PageManager/MeetingEvent" to="UI" method="_on_event_completed"]
 [connection signal="event_completed" from="UI/PageManager/PressEvent" to="UI" method="_on_event_completed"]
 [connection signal="event_completed" from="UI/PageManager/GameEvent" to="UI" method="_on_event_completed"]
+[connection signal="name_hovered" from="UI/PageManager/GameEvent" to="UI" method="_on_name_hovered"]
 [connection signal="pressed" from="UI/PageButtons/Home" to="UI" method="_on_home_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Team" to="UI" method="_on_team_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Strategy" to="UI" method="_on_strategy_pressed"]

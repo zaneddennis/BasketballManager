@@ -76,3 +76,5 @@ size_flags_vertical = 4
 [node name="SlashLine" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "0.0 / 0.0 / 0.0 / 0.0 / 0.0"
+
+[connection signal="name_hovered" from="HBoxContainer/Name" to="." method="_on_name_name_hovered"]

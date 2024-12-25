@@ -80,7 +80,12 @@ func _on_team_pressed():
 	OpenTeamPage(team_id)
 
 func _on_strategy_pressed():
-	$PageManager.RenderPage($PageManager/Strategy)
+	var coach_id = Database.active_game.PLAYER_ID
+	var coach = Coach.FromDatabase(coach_id)
+	var school_id = coach.school_id
+	var year = Database.active_game.current_time.year
+	var team_id = Database.GetTeamFromSchool(school_id, year)["ID"]
+	$PageManager.RenderPage($PageManager/Strategy, team_id)
 
 func _on_schedule_pressed():
 	var coach_id = Database.active_game.PLAYER_ID

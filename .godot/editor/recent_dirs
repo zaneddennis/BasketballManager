@@ -1,5 +1,6 @@
-res://Data/DataModel
+res://ActiveGame/UI/Widgets/Strategy
 res://ActiveGame/UI/Widgets
+res://Data/DataModel
 res://Data/Images/Miscellaneous
 res://ActiveGame/UI/Widgets/LiveGame
 res://ActiveGame/UI/Pages

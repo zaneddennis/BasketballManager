@@ -19,3 +19,8 @@ static func FromDict(d: Dictionary) -> Strategy:
 		s.lineup.append(Player.FromDatabase(p_id))
 	
 	return s
+
+func ToDict() -> Dictionary:
+	var d = {}
+	d["Lineup"] = lineup.map(func(p: Player): return p.id)
+	return d

@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://n03rdjmhmpbl"]
+
+[ext_resource type="Script" path="res://ActiveGame/UI/Widgets/Strategy/player_lineup_slot_widget.gd" id="1_1b016"]
+[ext_resource type="PackedScene" uid="uid://d24mx5pahbkg2" path="res://ActiveGame/UI/Widgets/player_name_hoverable_widget.tscn" id="1_aqpbb"]
+
+[node name="PlayerLineupSlotWidget" type="Panel"]
+custom_minimum_size = Vector2(0, 64)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_type_variation = &"LightPanel"
+script = ExtResource("1_1b016")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "XX"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Role" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+selected = 0
+item_count = 3
+popup/item_0/text = "Role A"
+popup/item_1/text = "Role B"
+popup/item_1/id = 1
+popup/item_2/text = "Role C"
+popup/item_2/id = 2
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Name" parent="HBoxContainer" instance=ExtResource("1_aqpbb")]
+layout_mode = 2
+size_flags_vertical = 4
+scroll_active = false
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Archetype" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Player Archetype"
+
+[node name="VSeparator4" type="VSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SlashLine" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0.0 / 0.0 / 0.0 / 0.0 / 0.0"

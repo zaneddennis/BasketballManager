@@ -74,6 +74,7 @@ func RecordGameResult(result: GameResult, game: Game):
 			"AwayScore": result.away_score
 		}
 	)
+	# TODO: use Database.UpdateRow()
 	var s = Database.database.query("""
 		UPDATE Teams
 		SET Wins = Wins + 1

@@ -1,6 +1,8 @@
 extends Node
 
 
+const VERBOSITY = 1
+
 var database: SQLite
 var active_game: ActiveGame
 
@@ -129,6 +131,8 @@ func Activate(slot: String):
 		]
 	)
 	
+	database.verbosity_level = VERBOSITY
+	
 	var test_query = GetItem("Conferences", "XII")
 	print("Test Query: ", test_query)
 	print("---")
@@ -188,55 +192,6 @@ func GetValue(query: String) -> Variant:
 	return qr[0][qr[0].keys()[0]]
 
 
-"""func GetCharacter(id: int):
-	database.query("SELECT * FROM Characters WHERE ID = %d" % id)
-	var result = database.query_result
-	assert(len(result) == 1)
-	return result[0]
-
-func GetCoach(id: int):
-	database.query("SELECT * FROM Coaches WHERE ID = %d" % id)
-	var result = database.query_result
-	assert(len(result) == 1)
-	return result[0]
-
-func GetConference(id: String):
-	database.query("SELECT * FROM Conferences WHERE ID = '%s'" % id)
-	var result = database.query_result
-	assert(len(result) == 1)
-	return result[0]
-
-func GetGame(id: int):
-	database.query("SELECT * FROM Games WHERE ID = %d" % id)
-	var result = database.query_result
-	assert(len(result) == 1)
-	return result[0]
-
-func GetLocation(id: int):
-	database.query("SELECT ID, City, State FROM Locations WHERE ID = %d" % id)
-	var result = database.query_result
-	assert(len(result) == 1)
-	return result[0]
-
-func GetPlayer(id: int):
-	database.query("SELECT * FROM Players WHERE ID = %d" % id)
-	var result = database.query_result
-	assert(len(result) == 1)
-	return result[0]
-
-func GetSchool(id: String):
-	database.query("SELECT * FROM Schools WHERE ID = '%s'" % id)
-	var result = database.query_result
-	assert(len(result) == 1)
-	return result[0]
-
-func GetTeam(id: String):
-	database.query("SELECT * FROM Teams WHERE ID = '%s'" % id)
-	var result = database.query_result
-	assert(len(result) == 1)
-	return result[0]"""
-
-
 func GetFirstNamesForYear(year: int):
 	database.query("SELECT Name, Freq FROM FirstNames WHERE Year == %d" % year)
 	var names = []
@@ -268,6 +223,7 @@ func GetTeamFromSchool(school_id: String, year: int):
 	return result[0]
 
 
+# TODO: are these obsolete now?
 func GetSchoolsList() -> Array[String]:
 	database.query("SELECT ShortName FROM Schools ORDER BY ShortName")
 	var result = database.query_result
@@ -311,4 +267,12 @@ func GetConferenceStandings(conference: String) -> DataFrame:
 	return DataFrame.New(
 		result_as_rows,
 		["Team", "_tablemeta_Team", "W", "L", "Pct"]
+	)
+
+
+func UpdateRow(table: String, id: Variant, dict: Dictionary):
+	database.update_rows(
+		table,
+		"id = '%s'" % id,
+		dict
 	)

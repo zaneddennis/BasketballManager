@@ -88,3 +88,9 @@ func Tick() -> GameSimulationEvent:
 
 func CompileResult() -> GameResult:
 	return GameResult.new(home_score, away_score)
+
+
+static func Roll(player: Player, attrs: Dictionary, randomness: float) -> float:  # ~N(0, r)
+	var wc = WeightedChoice.new(attrs.keys().map(func(k): return float(player.get(k))), attrs.values())
+	var center = wc.Average() / 20.0
+	return randfn(center, randomness)

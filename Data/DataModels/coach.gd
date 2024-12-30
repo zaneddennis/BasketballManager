@@ -3,7 +3,6 @@ class_name Coach
 
 
 var id: int
-#var character_id: int
 var character: Character
 
 # coaching

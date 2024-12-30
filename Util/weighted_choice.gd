@@ -6,6 +6,8 @@ var options: Array
 var weights: Array[float]
 var breakpoints: Array[float]
 
+var sum_weights: float = 0.0
+
 
 func _init(o: Array, w: Array):
 	assert(len(o) == len(w))
@@ -26,6 +28,7 @@ func _init(o: Array, w: Array):
 	for weight in weights:
 		sum += weight
 		breakpoints.append(sum)
+	sum_weights = sum
 
 
 func Pick():
@@ -36,3 +39,16 @@ func Pick():
 			return options[i]
 	
 	assert(false)
+
+
+# assumes the options Array is of numeric type
+func Average():
+	var result = 0.0
+	
+	for i in range(len(options)):
+		var option = options[i]
+		var weight_normalized = weights[i] / sum_weights  # float[0, 1]
+		
+		result += option * weight_normalized
+	
+	return result

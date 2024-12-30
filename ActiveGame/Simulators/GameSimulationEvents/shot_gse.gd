@@ -9,10 +9,22 @@ var SHOT_WORTH = {  # todo: make this stuff into a real (tabular?) database at s
 	SHOT_TYPE.THREE: 3,
 }
 # p = a * off + b * def + c
-var SHOT_PARAMS = {
-	SHOT_TYPE.LAYUP: [0.0197, -0.0348, 0.692],
-	SHOT_TYPE.MIDRANGE: [0.0268, -0.019, 0.280],
-	SHOT_TYPE.THREE: [0.0236, -0.016, 0.168]
+#var SHOT_PARAMS = {
+#	SHOT_TYPE.LAYUP: [0.0197, -0.0348, 0.692],
+#	SHOT_TYPE.MIDRANGE: [0.0268, -0.019, 0.280],
+#	SHOT_TYPE.THREE: [0.0236, -0.016, 0.168]
+#}
+
+var SHOT_DIFFICULTY = {
+	SHOT_TYPE.LAYUP: 0.3,
+	SHOT_TYPE.MIDRANGE: 0.5,
+	SHOT_TYPE.THREE: 0.7
+}
+
+var SHOT_DISTANCE = {
+	SHOT_TYPE.LAYUP: 0,
+	SHOT_TYPE.MIDRANGE: 12,
+	SHOT_TYPE.THREE: 24
 }
 
 
@@ -39,16 +51,47 @@ func _init(gs: GameSimulator, config: Dictionary = {}):
 	
 	Simulate(gs)
 
+
 func Simulate(gs: GameSimulator):
+	print("Simulate shot")
 	time_elapsed = randi_range(1, min(3, gs.time))
 
 	var worth = SHOT_WORTH[shot_type]
-	var shooter_skill = shooter.finishing if shot_type == SHOT_TYPE.LAYUP else shooter.shooting
-	var defense = defender.interior_defense if shot_type == SHOT_TYPE.LAYUP else defender.perimeter_defense
+	var difficulty = SHOT_DIFFICULTY[shot_type]
+	#var shooter_skill = shooter.finishing if shot_type == SHOT_TYPE.LAYUP else shooter.shooting
+	#var defender_skill = defender.interior_defense if shot_type == SHOT_TYPE.LAYUP else defender.perimeter_defense
 	
-	var adj_difficulty = _shot_probability(shooter_skill, defense)
+	#var adj_difficulty = _shot_probability(shooter_skill, defender_skill)
+	var defense = GameSimulator.Roll(
+		defender,
+		#{
+		#	"vertical_reach": 1.0,
+		#	"interior_defense" if shot_type == SHOT_TYPE.LAYUP else "perimeter_defense": 1.0,
+		#},
+		{
+			"vertical_reach": 0.75,
+			"interior_defense": 1.0
+		} if shot_type == SHOT_TYPE.LAYUP else
+		{
+			"vertical_reach": 0.25,
+			"perimeter_defense": 1.0,
+		},
+		0.5
+	)
+	var offense = GameSimulator.Roll(
+		shooter,
+		{
+			"finishing": 1.0
+		} if shot_type == SHOT_TYPE.LAYUP else
+		{
+			"shooting": 1.0
+		},
+		1.5
+	)
+	var contest = offense - defense
+	print("%f = %f - %f" % [contest, offense, defense])
 	
-	var make = randf() < adj_difficulty
+	var make = contest >= difficulty
 	var result = "MISSED"
 	var points = 0
 	if make:
@@ -63,6 +106,7 @@ func Simulate(gs: GameSimulator):
 		next = HalfcourtGSE
 	else:
 		next = ReboundGSE
+		next_config["rebound_location"] = clamp(randfn(SHOT_DISTANCE[shot_type] / 4, 3), 0, 24)
 	
 	if points > 0:
 		Score(points, gs)
@@ -81,7 +125,7 @@ func Score(points: int, gs: GameSimulator):
 		away_score_add = points
 
 
-func _shot_probability(off: int, def: int) -> float:
-	var params = SHOT_PARAMS[shot_type]
-	
-	return params[0] * off + params[1] * def + params[2]
+#func _shot_probability(off: int, def: int) -> float:
+#	var params = SHOT_PARAMS[shot_type]
+#	
+#	return params[0] * off + params[1] * def + params[2]

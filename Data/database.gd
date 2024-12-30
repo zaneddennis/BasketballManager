@@ -22,6 +22,7 @@ func Activate(slot: String):
 	# fill data
 	# TODO: replace this with loading from data files
 	# Violating unique constraint??? But still appearing to be working???
+	#	Okay I figured this out; it's because this function is getting called both in active_game.gd and in main_menu_new.gd
 	database.insert_rows(
 		"Conferences",
 		[

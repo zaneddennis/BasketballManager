@@ -3,6 +3,7 @@ class_name Strategy
 
 
 var lineup: Array[Player]
+# roles???
 
 
 static func New(l: Array[Player]) -> Strategy:

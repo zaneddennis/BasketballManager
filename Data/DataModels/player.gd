@@ -9,8 +9,9 @@ enum ELIGIBILITY {FR, SO, JR, SR, SU}
 var eligibility: ELIGIBILITY
 
 # physical
-var height: int
-var weight: int
+var height: int  # inches
+var weight: int  # pounds
+
 var agility: int
 var strength: int
 var vertical_reach: int
@@ -31,7 +32,6 @@ var positioning: int
 
 # todo: tendencies
 
-# var school_id: String = ""  # todo: link to school directly? or was there a reason I didn't?
 var school: School
 
 

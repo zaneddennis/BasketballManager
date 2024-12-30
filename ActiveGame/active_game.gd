@@ -47,7 +47,6 @@ func LoadFromSlot(slot: String):
 	var save_meta_dict = JSON.parse_string(
 			FileAccess.open(filepath_partial + "/meta.json", FileAccess.READ).get_as_text()
 		)
-	#player_id = save_meta_dict["player_id"]
 	
 	var game_status_dict = JSON.parse_string(
 		FileAccess.open(filepath_partial + "/game_status.json", FileAccess.READ).get_as_text()

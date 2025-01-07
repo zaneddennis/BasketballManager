@@ -1,0 +1,21 @@
+[gd_scene load_steps=16 format=3 uid="uid://ojql7chioiew"]
+
+[ext_resource type="Script" path="res://Data/database.gd" id="1_r6cq0"]
+[ext_resource type="Script" path="res://Data/DataModels/Strategy/PlayerRoles/player_role.gd" id="2_j7n4a"]
+[ext_resource type="Resource" uid="uid://dmchf7kplxgme" path="res://Data/DataModels/Strategy/PlayerRoles/combo_guard.tres" id="2_xippi"]
+[ext_resource type="Resource" uid="uid://tbq0wnwwlwmm" path="res://Data/DataModels/Strategy/PlayerRoles/creator.tres" id="3_4f8bb"]
+[ext_resource type="Resource" uid="uid://cml3wqh1qrtbi" path="res://Data/DataModels/Strategy/PlayerRoles/off_ball_shooter.tres" id="5_71sui"]
+[ext_resource type="Resource" uid="uid://cb3cgyvamb78o" path="res://Data/DataModels/Strategy/PlayerRoles/pass_first.tres" id="6_0rin0"]
+[ext_resource type="Resource" uid="uid://c0avd7c55umme" path="res://Data/DataModels/Strategy/PlayerRoles/pick_and_pop.tres" id="7_yi0k1"]
+[ext_resource type="Resource" uid="uid://d2xuq77uud3dm" path="res://Data/DataModels/Strategy/PlayerRoles/point_forward.tres" id="8_7fdna"]
+[ext_resource type="Resource" uid="uid://dhx6edch5bw4b" path="res://Data/DataModels/Strategy/PlayerRoles/post_passer.tres" id="9_wcvnp"]
+[ext_resource type="Resource" uid="uid://dou5nl2nkt312" path="res://Data/DataModels/Strategy/PlayerRoles/post_scorer.tres" id="10_2qeeb"]
+[ext_resource type="Resource" uid="uid://bdiuebo7evlvy" path="res://Data/DataModels/Strategy/PlayerRoles/roll_man.tres" id="11_ca2jk"]
+[ext_resource type="Resource" uid="uid://d1yighu2ff4tx" path="res://Data/DataModels/Strategy/PlayerRoles/slasher.tres" id="12_cxttf"]
+[ext_resource type="Resource" uid="uid://d3a6bqocyodro" path="res://Data/DataModels/Strategy/PlayerRoles/stretch_big.tres" id="13_hnkbs"]
+[ext_resource type="Resource" uid="uid://dmtbn7lq0qh7d" path="res://Data/DataModels/Strategy/PlayerRoles/versatile_forward.tres" id="14_1njsp"]
+[ext_resource type="Resource" uid="uid://cvt6dngjgnxks" path="res://Data/DataModels/Strategy/PlayerRoles/rebounder.tres" id="15_loaxs"]
+
+[node name="Database" type="Node"]
+script = ExtResource("1_r6cq0")
+_player_roles = Array[ExtResource("2_j7n4a")]([ExtResource("2_xippi"), ExtResource("3_4f8bb"), ExtResource("5_71sui"), ExtResource("6_0rin0"), ExtResource("7_yi0k1"), ExtResource("8_7fdna"), ExtResource("9_wcvnp"), ExtResource("10_2qeeb"), ExtResource("11_ca2jk"), ExtResource("12_cxttf"), ExtResource("13_hnkbs"), ExtResource("14_1njsp"), ExtResource("15_loaxs")])

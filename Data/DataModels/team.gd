@@ -21,7 +21,7 @@ static func New(s: School, p: Array[Player]) -> Team:
 	t.school = s
 	t.players = p
 	t.strategy = Strategy.New(
-		t.players
+		t.players, []
 	)
 	
 	return t

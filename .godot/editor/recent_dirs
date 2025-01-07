@@ -1,8 +1,9 @@
+res://Data/DataModels/Strategy/PlayerRoles
+res://Data
 res://MainMenu
 res://ActiveGame/UI/Pages/Events
 res://ActiveGame/UI/Widgets/Strategy
 res://ActiveGame/UI/Widgets
-res://Data/DataModel
 res://Data/Images/Miscellaneous
 res://ActiveGame/UI/Widgets/LiveGame
 res://ActiveGame/UI/Pages
@@ -10,7 +11,6 @@ res://ActiveGame/UI/Games
 res://ActiveGame/UI/Widgets/Announcements
 res://Util
 res://
-res://Data
 res://ActiveGame/UI/Widgets/Table
 res://ActiveGame/UI/Calendar
 res://ActiveGame/UI

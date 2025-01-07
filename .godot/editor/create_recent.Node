@@ -1,9 +1,10 @@
+OptionButton
+Node
 Label
 Panel
 ScrollContainer
 VSeparator
 HSeparator
-OptionButton
 HBoxContainer
 VBoxContainer
 Control
@@ -11,4 +12,3 @@ RichTextLabel
 OuterJustifyWidget
 PanelContainer
 BoxContainer
-MarginContainer

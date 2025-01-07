@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PlayerRole" load_steps=2 format=3 uid="uid://tbq0wnwwlwmm"]
+
+[ext_resource type="Script" path="res://Data/DataModels/Strategy/PlayerRoles/player_role.gd" id="1_ifed7"]
+
+[resource]
+script = ExtResource("1_ifed7")
+display_name = "Creator"
+valid_positions = "PG, SG"
+pos_valve = 0.5
+pos_perimeter = 1.5
+pos_cutting = 1.5
+pos_high_post = 0.25
+pos_low_post = 0.25
+pos_midrange = 0.5
+prio_pass = 1.0
+prio_drive = 1.0
+prio_pick = 0.5
+prio_iso = 0.5
+prio_shoot = 0.5
+prio_valve = 1.0
+prio_perimeter_cut = 1.0
+prio_set_up = 0.25
+prio_cut = 0.5
+prio_post_up = 0.0
+prio_set_pick = 0.0

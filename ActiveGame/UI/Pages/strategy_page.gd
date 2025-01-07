@@ -16,7 +16,7 @@ func Activate(id: Variant = null):
 	for w in _get_lineup_widgets():
 		if p < len(team.players):
 			var player: Player = team.strategy.lineup[p]
-			w.Activate(player)
+			w.Activate(player, team.strategy.roles[p] if p < len(team.strategy.roles) else null)
 			if not w.lineup_changed.is_connected(_on_lineup_changed):
 				w.lineup_changed.connect(_on_lineup_changed)
 			if not w.name_hovered.is_connected(_on_hover_player_name):
@@ -28,11 +28,13 @@ func Activate(id: Variant = null):
 
 func Save():
 	var lineup: Array[Player] = []
+	var roles: Array[PlayerRole] = []
 	for w in _get_lineup_widgets():
 		if w.visible:
 			lineup.append(w.player)
+			roles.append(w.role)
 	
-	var strategy = Strategy.New(lineup)
+	var strategy = Strategy.New(lineup, roles)
 	team.strategy = strategy
 	team.UpdateDatabase()
 

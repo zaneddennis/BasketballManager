@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PlayerRole" load_steps=2 format=3 uid="uid://cvt6dngjgnxks"]
+
+[ext_resource type="Script" path="res://Data/DataModels/Strategy/PlayerRoles/player_role.gd" id="1_7t6nv"]
+
+[resource]
+script = ExtResource("1_7t6nv")
+display_name = "Rebounder"
+valid_positions = "SF,PF,C"
+pos_valve = 0.0
+pos_perimeter = 0.0
+pos_cutting = 0.0
+pos_high_post = 0.0
+pos_low_post = 0.0
+pos_midrange = 0.0
+prio_pass = 0.0
+prio_drive = 0.0
+prio_pick = 0.0
+prio_iso = 0.0
+prio_shoot = 0.0
+prio_valve = 0.0
+prio_perimeter_cut = 0.0
+prio_set_up = 0.0
+prio_cut = 0.0
+prio_post_up = 0.0
+prio_set_pick = 0.0

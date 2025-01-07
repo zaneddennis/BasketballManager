@@ -104,7 +104,10 @@ func NewSeason():
 				"Year": current_time.year,
 				"Wins": 0, "Losses": 0,
 				"HeadCoach": coach_id, "Players": str(player_ids),
-				"Strategy": str({"Lineup": player_ids})
+				"Strategy": str({
+					"Lineup": player_ids,
+					"Roles": ["creator", "off_ball_shooter", "off_ball_shooter", "post_scorer", "rebounder"]
+					})
 			}
 		)
 	var s = Database.database.insert_rows("Teams", rows)

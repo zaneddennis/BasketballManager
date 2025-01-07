@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://n03rdjmhmpbl"]
+[gd_scene load_steps=4 format=3 uid="uid://n03rdjmhmpbl"]
 
 [ext_resource type="Script" path="res://ActiveGame/UI/Widgets/Strategy/player_lineup_slot_widget.gd" id="1_1b016"]
 [ext_resource type="PackedScene" uid="uid://d24mx5pahbkg2" path="res://ActiveGame/UI/Widgets/player_name_hoverable_widget.tscn" id="1_aqpbb"]
+[ext_resource type="PackedScene" uid="uid://ddgorxhp6eskm" path="res://ActiveGame/UI/Widgets/dropdown_widget.tscn" id="2_hqgf5"]
 
 [node name="PlayerLineupSlotWidget" type="Panel"]
 custom_minimum_size = Vector2(0, 64)
@@ -36,10 +37,9 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Role" type="OptionButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="Role" parent="HBoxContainer" instance=ExtResource("2_hqgf5")]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 selected = 0
 item_count = 3
@@ -77,4 +77,5 @@ size_flags_vertical = 4
 layout_mode = 2
 text = "0.0 / 0.0 / 0.0 / 0.0 / 0.0"
 
+[connection signal="item_selected" from="HBoxContainer/Role" to="." method="_on_role_item_selected"]
 [connection signal="name_hovered" from="HBoxContainer/Name" to="." method="_on_name_name_hovered"]

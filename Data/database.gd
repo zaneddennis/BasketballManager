@@ -6,6 +6,10 @@ const VERBOSITY = 1
 var database: SQLite
 var active_game: ActiveGame
 
+# Resources
+@export var _player_roles: Array[PlayerRole]
+var player_roles: Dictionary
+
 
 func Create(slot: String):
 	DirAccess.copy_absolute(
@@ -131,6 +135,10 @@ func Activate(slot: String):
 			{"Surname": "Thompson", "Per100k": 225.32}
 		]
 	)
+	
+	for pr: PlayerRole in _player_roles:  # TODO: sort?
+		var role_id = pr.get_unique_id()
+		player_roles[role_id] = pr
 	
 	database.verbosity_level = VERBOSITY
 	

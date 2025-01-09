@@ -4,3 +4,7 @@ res://MainMenu/new_game_loading.tscn
 res://ActiveGame/active_game.tscn
 res://ActiveGame/UI/Pages/strategy_page.tscn
 res://ActiveGame/UI/Pages/Events/game_event_page.tscn
+res://Data/DataModels/player.gd
+res://Generators/player_generator.gd
+res://Data/DataModels/school.gd
+res://Data/database.gd

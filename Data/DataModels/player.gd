@@ -7,6 +7,7 @@ var character: Character
 
 enum ELIGIBILITY {FR, SO, JR, SR, SU}
 var eligibility: ELIGIBILITY
+var jersey_number: int
 
 # physical
 var height: int  # inches
@@ -44,6 +45,7 @@ static func New(char: Character, i: int, h: int, w: int,
 	
 	p.character = char
 	p.id = i
+	p.jersey_number = 0
 	
 	p.height = h
 	p.weight = w
@@ -75,6 +77,7 @@ static func FromDatabase(player_id: int) -> Player:
 	p.character = Character.FromDatabase(dict["CharacterID"])
 	
 	p.eligibility = ELIGIBILITY.keys().find(dict["Eligibility"])
+	p.jersey_number = 0  # TODO
 	
 	p.height = dict["Height"]
 	p.weight = dict["Weight"]

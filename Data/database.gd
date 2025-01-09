@@ -60,22 +60,22 @@ func Activate(slot: String):
 	database.insert_rows(
 		"Schools",
 		[
-			{"ID": "SMU", "FullName": "Southern Methodist University", "ShortName": "SMU", "Mascot": "Mustangs", "Location": 1, "Conference": "ACC", "PrestigeHistoric": 3, "PrestigeCurrent": 4},
-			{"ID": "TCU", "FullName": "Texas Cocaine University", "ShortName": "TCU", "Mascot": "Horny Toads", "Location": 1, "Conference": "XII", "PrestigeHistoric": 4, "PrestigeCurrent": 6},
-			{"ID": "TUL", "FullName": "University of Tulsa", "ShortName": "Tulsa", "Mascot": "Golden Hurricane", "Location": 2, "Conference": "OTH", "PrestigeHistoric": 4, "PrestigeCurrent": 3},
-			{"ID": "BAY", "FullName": "Baylor University", "ShortName": "Baylor", "Mascot": "Bears", "Location": 3, "Conference": "XII", "PrestigeHistoric": 7, "PrestigeCurrent": 9},
-			{"ID": "OKLA", "FullName": "University of Oklahoma", "ShortName": "Oklahoma", "Mascot": "Sooners", "Location": 5, "Conference": "XII", "PrestigeHistoric": 8, "PrestigeCurrent": 7},
-			{"ID": "STEV", "FullName": "Stevens Institute of Technology", "ShortName": "Stevens", "Mascot": "Ducks", "Location": 6, "Conference": "OTH", "PrestigeHistoric": 1, "PrestigeCurrent": 1},
-			{"ID": "PETE", "FullName": "Saint Peter's University", "ShortName": "St Peter's", "Mascot": "Peacocks", "Location": 7, "Conference": "OTH", "PrestigeHistoric": 1, "PrestigeCurrent": 2},
-			{"ID": "VAND", "FullName": "Vanderbilt University", "ShortName": "Vanderbilt", "Mascot": "Commodores", "Location": 8, "Conference": "SEC", "PrestigeHistoric": 5, "PrestigeCurrent": 5},
-			{"ID": "KTKY", "FullName": "University of Kentucky", "ShortName": "Kentucky", "Mascot": "Wildcats", "Location": 9, "Conference": "SEC", "PrestigeHistoric": 9, "PrestigeCurrent": 7},
-			{"ID": "BAMA", "FullName": "University of Alabama", "ShortName": "Alabama", "Mascot": "Crimson Tide", "Location": 10, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 7},
-			{"ID": "AUB", "FullName": "Auburn University", "ShortName": "Auburn", "Mascot": "Tigers", "Location": 11, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 6},
-			{"ID": "TENN", "FullName": "University of Tennessee", "ShortName": "Tennessee", "Mascot": "Volunteers", "Location": 12, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 7},
-			{"ID": "OKST", "FullName": "Oklahoma State University", "ShortName": "Oklahoma State", "Mascot": "Cowboys", "Location": 13, "Conference": "XII", "PrestigeHistoric": 8, "PrestigeCurrent": 6},
-			{"ID": "UNC", "FullName": "University of North Carolina", "ShortName": "North Carolina", "Mascot": "Tar Heels", "Location": 14, "Conference": "ACC", "PrestigeHistoric": 10, "PrestigeCurrent": 10},
-			{"ID": "NCST", "FullName": "North Carolina State University", "ShortName": "NC State", "Mascot": "Wolfpack", "Location": 15, "Conference": "ACC", "PrestigeHistoric": 6, "PrestigeCurrent": 7},
-			{"ID": "DUKE", "FullName": "Duke University", "ShortName": "Duke", "Mascot": "Blue Devils", "Location": 16, "Conference": "ACC", "PrestigeHistoric": 10, "PrestigeCurrent": 10}
+			{"ID": "SMU", "FullName": "Southern Methodist University", "ShortName": "SMU", "Mascot": "Mustangs", "Location": 1, "Conference": "ACC", "PrestigeHistoric": 3, "PrestigeCurrent": 4, "Color1": "#0033A0", "Color2": "#C8102E"},
+			{"ID": "TCU", "FullName": "Texas Cocaine University", "ShortName": "TCU", "Mascot": "Horny Toads", "Location": 1, "Conference": "XII", "PrestigeHistoric": 4, "PrestigeCurrent": 6, "Color1": "#4D1979", "Color2": "#A3A9AC"},
+			{"ID": "TUL", "FullName": "University of Tulsa", "ShortName": "Tulsa", "Mascot": "Golden Hurricane", "Location": 2, "Conference": "OTH", "PrestigeHistoric": 4, "PrestigeCurrent": 3, "Color1": "#002D72", "Color2": "#C8102E"},
+			{"ID": "BAY", "FullName": "Baylor University", "ShortName": "Baylor", "Mascot": "Bears", "Location": 3, "Conference": "XII", "PrestigeHistoric": 7, "PrestigeCurrent": 9, "Color1": "#154734", "Color2": "#FFB81C"},
+			{"ID": "OKLA", "FullName": "University of Oklahoma", "ShortName": "Oklahoma", "Mascot": "Sooners", "Location": 5, "Conference": "XII", "PrestigeHistoric": 8, "PrestigeCurrent": 7, "Color1": "#841617", "Color2": "#FDF9D8"},
+			{"ID": "STEV", "FullName": "Stevens Institute of Technology", "ShortName": "Stevens", "Mascot": "Ducks", "Location": 6, "Conference": "OTH", "PrestigeHistoric": 1, "PrestigeCurrent": 1, "Color1": "#9D1535", "Color2": "#949594"},
+			{"ID": "PETE", "FullName": "Saint Peter's University", "ShortName": "St Peter's", "Mascot": "Peacocks", "Location": 7, "Conference": "OTH", "PrestigeHistoric": 1, "PrestigeCurrent": 2, "Color1": "#003C71", "Color2": "#0072CE"},
+			{"ID": "VAND", "FullName": "Vanderbilt University", "ShortName": "Vanderbilt", "Mascot": "Commodores", "Location": 8, "Conference": "SEC", "PrestigeHistoric": 5, "PrestigeCurrent": 5, "Color1": "#000000", "Color2": "#866d4b"},
+			{"ID": "KTKY", "FullName": "University of Kentucky", "ShortName": "Kentucky", "Mascot": "Wildcats", "Location": 9, "Conference": "SEC", "PrestigeHistoric": 9, "PrestigeCurrent": 7, "Color1": "#0033a0", "Color2": "#FFFFFF"},
+			{"ID": "BAMA", "FullName": "University of Alabama", "ShortName": "Alabama", "Mascot": "Crimson Tide", "Location": 10, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 7, "Color1": "#9e1b32", "Color2": "#828a8f"},
+			{"ID": "AUB", "FullName": "Auburn University", "ShortName": "Auburn", "Mascot": "Tigers", "Location": 11, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 6, "Color1": "#0C2340", "Color2": "#E87722"},
+			{"ID": "TENN", "FullName": "University of Tennessee", "ShortName": "Tennessee", "Mascot": "Volunteers", "Location": 12, "Conference": "SEC", "PrestigeHistoric": 6, "PrestigeCurrent": 7, "Color1": "#FF8200", "Color2": "#58595b"},
+			{"ID": "OKST", "FullName": "Oklahoma State University", "ShortName": "Oklahoma State", "Mascot": "Cowboys", "Location": 13, "Conference": "XII", "PrestigeHistoric": 8, "PrestigeCurrent": 6, "Color1": "#FF7300", "Color2": "#000000"},
+			{"ID": "UNC", "FullName": "University of North Carolina", "ShortName": "North Carolina", "Mascot": "Tar Heels", "Location": 14, "Conference": "ACC", "PrestigeHistoric": 10, "PrestigeCurrent": 10, "Color1": "#7BAFD4", "Color2": "#FFFFFF"},
+			{"ID": "NCST", "FullName": "North Carolina State University", "ShortName": "NC State", "Mascot": "Wolfpack", "Location": 15, "Conference": "ACC", "PrestigeHistoric": 6, "PrestigeCurrent": 7, "Color1": "#CC0000", "Color2": "#000000"},
+			{"ID": "DUKE", "FullName": "Duke University", "ShortName": "Duke", "Mascot": "Blue Devils", "Location": 16, "Conference": "ACC", "PrestigeHistoric": 10, "PrestigeCurrent": 10, "Color1": "#003087", "Color2": "#ffffff"}
 		]
 	)
 	database.insert_rows(

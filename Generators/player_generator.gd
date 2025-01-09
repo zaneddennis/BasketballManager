@@ -10,6 +10,8 @@ func _init():
 
 
 func GeneratePlayer(id: int, character_id: int) -> Dictionary:
+	var jersey = randi() % 100  # 0-99
+	
 	var height_pct = randf()
 	var height = roundi(height_curve.sample(height_pct))
 	

@@ -1,2 +1,6 @@
-res://ActiveGame/UI/Widgets/Strategy/player_lineup_slot_widget.tscn
+res://MainMenu/main_menu.tscn
 res://Themes/default_theme.tres
+res://MainMenu/new_game_loading.tscn
+res://ActiveGame/active_game.tscn
+res://ActiveGame/UI/Pages/strategy_page.tscn
+res://ActiveGame/UI/Pages/Events/game_event_page.tscn

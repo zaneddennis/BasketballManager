@@ -1,5 +1,5 @@
 extends GameSimulationEvent
-class_name HalfcourtGSE
+class_name HalfcourtGSE_OLD
 
 
 # note: this will be affected by Strategy
@@ -52,7 +52,7 @@ func Simulate(gs: GameSimulator):
 	if iso_val < 0.1:
 		Turnover()
 		description += "Turnover"
-		next = HalfcourtGSE  #TODO: fast breaks
+		next = HalfcourtGSEv2  #TODO: fast breaks
 	
 	else:
 		# if someone really open, pass to them and they shoot (shot location/type depends on position)
@@ -94,6 +94,40 @@ func Simulate(gs: GameSimulator):
 					"defender": defender,
 					"passer": primary_handler
 				}
+	
+	# player locs
+	var half = CourtLocation.HALF.EAST if gs.possession == gs.TEAM.HOME else CourtLocation.HALF.WEST
+	player_locs[offense_players[0].id] = CourtLocation.new(
+		half, CourtLocation.AREA.VALVE, CourtLocation.SIDE.CENTER
+	)
+	player_locs[offense_players[1].id] = CourtLocation.new(
+		half, CourtLocation.AREA.VALVE, CourtLocation.SIDE.LEFT
+	)
+	player_locs[offense_players[2].id] = CourtLocation.new(
+		half, CourtLocation.AREA.VALVE, CourtLocation.SIDE.RIGHT
+	)
+	player_locs[offense_players[3].id] = CourtLocation.new(
+		half, CourtLocation.AREA.FT_LINE, CourtLocation.SIDE.CENTER
+	)
+	player_locs[offense_players[4].id] = CourtLocation.new(
+		half, CourtLocation.AREA.BLOCK, CourtLocation.SIDE.LEFT
+	)
+	player_locs[defense_players[0].id] = CourtLocation.new(
+		half, CourtLocation.AREA.VALVE, CourtLocation.SIDE.CENTER, true
+	)
+	player_locs[defense_players[1].id] = CourtLocation.new(
+		half, CourtLocation.AREA.VALVE, CourtLocation.SIDE.LEFT, true
+	)
+	player_locs[defense_players[2].id] = CourtLocation.new(
+		half, CourtLocation.AREA.VALVE, CourtLocation.SIDE.RIGHT, true
+	)
+	player_locs[defense_players[3].id] = CourtLocation.new(
+		half, CourtLocation.AREA.FT_LINE, CourtLocation.SIDE.CENTER, true
+	)
+	player_locs[defense_players[4].id] = CourtLocation.new(
+		half, CourtLocation.AREA.BLOCK, CourtLocation.SIDE.LEFT, true
+	)
+	#player_locs = gs.player_locs
 
 
 func _determine_shot_type_catch(receiver_position: int) -> ShotGSE.SHOT_TYPE:

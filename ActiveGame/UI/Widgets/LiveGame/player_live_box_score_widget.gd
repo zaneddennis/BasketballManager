@@ -25,8 +25,8 @@ func Activate(n: int, p: Player):
 
 
 func Refresh(statline: Statline):
-	$HBoxContainer/SlashLine.text = "%d / %d / %d / 0 / 0" % [
-		statline.points, statline.rebounds, statline.assists
+	$HBoxContainer/SlashLine.text = "%d / %d / %d / %d / %d" % [
+		statline.points, statline.rebounds, statline.assists, statline.steals, statline.blocks
 	]
 	
 	$HBoxContainer/Splits.text = "%d/%d FG, %d/%d 3Pt" % [

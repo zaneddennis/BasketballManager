@@ -7,3 +7,5 @@ func _init(gs: GameSimulator, config: Dictionary = {}):
 	
 	time_elapsed = gs.time
 	description = "END OF HALF"
+	
+	player_locs = gs.player_locs

@@ -36,7 +36,7 @@ var positioning: int
 var school: School
 
 
-static func New(char: Character, i: int, h: int, w: int,
+static func New(char: Character, i: int, j:int, h: int, w: int,
 				agl:int, str: int, vr: int,
 				hdl: int, fin: int, sho: int, reb: int, prd: int, ind: int,
 				vis: int, otb: int, pos: int,
@@ -45,7 +45,7 @@ static func New(char: Character, i: int, h: int, w: int,
 	
 	p.character = char
 	p.id = i
-	p.jersey_number = 0
+	p.jersey_number = j
 	
 	p.height = h
 	p.weight = w

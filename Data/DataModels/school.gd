@@ -17,15 +17,16 @@ var conference: Conference
 var prestige: Prestige
 
 
-static func New(abb: String, sn: String, m: String) -> School:
+static func New(abb: String, sn: String, m: String,
+				c1: Color = Color.BLACK, c2: Color = Color.WHITE) -> School:
 	var s = School.new()
 	
 	s.id = abb
 	s.short_name = sn
 	s.mascot = m
 	
-	#s.color1 = Color.BLACK
-	#s.color2 = Color.WHITE
+	s.color1 = c1
+	s.color2 = c2
 	
 	return s
 

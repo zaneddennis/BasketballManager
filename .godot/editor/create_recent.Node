@@ -1,6 +1,8 @@
-OptionButton
 Node
+Sprite2D
 Label
+Polygon2D
+OptionButton
 Panel
 ScrollContainer
 VSeparator
@@ -10,5 +12,3 @@ VBoxContainer
 Control
 RichTextLabel
 OuterJustifyWidget
-PanelContainer
-BoxContainer

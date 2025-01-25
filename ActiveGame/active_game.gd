@@ -205,7 +205,7 @@ func _on_ui_game_results():
 	var games = Database.Get("SELECT * FROM Games WHERE Timestamp = '%s'" % current_time.ToISOStr())
 	for game_dict in games:
 		if not player_school_id in [game_dict["Home"], game_dict["Away"]]:
-			var gs = GameSimulator.new(Game.FromDatabase(game_dict["ID"]))  # TODO: make sure this works
+			var gs = GameSimulator.new(Game.FromDatabase(game_dict["ID"]))
 			var result = gs.Simulate()
 			RecordGameResult(result, Game.FromDatabase(game_dict["ID"]))
 	simmed_games_yet = true

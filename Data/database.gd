@@ -6,7 +6,7 @@ const VERBOSITY = 1
 var database: SQLite
 var active_game: ActiveGame
 
-# Resources
+# Resource DBs
 @export var _player_roles: Array[PlayerRole]
 var player_roles: Dictionary
 
@@ -18,6 +18,7 @@ func Create(slot: String):
 	)
 
 
+# TODO: separate ActivateDebug() function with different sample data
 func Activate(slot: String):
 	database = SQLite.new()
 	database.path = "user://save_data/%s/database.db" % slot

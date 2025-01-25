@@ -21,3 +21,19 @@ class List:
 			result.append(row)
 		
 		return result
+	
+	static func IsIn(a: Array, rc: RefCounted) -> bool:
+		assert(rc.has_method("Equals"))
+		for item in a:
+			if rc.Equals(item):
+				return true
+		return false
+	
+	static func Find(a: Array, rc: RefCounted) -> int:
+		assert(rc.has_method("Equals"))
+		var i = 0
+		for item in a:
+			if rc.Equals(item):
+				return i
+			i += 1
+		return -1

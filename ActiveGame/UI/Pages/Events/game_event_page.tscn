@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvhkxj1365ms8"]
+[gd_scene load_steps=12 format=3 uid="uid://cvhkxj1365ms8"]
 
 [ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="1_xrgof"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/Events/game_event_page.gd" id="2_5hgkj"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bey4ia72ss8ua" path="res://ActiveGame/UI/Widgets/LiveGame/player_live_box_score_widget.tscn" id="4_7bpae"]
 [ext_resource type="PackedScene" uid="uid://b6cvyaovkwhjp" path="res://ActiveGame/UI/Games/GSEDescriptionWidget.tscn" id="4_glh6l"]
 [ext_resource type="PackedScene" uid="uid://bycqrptp0yt77" path="res://ActiveGame/UI/Widgets/LiveGame/bench_player_live_box_score_widget.tscn" id="5_iak7c"]
+[ext_resource type="PackedScene" uid="uid://cxnxbjs2bsfpi" path="res://ActiveGame/Games/on_court_player_instance.tscn" id="7_sgnp1"]
+[ext_resource type="PackedScene" uid="uid://yowylv1rsgjr" path="res://ActiveGame/Games/on_court_ball.tscn" id="8_8v81u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvm5p"]
 draw_center = false
@@ -193,8 +195,42 @@ stretch = true
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
+snap_2d_transforms_to_pixel = true
 size = Vector2i(600, 400)
 render_target_update_mode = 4
+
+[node name="HomePG" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="0" instance=ExtResource("7_sgnp1")]
+position = Vector2(200, 150)
+
+[node name="HomeSG" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="1" instance=ExtResource("7_sgnp1")]
+position = Vector2(200, 250)
+
+[node name="HomeSF" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="2" instance=ExtResource("7_sgnp1")]
+position = Vector2(275, 100)
+
+[node name="HomePF" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="3" instance=ExtResource("7_sgnp1")]
+position = Vector2(275, 300)
+
+[node name="HomeC" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="4" instance=ExtResource("7_sgnp1")]
+position = Vector2(275, 200)
+
+[node name="AwayPG" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="5" instance=ExtResource("7_sgnp1")]
+position = Vector2(400, 150)
+
+[node name="AwaySG" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="6" instance=ExtResource("7_sgnp1")]
+position = Vector2(400, 250)
+
+[node name="AwaySF" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="7" instance=ExtResource("7_sgnp1")]
+position = Vector2(325, 100)
+
+[node name="AwayPF" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="8" instance=ExtResource("7_sgnp1")]
+position = Vector2(325, 300)
+
+[node name="AwayC" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="9" instance=ExtResource("7_sgnp1")]
+position = Vector2(325, 200)
+
+[node name="Ball" parent="Content/VBoxContainer/HBoxContainer/Center/Court/SubViewportContainer/SubViewport" index="10" instance=ExtResource("8_8v81u")]
+position = Vector2(300, 200)
 
 [node name="Start" type="Button" parent="Content/VBoxContainer/HBoxContainer/Center" index="1"]
 custom_minimum_size = Vector2(0, 40)

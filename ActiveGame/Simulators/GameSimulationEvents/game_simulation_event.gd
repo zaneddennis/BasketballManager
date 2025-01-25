@@ -15,6 +15,7 @@ var away_score_add = 0
 var possession: GameSimulator.TEAM
 
 var player_deltas = {}  # {player_id: Statline}
+var player_locs = {}  # {player_id: CourtLocation}
 
 var description: String = "DEFAULT GSE DESCRIPTION"
 var next = GameSimulationEvent
@@ -34,6 +35,8 @@ func _init(gs: GameSimulator, config: Dictionary = {}):
 	else:
 		offense_players = gs.away_active_lineup
 		defense_players = gs.home_active_lineup
+	
+	player_locs = gs.player_locs
 
 
 func Simulate(gs: GameSimulator):

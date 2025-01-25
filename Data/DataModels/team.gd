@@ -15,14 +15,17 @@ var strategy: Strategy
 
 
 # assumes p Array is given in lineup order
-static func New(s: School, p: Array[Player]) -> Team:
+static func New(s: School, p: Array[Player], st: Strategy = null) -> Team:
 	var t = Team.new()
 	
 	t.school = s
 	t.players = p
-	t.strategy = Strategy.New(
-		t.players, []
-	)
+	if st:
+		t.strategy = st
+	else:
+		t.strategy = Strategy.New(
+			t.players, []
+		)
 	
 	return t
 

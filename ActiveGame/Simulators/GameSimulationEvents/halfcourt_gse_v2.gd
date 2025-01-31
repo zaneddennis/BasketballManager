@@ -142,6 +142,8 @@ func ExecutePlayerAction(gs: GameSimulator, player: Player, defender: Player, ac
 			# set and config next GSE: shotGSE
 			player_locs[player.id] = gs.player_locs[player.id]
 			player_locs[defender.id] = gs.player_locs[defender.id]
+			player_staminas[player.id] = 0.005
+			player_staminas[defender.id] = 0.005
 			next = ShotGSE
 			next_config = {
 				"shooter": player,
@@ -194,7 +196,8 @@ func ExecutePlayerAction(gs: GameSimulator, player: Player, defender: Player, ac
 					"is_after_made": false,
 					"is_fast_break": false  # TODO: make this a fast break once that's implemented
 				}
-				
+				player_staminas[player.id] = 0.001
+				player_staminas[defender.id] = 0.001
 		
 		"drive":
 			var open_locs = gs.GetOpenLocations(
@@ -240,6 +243,8 @@ func ExecutePlayerAction(gs: GameSimulator, player: Player, defender: Player, ac
 			else:
 				next = HalfcourtGSEv2
 				next_config["openness"] = openness
+			player_staminas[player.id] = 0.01
+			player_staminas[defender.id] = 0.01
 		
 		"pass":
 			var recipient_ix = int(action.split("_")[-1])
@@ -296,6 +301,8 @@ func ExecutePlayerAction(gs: GameSimulator, player: Player, defender: Player, ac
 			var offense = gs.Roll(player, {"strength": 1.0}, 0.25)
 			var defense = gs.Roll(defender, {"strength": 1.0}, 0.25)
 			openness[offense_players.find(player)] = offense - defense
+			player_staminas[player.id] = 0.01
+			player_staminas[defender.id] = 0.01
 		
 		"interior_cut":
 			var open_locs = gs.GetOpenLocations(
@@ -318,3 +325,5 @@ func ExecutePlayerAction(gs: GameSimulator, player: Player, defender: Player, ac
 			
 			player_locs[player.id] = new_loc
 			player_locs[defender.id] = CourtLocation.new(new_loc.half, new_loc.area, new_loc.side, contest)
+			player_staminas[player.id] = 0.005
+			player_staminas[defender.id] = 0.005

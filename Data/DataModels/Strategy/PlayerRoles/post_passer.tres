@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_b6sm0")
 display_name = "Post Passer"
+display_abb = "PAS"
 valid_positions = "PF,C"
 prio_shoot = -0.5
 prio_perimeter_dribble = -0.25
@@ -13,3 +14,15 @@ prio_pass = 0.5
 prio_set_up = -0.5
 prio_post_up = 0.75
 prio_interior_cut = 0.0
+eval_agility = 0.1
+eval_strength = 1.0
+eval_vertical_reach = 1.0
+eval_ball_handling = 0.0
+eval_finishing = 0.5
+eval_shooting = 0.25
+eval_rebounding = 1.0
+eval_perimeter_defense = 0.0
+eval_interior_defense = 0.75
+eval_vision = 1.0
+eval_off_the_ball = 0.5
+eval_positioning = 0.5

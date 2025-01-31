@@ -2,6 +2,13 @@ extends Object
 class_name Player
 
 
+const ALL_ATTRS = [
+	"agility", "strength", "vertical_reach",
+	"ball_handling", "finishing", "shooting", "rebounding", "perimeter_defense", "interior_defense",
+	"vision", "off_the_ball", "positioning"
+]
+
+
 var id: int
 var character: Character
 

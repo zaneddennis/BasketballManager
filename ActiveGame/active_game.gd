@@ -168,13 +168,41 @@ func NewDay(loading: bool = false):
 	var user_event_today = null
 	if not processed_events_yet:
 		user_event_today = CalendarEventScheduler.Schedule(current_time, player_school_id)
-	var games_today = []
+	var games_today: Array[Game] = []
 	if not simmed_games_yet:
-		games_today = Database.Get("SELECT * FROM Games WHERE Timestamp = '%s'" % current_time.ToISOStr())
+		var games_today_raw = Database.Get("SELECT * FROM Games WHERE Timestamp = '%s'" % current_time.ToISOStr())
+		games_today.assign(games_today_raw.map(func(d): return Game._from_dict(d)))
 	print(current_time)
 	print("\tUser: ", user_event_today)
 	print("\tGames: ", games_today)
+	
+	if not loading:
+		MakeDailyDecisions(games_today)
+	
 	ui.Refresh(self, user_event_today, len(games_today) > 0)
+
+
+func MakeDailyDecisions(games_today: Array[Game]):
+	MakeDailyTeamDecisions(games_today)
+
+
+func MakeDailyTeamDecisions(games_today: Array[Game]):
+	# get current teams
+	var year = current_time.year
+	var team_dicts = Database.Get("SELECT * FROM Teams WHERE Year = %d" % year)
+	for d in team_dicts:
+		var team = Team._from_dict(d)
+		var coach = team.head_coach
+		
+		print("Making Daily Team Decisions For ", team)
+		if coach.id == PLAYER_ID:
+			print("\tUser Team")
+		else:
+			var this_team_game_today = games_today.filter(func(g): return g.home.id == team.id or g.away.id == team.id)
+			print("\t", this_team_game_today)
+			if this_team_game_today:
+				#this_team_game_today = this_team_game_today[0]
+				team.DecideStrategy()
 
 
 # updates meta.json and game_status.json

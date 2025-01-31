@@ -6,8 +6,9 @@ func Activate():
 	
 	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)
-	var school_id = coach.school_id
-	var conference_id = Database.GetItem("Schools", school_id)["Conference"]
+	#var school_id = coach.school.id
+	#var conference_id = Database.GetItem("Schools", school_id)["Conference"]
+	var conference_id = coach.school.conference.id
 	$HBoxContainer/ContentLeft/StandingsWidget.Render(conference_id)
 	
 	$HBoxContainer/ContentCenter/Calendar.Render(Database.active_game.current_time)

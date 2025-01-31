@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_qykou")
 display_name = "Roll Man"
+display_abb = "ROL"
 valid_positions = "PF,C"
 prio_shoot = 0.0
 prio_perimeter_dribble = -1.0
@@ -13,3 +14,15 @@ prio_pass = 0.5
 prio_set_up = -0.75
 prio_post_up = 0.5
 prio_interior_cut = 0.25
+eval_agility = 0.25
+eval_strength = 0.75
+eval_vertical_reach = 1.0
+eval_ball_handling = 0.0
+eval_finishing = 1.0
+eval_shooting = 0.0
+eval_rebounding = 0.5
+eval_perimeter_defense = 0.0
+eval_interior_defense = 0.5
+eval_vision = 0.0
+eval_off_the_ball = 0.0
+eval_positioning = 0.5

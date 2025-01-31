@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_hw223")
 display_name = "Post Scorer"
-valid_positions = "SF,PF,C"
+display_abb = "SCO"
+valid_positions = "PF,C"
 prio_shoot = 1.0
 prio_perimeter_dribble = -1.0
 prio_drive = 0.0
@@ -13,3 +14,15 @@ prio_pass = 0.0
 prio_set_up = 0.0
 prio_post_up = 1.0
 prio_interior_cut = 1.0
+eval_agility = 0.25
+eval_strength = 1.5
+eval_vertical_reach = 2.0
+eval_ball_handling = 0.0
+eval_finishing = 1.0
+eval_shooting = 0.1
+eval_rebounding = 1.0
+eval_perimeter_defense = 0.0
+eval_interior_defense = 1.0
+eval_vision = 0.0
+eval_off_the_ball = 0.1
+eval_positioning = 0.5

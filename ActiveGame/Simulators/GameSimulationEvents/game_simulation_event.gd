@@ -16,6 +16,7 @@ var possession: GameSimulator.TEAM
 
 var player_deltas = {}  # {player_id: Statline}
 var player_locs = {}  # {player_id: CourtLocation}
+var player_staminas = {}  # {player_id: float}
 
 var description: String = "DEFAULT GSE DESCRIPTION"
 var next = GameSimulationEvent

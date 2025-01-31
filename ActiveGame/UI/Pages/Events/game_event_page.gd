@@ -131,14 +131,21 @@ func _ready():
 		])
 		
 		var baylor_roles: Array[PlayerRole] = []
-		baylor_roles.assign(["creator", "combo_guard", "off_ball_shooter", "rebounder", "rebounder"].map(func(rid): return Database.player_roles[rid]))
+		var role_ids = ["creator", "combo_guard", "off_ball_shooter", "rebounder", "rebounder",
+						"rebounder", "rebounder", "rebounder", "rebounder", "rebounder",
+						"rebounder", "rebounder"]
+		baylor_roles.assign(role_ids.map(func(rid): return Database.player_roles[rid]))
+		#baylor_roles.assign(["creator", "combo_guard", "off_ball_shooter", "rebounder", "rebounder"].map(func(rid): return Database.player_roles[rid]))
 		var baylor_strat = Strategy.New(
 			baylor_players,
 			baylor_roles
 		)
 		
 		var zaga_roles: Array[PlayerRole] = []
-		zaga_roles.assign(["creator", "combo_guard", "combo_guard", "stretch_big", "rebounder"].map(func(rid): return Database.player_roles[rid]))
+		role_ids = ["creator", "combo_guard", "combo_guard", "stretch_big", "rebounder",
+					"rebounder", "rebounder", "rebounder", "rebounder", "rebounder",
+					"rebounder", "rebounder"]
+		zaga_roles.assign(role_ids.map(func(rid): return Database.player_roles[rid]))
 		var zaga_strat = Strategy.New(
 			zaga_players,
 			zaga_roles
@@ -220,7 +227,8 @@ func ActivateTeamUI(t: Team, vbox: VBoxContainer):
 	for widget: PlayerLiveBoxScoreWidget in widgets:
 		if i < len(t.strategy.lineup):
 			var p: Player = t.strategy.lineup[i]
-			widget.Activate(i, p)
+			var r: PlayerRole = t.strategy.roles[i]
+			widget.Activate(i, p, r)
 			if not widget.name_hovered.is_connected(_on_hover_player_name):
 				widget.name_hovered.connect(_on_hover_player_name)
 			
@@ -277,7 +285,7 @@ func UpdatePlayers():
 	for vbox in [$Content/VBoxContainer/HBoxContainer/Left, $Content/VBoxContainer/HBoxContainer/Right]:
 		for n in vbox.get_children():
 			if n is PlayerLiveBoxScoreWidget and n.visible:
-				n.Refresh(gs.player_stats[n.player.id])
+				n.Refresh(gs.player_stats[n.player.id], gs.player_stamina[n.player.id])
 
 
 func AddDescription(gse: GameSimulationEvent):

@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_it6we")
 display_name = "Off-Ball Shooter"
+display_abb = "OFF"
 valid_positions = "SG, SF, PF"
 prio_shoot = 1.0
 prio_perimeter_dribble = -0.25
@@ -13,3 +14,15 @@ prio_pass = 0.0
 prio_set_up = 1.0
 prio_post_up = -1.0
 prio_interior_cut = -0.5
+eval_agility = 0.25
+eval_strength = 0.0
+eval_vertical_reach = 0.1
+eval_ball_handling = 0.25
+eval_finishing = 0.1
+eval_shooting = 2.0
+eval_rebounding = 0.0
+eval_perimeter_defense = 0.5
+eval_interior_defense = 0.0
+eval_vision = 0.25
+eval_off_the_ball = 2.0
+eval_positioning = 0.25

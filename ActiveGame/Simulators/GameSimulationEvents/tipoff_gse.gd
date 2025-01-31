@@ -60,6 +60,9 @@ func Simulate(gs: GameSimulator):
 		CourtLocation.HALF.EAST, CourtLocation.AREA.TIPOFF_C, CourtLocation.SIDE.CENTER
 	)
 	
+	player_staminas[player_home.id] = 0.02
+	player_staminas[player_away.id] = 0.02
+	
 	description = "%s - Tipoff won by %s. Held by %s." % [
 		GetTeamID(), won_by_player.character.last, (gs.home_active_lineup + gs.away_active_lineup)[gs.ball_handler_ix].character.last
 	]

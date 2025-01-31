@@ -26,8 +26,12 @@ static func New(h: Team, a: Team) -> Game:
 
 
 static func FromDatabase(game_id: int) -> Game:
-	var g = Game.new()
 	var dict = Database.GetItem("Games", game_id)
+	return _from_dict(dict)
+
+
+static func _from_dict(dict: Dictionary) -> Game:
+	var g = Game.new()
 	
 	g.id = dict["ID"]
 	g.timestamp = Timestamp.FromStr(dict["Timestamp"])

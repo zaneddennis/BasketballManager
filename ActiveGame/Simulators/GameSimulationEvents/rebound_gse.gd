@@ -73,6 +73,9 @@ func SimulateV2(gs: GameSimulator):
 			"is_fast_break": false,
 			"is_after_made": false
 		}
+	
+	for player in offense_players + defense_players:
+		player_staminas[player.id] = 0.025
 
 
 func GetReboundPositioningV2(p: Player, is_off: bool) -> float:

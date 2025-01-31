@@ -23,7 +23,7 @@ func Activate(id):
 		var coach = Coach.FromDatabase(character.coach_id)
 		
 		# summary
-		var school_id = coach.school_id
+		var school_id = coach.school.id
 		if school_id:
 			var school = School.FromDatabase(school_id)
 			$Content/Summary/HBoxContainer/VBoxContainer/School.text = school.short_name

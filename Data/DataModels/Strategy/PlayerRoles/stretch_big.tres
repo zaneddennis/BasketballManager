@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_aib0u")
 display_name = "Stretch Big"
+display_abb = "STB"
 valid_positions = "PF,C"
 prio_shoot = 0.5
 prio_perimeter_dribble = -0.5
@@ -13,3 +14,15 @@ prio_pass = 0.0
 prio_set_up = 0.5
 prio_post_up = 0.0
 prio_interior_cut = 0.0
+eval_agility = 0.25
+eval_strength = 0.5
+eval_vertical_reach = 1.0
+eval_ball_handling = 0.0
+eval_finishing = 0.5
+eval_shooting = 1.5
+eval_rebounding = 0.5
+eval_perimeter_defense = 0.0
+eval_interior_defense = 0.25
+eval_vision = 0.0
+eval_off_the_ball = 0.75
+eval_positioning = 0.25

@@ -133,9 +133,13 @@ func Simulate(gs: GameSimulator):
 	if worth == 3:
 		player_deltas[shooter.id].threes_att = 1
 	player_deltas[shooter.id].points = points
+	
 	description = "%s - %s %s (%s defends) - %s [+%d]" % [GetTeamID(), shooter.character.last, shot_type_text, defender.character.last, result, points]
 	
 	player_locs = gs.player_locs
+	
+	player_staminas[shooter.id] = 0.005
+	player_staminas[defender.id] = 0.005
 
 
 func Score(points: int, gs: GameSimulator):

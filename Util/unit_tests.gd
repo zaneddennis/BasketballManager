@@ -2,7 +2,32 @@ extends Node
 
 
 func _ready():
-	TestOpenCourtLocs()
+	var p1 = Player.New(
+			Character.New("Jared", "Butler"), 0, 12, 75, 195,
+			14, 9, 6,
+			14, 16, 17, 10, 16, 8,
+			15, 18, 16
+	)
+	var p2 = Player.New(
+			Character.New("Davion", "Mitchell"), 1, 45, 74, 205,
+					16, 11, 7,
+					13, 14, 15, 11, 19, 12,
+					13, 15, 16
+				)
+	var p3 = Player.New(
+					Character.New("Flo", "Thamba"), 4, 0, 82, 245,
+					9, 12, 15,
+					4, 7, 5, 13, 6, 12,
+					3, 6, 10
+				)
+	
+	var evaluator = Evaluator.new()
+	var e = evaluator.EvaluatePlayer(p1, Database._player_roles[1], 0)
+	print(e)
+	e = evaluator.EvaluatePlayer(p2, Database._player_roles[1], 0)
+	print(e)
+	e = evaluator.EvaluatePlayer(p3, Database._player_roles[1], 0)
+	print(e)
 
 
 func TestArrayIsIn():

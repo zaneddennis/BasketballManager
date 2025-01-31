@@ -35,6 +35,92 @@ static func FromDatabase(team_id: String) -> Team:
 	return _from_dict(dict)
 
 
+func DecideStrategy():
+	print("\tSetting Team Strategy")
+	
+	var new_lineup: Array[Player]
+	var new_roles: Array[PlayerRole]
+	
+	var new_lineup_d = {}
+	
+	var scores = {}
+	var all_scores = {}
+	var by_player = {}
+	for pos in ["PG", "SG", "SF", "PF", "C"]:
+		scores[pos] = {}
+		all_scores[pos] = {}
+		for p: Player in players:
+			if not p.id in by_player:
+				by_player[p.id] = {}
+			if not p.id in all_scores[pos]:
+				all_scores[pos][p.id] = {}
+			
+			var best_score = -1
+			for role: PlayerRole in Database.player_roles.values():
+				if pos in role.valid_positions:
+					var val = head_coach.philosophy.evaluator.EvaluatePlayer(p, role, head_coach)
+					all_scores[pos][p.id][role.get_unique_id()] = val
+					if val > best_score:
+						best_score = val
+			by_player[p.id][pos] = best_score
+			scores[pos][p.id] = best_score
+	
+	for pos in ["PG", "SG", "SF", "PF", "C"]:
+		#print(pos)
+		var pos_dict = scores[pos]
+		for p_id in new_lineup_d.values():
+			pos_dict.erase(p_id)
+		
+		#print(pos_dict)
+		var best_id = pos_dict.keys()[pos_dict.values().find(pos_dict.values().max())]
+		new_lineup_d[pos] = best_id
+		#print(new_lineup_d)
+	
+	#print(by_player)
+	var next_pos = 6
+	while len(new_lineup_d) < 12:
+		# find best overall remaining player
+		var best_score = -1
+		var best_id = -1
+		for p_id in by_player:
+			if not p_id in new_lineup_d.values():
+				var player_best = by_player[p_id].values().max()
+				if player_best > best_score:
+					best_score = player_best
+					best_id = p_id
+		
+		# add them to next spot
+		new_lineup_d[str(next_pos)] = best_id
+		next_pos += 1
+	
+	#print(all_scores)
+	#print(new_lineup_d)
+	
+	new_lineup = []
+	new_roles = []
+	for pos in new_lineup_d:
+		var player_id = new_lineup_d[pos]
+		new_lineup.append(players.filter(func(player): return player.id == player_id)[0])
+		
+		var player_dict
+		if pos in ["PG", "SG", "SF", "PF", "C"]:
+			player_dict = all_scores[pos][player_id]
+		else:
+			player_dict = all_scores["PG"][player_id].merged(all_scores["SG"][player_id]).merged(all_scores["SF"][player_id]).merged(all_scores["PF"][player_id]).merged(all_scores["C"][player_id])
+		#print(pos, player_dict)
+		var role_id = player_dict.keys()[player_dict.values().find(player_dict.values().max())]
+		new_roles.append(Database.player_roles[role_id])
+	
+	print("\t\t", new_lineup)
+	print("\t\t", new_roles)
+	print("---")
+	var new_strategy = Strategy.New(new_lineup, new_roles)
+	
+	# save back to DB
+	strategy = new_strategy
+	UpdateDatabase()
+
+
 func UpdateDatabase():
 	Database.UpdateRow(
 		"Teams", id,

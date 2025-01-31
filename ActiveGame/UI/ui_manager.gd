@@ -74,7 +74,7 @@ func _on_home_pressed():
 func _on_team_pressed():
 	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)
-	var school_id = coach.school_id
+	var school_id = coach.school.id
 	var year = Database.active_game.current_time.year
 	var team_id = Database.GetTeamFromSchool(school_id, year)["ID"]
 	OpenTeamPage(team_id)
@@ -82,7 +82,7 @@ func _on_team_pressed():
 func _on_strategy_pressed():
 	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)
-	var school_id = coach.school_id
+	var school_id = coach.school.id
 	var year = Database.active_game.current_time.year
 	var team_id = Database.GetTeamFromSchool(school_id, year)["ID"]
 	$PageManager.RenderPage($PageManager/Strategy, team_id)
@@ -90,7 +90,7 @@ func _on_strategy_pressed():
 func _on_schedule_pressed():
 	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)
-	var school_id = coach.school_id
+	var school_id = coach.school.id
 	$PageManager.RenderPage($PageManager/Schedule, school_id)
 
 func _on_standings_pressed():
@@ -99,7 +99,7 @@ func _on_standings_pressed():
 func _on_school_pressed():
 	var coach_id = Database.active_game.PLAYER_ID
 	var coach = Coach.FromDatabase(coach_id)
-	var school_id = coach.school_id
+	var school_id = coach.school.id
 	if school_id:
 		$PageManager.RenderPage($PageManager/School, school_id)
 

@@ -72,6 +72,9 @@ func SimulateSlowTransition(gs: GameSimulator):
 		half, CourtLocation.AREA.FT_LINE, CourtLocation.SIDE.LEFT, openness[4]
 	)
 	
+	for player in offense_players + defense_players:
+		player_staminas[player.id] = 0.01
+	
 	next_config["openness"] = openness
 	next = HalfcourtGSEv2
 

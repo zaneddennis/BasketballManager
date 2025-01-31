@@ -14,6 +14,7 @@ var home_score = 0
 var away_score = 0
 
 var player_stats: Dictionary  # {player_id: Statline}
+var player_stamina: Dictionary  # {player_id: float[0-1]}
 
 var home_active_lineup: Array[Player]
 var away_active_lineup: Array[Player]
@@ -34,6 +35,7 @@ func _init(g: Game):
 	var all_players = game.home.players + game.away.players
 	for p: Player in all_players:
 		player_stats[p.id] = Statline.new()
+		player_stamina[p.id] = 1.0
 	
 	StartHalf(1)
 
@@ -79,8 +81,11 @@ func Tick() -> GameSimulationEvent:
 	# player stats
 	for player_id: int in gse.player_deltas:
 		var delta = gse.player_deltas[player_id]
-		# print("\tDelta: %d = %s" % [player_id, str(delta)])
 		player_stats[player_id].Add(delta)
+	
+	for player_id: int in gse.player_staminas:
+		var delta = gse.player_staminas[player_id]
+		player_stamina[player_id] -= delta
 	
 	# player positions
 	player_locs = gse.player_locs

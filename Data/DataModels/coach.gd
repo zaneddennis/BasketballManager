@@ -18,7 +18,10 @@ var technical: int
 var evaluation: int
 var scouting: int
 
-var school_id: String = ""
+var philosophy: Philosophy
+
+#var school_id: String = ""
+var school: School
 
 
 static func FromDatabase(coach_id: int) -> Coach:
@@ -37,7 +40,10 @@ static func FromDatabase(coach_id: int) -> Coach:
 	c.evaluation = dict["Evaluation"]
 	c.scouting = dict["Scouting"]
 	
-	c.school_id = dict["SchoolID"]
+	c.philosophy = Philosophy.new()
+	
+	#c.school_id = dict["SchoolID"]
+	c.school = School.FromDatabase(dict["SchoolID"])
 	
 	return c
 
@@ -55,7 +61,7 @@ func ToDatabase():
 	dict["Evaluation"] = evaluation
 	dict["Scouting"] = scouting
 	
-	dict["SchoolID"] = school_id
+	dict["SchoolID"] = school.id
 	
 	Database.database.insert_row(
 		"Coaches",

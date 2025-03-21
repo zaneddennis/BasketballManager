@@ -67,7 +67,7 @@ func Tick() -> GameSimulationEvent:
 	else:
 		gse = last_gse.NextGSEType().new(self, last_gse.next_config)
 	
-	print(gse.description)
+	#print(gse.description)
 	
 	time -= gse.time_elapsed
 	if time <= 0:

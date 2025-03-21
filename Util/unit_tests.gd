@@ -2,32 +2,54 @@ extends Node
 
 
 func _ready():
-	var p1 = Player.New(
-			Character.New("Jared", "Butler"), 0, 12, 75, 195,
-			14, 9, 6,
-			14, 16, 17, 10, 16, 8,
-			15, 18, 16
-	)
-	var p2 = Player.New(
-			Character.New("Davion", "Mitchell"), 1, 45, 74, 205,
-					16, 11, 7,
-					13, 14, 15, 11, 19, 12,
-					13, 15, 16
-				)
-	var p3 = Player.New(
-					Character.New("Flo", "Thamba"), 4, 0, 82, 245,
-					9, 12, 15,
-					4, 7, 5, 13, 6, 12,
-					3, 6, 10
-				)
+	Database.Activate("end_reg_season_test_8")
 	
-	var evaluator = Evaluator.new()
-	var e = evaluator.EvaluatePlayer(p1, Database._player_roles[1], 0)
-	print(e)
-	e = evaluator.EvaluatePlayer(p2, Database._player_roles[1], 0)
-	print(e)
-	e = evaluator.EvaluatePlayer(p3, Database._player_roles[1], 0)
-	print(e)
+	#TestCreateTournament()
+	TestTeamRatings()
+
+
+func TestTeamRatings():
+	PythonManager.CallScript("compute_team_ratings.py", ["end_reg_season_test_8", 2025])
+
+
+func TestUpdateTournament():
+	var t = Tournament.FromDatabase("SEC2025")
+	t.UpdateWithGameResults()
+
+func TestCreateTournament():
+	var t = Tournament.New(
+		"NAT2025", "", 2025,
+		"""
+		SELECT TeamID AS ID, Rating,
+			(TeamID IN (SELECT Champion FROM Tournaments)) AS IsConfChamp
+		
+		FROM
+		
+		(SELECT Teams.ID AS TeamID, SchoolID, Rating
+		FROM Teams
+			LEFT JOIN team_ratings_2025 ON Teams.SchoolID = team_ratings_2025.ID
+		WHERE Year = 2025)
+		
+		ORDER BY IsConfChamp DESC, Rating DESC
+		LIMIT 16
+		""",
+		Timestamp.new(2025, Timestamp.PHASE.NATIONAL_TOURNAMENT, 0, 0),
+		[[], [3, 4], [5, 7], [10, 11], [12, 13]],
+		"Rating"
+	)
+	t.Activate()
+
+
+func TestTimestampAdd():
+	var a = Timestamp.new(2025, Timestamp.PHASE.REGULAR_SEASON, 0, 0)
+	print(a)
+	print("---")
+	var b = a.Add(3)
+	print(b)
+	var c = a.Add(9)
+	print(c)
+	var d = a.Add(27)
+	print(d)
 
 
 func TestArrayIsIn():

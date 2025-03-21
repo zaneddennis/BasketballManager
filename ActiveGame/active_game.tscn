@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgmh05rrgoaja"]
+[gd_scene load_steps=25 format=3 uid="uid://dgmh05rrgoaja"]
 
 [ext_resource type="Script" path="res://ActiveGame/active_game.gd" id="1_wvce3"]
 [ext_resource type="Script" path="res://ActiveGame/page_manager.gd" id="2_1fsc3"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://deeow1lbijrdv" path="res://ActiveGame/UI/Pages/conference_page.tscn" id="18_2uv1d"]
 [ext_resource type="PackedScene" uid="uid://6a8re8sad8ie" path="res://ActiveGame/UI/Pages/Events/meeting_event_page.tscn" id="18_k1ey6"]
 [ext_resource type="PackedScene" uid="uid://dwap5c0sh612l" path="res://ActiveGame/UI/Widgets/Announcements/announcement.tscn" id="21_x61tu"]
+[ext_resource type="PackedScene" uid="uid://b5yvlk2q8j8a6" path="res://ActiveGame/UI/Pages/Events/selection_show_event_page.tscn" id="22_ew4kk"]
 [ext_resource type="PackedScene" uid="uid://pcnku2pn5eui" path="res://ActiveGame/UI/Widgets/player_card_widget.tscn" id="23_kpa1k"]
 
 [node name="ActiveGame" type="Node"]
@@ -138,11 +139,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ContentLeft" type="Control" parent="UI/PageManager/Home/HBoxContainer"]
-custom_minimum_size = Vector2(256, 0)
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
 [node name="StandingsWidget" parent="UI/PageManager/Home/HBoxContainer/ContentLeft" instance=ExtResource("7_uw5i7")]
-custom_minimum_size = Vector2(192, 512)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -253,6 +253,10 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="Conference" parent="UI/PageManager" instance=ExtResource("18_2uv1d")]
+visible = false
+layout_mode = 1
+
 [node name="TestEvent" parent="UI/PageManager" instance=ExtResource("14_k0exi")]
 visible = false
 layout_mode = 1
@@ -273,8 +277,7 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="Conference" parent="UI/PageManager" instance=ExtResource("18_2uv1d")]
-visible = false
+[node name="SelectionShowEvent" parent="UI/PageManager" instance=ExtResource("22_ew4kk")]
 layout_mode = 1
 
 [node name="PageButtons" type="GridContainer" parent="UI"]
@@ -393,6 +396,7 @@ visible = false
 [connection signal="event_completed" from="UI/PageManager/PressEvent" to="UI" method="_on_event_completed"]
 [connection signal="event_completed" from="UI/PageManager/GameEvent" to="UI" method="_on_event_completed"]
 [connection signal="name_hovered" from="UI/PageManager/GameEvent" to="UI" method="_on_name_hovered"]
+[connection signal="event_completed" from="UI/PageManager/SelectionShowEvent" to="UI" method="_on_event_completed"]
 [connection signal="pressed" from="UI/PageButtons/Home" to="UI" method="_on_home_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Team" to="UI" method="_on_team_pressed"]
 [connection signal="pressed" from="UI/PageButtons/Strategy" to="UI" method="_on_strategy_pressed"]

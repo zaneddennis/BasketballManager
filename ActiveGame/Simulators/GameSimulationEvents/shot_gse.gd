@@ -62,7 +62,7 @@ func _init(gs: GameSimulator, config: Dictionary = {}):
 
 
 func Simulate(gs: GameSimulator):
-	print("Simulate shot")
+	#print("Simulate shot")
 	time_elapsed = randi_range(1, min(2, gs.time))
 
 	var worth = SHOT_WORTH[shot_type]
@@ -91,7 +91,7 @@ func Simulate(gs: GameSimulator):
 		0.25
 	)
 	var contest = O_RATIO * offense - D_RATIO * defense
-	print("%f = %.1f*%.3f - %.1f*%.3f" % [contest, O_RATIO, offense, D_RATIO, defense])
+	#print("%f = %.1f*%.3f - %.1f*%.3f" % [contest, O_RATIO, offense, D_RATIO, defense])
 	
 	make = contest >= difficulty
 	var result = "MISSED"

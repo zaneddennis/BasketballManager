@@ -6,7 +6,7 @@
 script = ExtResource("1_i5n3g")
 display_name = "Combo Guard"
 display_abb = "CG"
-valid_positions = "PG,SG"
+valid_positions = "PG,SG,SF"
 prio_shoot = 0.25
 prio_perimeter_dribble = 0.0
 prio_drive = 0.5

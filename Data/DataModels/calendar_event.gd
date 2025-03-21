@@ -2,7 +2,13 @@ extends RefCounted
 class_name CalendarEvent
 
 
-enum EVENT_TYPE {DEFAULT, PRACTICE, MEETING, PRESS, GAME}
+enum EVENT_TYPE {
+	DEFAULT,
+	# basic events
+	PRACTICE, MEETING, PRESS, GAME,
+	# special events
+	SELECTION_SHOW
+}
 
 var event_type: EVENT_TYPE = EVENT_TYPE.DEFAULT
 var event_subtype: String  # todo: make this not just a String

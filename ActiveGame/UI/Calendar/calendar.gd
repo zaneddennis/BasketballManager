@@ -44,4 +44,3 @@ func GetCell(date: Timestamp):
 	return $Background/Grid.get_child(
 		date.week * NUM_DAYS + date.day
 	)
-

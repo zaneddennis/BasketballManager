@@ -1,4 +1,4 @@
-extends Object
+extends RefCounted
 class_name Timestamp
 
 
@@ -13,7 +13,7 @@ enum DAY {
 const PHASE_LENGTHS = {  # weeks
 	PHASE.OFFSEASON: 2,
 	PHASE.PRESEASON: 2,
-	PHASE.REGULAR_SEASON: 8,
+	PHASE.REGULAR_SEASON: 16,
 	PHASE.CONFERENCE_TOURNAMENT: 1,
 	PHASE.NATIONAL_TOURNAMENT: 4
 }
@@ -62,6 +62,19 @@ func Equals(other: Timestamp):
 	if year == other.year and phase == other.phase and week == other.week and day == other.day:
 			return true
 	return false
+
+
+func Add(days: int):
+	var t = Timestamp.new(year, phase, week, day)
+	
+	t.day += days
+	while t.day >= 7:
+		t.day -= 7
+		t.week += 1
+		while t.week >= PHASE_LENGTHS[t.phase]:
+			pass
+	
+	return t
 
 
 # format: YYYY-P_ix-W-D_ix

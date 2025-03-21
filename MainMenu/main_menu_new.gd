@@ -168,8 +168,9 @@ func _on_next_pressed():
 
 func _on_start_game_pressed():
 	character.ToDatabase()
-	var school_ob = $Finalize/VBoxContainer/Content/SchoolSelect  # todo: make an inherited scene+class from OptionButton with a better add/get interface
-	coach.school_id = school_ob.get_selected_metadata()
+	var school_ob = $Finalize/VBoxContainer/Content/SchoolSelect
+	#coach.school_id = school_ob.get_selected_metadata()
+	coach.school = School.FromDatabase(school_ob.get_selected_metadata())
 	coach.ToDatabase()
 	
 	var filepath_partial = Constants.SAVES_LOCATION + "/" + slot_name

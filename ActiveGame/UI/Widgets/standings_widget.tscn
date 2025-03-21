@@ -43,6 +43,5 @@ layout_mode = 2
 
 [node name="Table" parent="VBoxContainer" instance=ExtResource("2_sbdt8")]
 layout_mode = 2
-size_flags_vertical = 3
 
 [connection signal="meta_clicked" from="VBoxContainer/Title" to="." method="_on_title_meta_clicked"]

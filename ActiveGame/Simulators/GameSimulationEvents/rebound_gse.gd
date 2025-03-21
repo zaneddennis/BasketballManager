@@ -15,7 +15,7 @@ func _init(gs: GameSimulator, config: Dictionary = {}):
 
 
 func SimulateV2(gs: GameSimulator):
-	print("Simulate Rebound:")
+	#print("Simulate Rebound:")
 	var positioning_home = gs.home_active_lineup.map(func(p): return GetReboundPositioningV3(p))
 	var positioning_away = gs.away_active_lineup.map(func(p): return GetReboundPositioningV3(p))
 	var jumps_home = gs.home_active_lineup.map(func(p): return GetJumpV2(p))

@@ -1,4 +1,4 @@
-res://ActiveGame/UI/Pages/Events/game_event_page.tscn
+res://ActiveGame/UI/Pages/Events/selection_show_event_page.tscn
 res://Themes/default_theme.tres
 res://Data/DataModels/Strategy/PlayerRoles/combo_guard.tres
 res://Data/DataModels/Strategy/PlayerRoles/creator.tres
@@ -7,11 +7,14 @@ res://Data/DataModels/Strategy/PlayerRoles/pass_first.tres
 res://Data/DataModels/Strategy/PlayerRoles/post_passer.tres
 res://Data/DataModels/Strategy/PlayerRoles/slasher.tres
 res://Data/DataModels/Strategy/PlayerRoles/stretch_big.tres
-res://Data/DataModels/Strategy/evaluator.gd
-res://Data/DataModels/team.gd
+res://ActiveGame/UI/Pages/Events/selection_show_event_page.gd
 res://Util/unit_tests.tscn
 res://MainMenu/main_menu.tscn
 res://Data/database.tscn
 res://MainMenu/new_game_loading.tscn
 res://ActiveGame/active_game.tscn
-res://ActiveGame/UI/Widgets/LiveGame/player_live_box_score_widget.tscn
+res://ActiveGame/UI/Pages/Events/event_page.tscn
+res://ActiveGame/UI/Pages/Events/meeting_event_page.tscn
+res://Data/database.gd
+res://ActiveGame/UI/ui_manager.gd
+res://ActiveGame/active_game.gd

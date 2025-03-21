@@ -22,7 +22,7 @@ func _init(gs: GameSimulator, config: Dictionary = {}):
 
 
 func Simulatev3(gs: GameSimulator):
-	print("Simulate halfcourt offense")
+	#print("Simulate halfcourt offense")
 	description = "%s - Halfcourt Offense" % GetTeamID()
 	
 	var player_process_order: Array[Player] = [gs.GetBallHandlingPlayer()]
@@ -32,15 +32,15 @@ func Simulatev3(gs: GameSimulator):
 	var i = 0
 	var actions = []
 	for player: Player in player_process_order:  # offensive players
-		print(player)
+		#print(player)
 		var ix = offense_players.find(player)
 		
 		# what is my status?
 		var loc: CourtLocation = gs.player_locs[player.id]
 		var is_ballhander = (i == 0)
-		if is_ballhander:
-			print("\tballhandler")
-		print("\t", loc)
+		#if is_ballhander:
+			#print("\tballhandler")
+		#print("\t", loc)
 		var my_openness = openness[ix]
 		
 		# what are my possible options from here?
@@ -56,13 +56,13 @@ func Simulatev3(gs: GameSimulator):
 		var priorities = {}  # {String: float > 0}
 		for option: String in options:
 			priorities[option] = GetOptionPriority(option, gs, player, role, my_openness)
-		print("\tPriorities [%s]: " % role.get_unique_id(), priorities)
+		#print("\tPriorities [%s]: " % role.get_unique_id(), priorities)
 		
 		# pick option
 		var highest_prio = priorities.values().max()
 		var action = priorities.find_key(highest_prio)
 		actions.append(action)
-		print("\t", actions[-1])
+		#print("\t", actions[-1])
 		
 		i += 1
 	
@@ -170,7 +170,7 @@ func ExecutePlayerAction(gs: GameSimulator, player: Player, defender: Player, ac
 				0.5
 			)
 			var contest = off_roll - def_roll
-			print(contest)
+			#print(contest)
 			
 			if off_roll - def_roll > -1.5:
 				# success

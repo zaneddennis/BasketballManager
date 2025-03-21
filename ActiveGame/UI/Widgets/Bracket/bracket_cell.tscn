@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://uj11bp0sm2d3"]
+
+[ext_resource type="Script" path="res://ActiveGame/UI/Widgets/Bracket/bracket_cell.gd" id="1_xwqui"]
+
+[node name="BracketCell" type="Control"]
+custom_minimum_size = Vector2(192, 72)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_xwqui")
+
+[node name="LineUpper" type="Line2D" parent="."]
+position = Vector2(0, 24)
+points = PackedVector2Array(0, 0, 192, 0)
+width = 1.0
+
+[node name="LineLower" type="Line2D" parent="."]
+position = Vector2(0, 72)
+points = PackedVector2Array(0, 0, 192, 0)
+width = 1.0
+
+[node name="LineSide" type="Line2D" parent="."]
+points = PackedVector2Array(192, 24, 192, 72)
+width = 1.0
+
+[node name="Upper" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 24.0
+
+[node name="Seed" type="Label" parent="Upper"]
+layout_mode = 2
+text = "[99]"
+vertical_alignment = 2
+
+[node name="Team" type="Label" parent="Upper"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Team Name"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Score" type="Label" parent="Upper"]
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Lower" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(192, 24)
+layout_mode = 0
+offset_top = 48.0
+offset_right = 192.0
+offset_bottom = 72.0
+
+[node name="Seed" type="Label" parent="Lower"]
+layout_mode = 2
+text = "[99]"
+vertical_alignment = 2
+
+[node name="Team" type="Label" parent="Lower"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Team Name"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Score" type="Label" parent="Lower"]
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 2

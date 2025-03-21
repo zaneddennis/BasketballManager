@@ -29,6 +29,15 @@ func AddColumn(d: Array, col_name: String):
 func AddRow():
 	pass
 
+func RemoveColumn(col_name: String):
+	assert(col_name in columns)
+	var c = columns.find(col_name)
+	
+	for i in range(Size()):
+		data[i].remove_at(c)
+	
+	columns.remove_at(c)
+
 
 # getters
 func GetColumn(col: String):

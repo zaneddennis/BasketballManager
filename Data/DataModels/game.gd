@@ -9,6 +9,10 @@ var away: Team
 var home_score: int
 var away_score: int
 
+var conference: Conference
+#var tournament: Tournament
+var tournament_id: String
+
 
 static func New(h: Team, a: Team) -> Game:
 	var g = Game.new()
@@ -37,6 +41,14 @@ static func _from_dict(dict: Dictionary) -> Game:
 	g.timestamp = Timestamp.FromStr(dict["Timestamp"])
 	g.home = Team.FromDatabase(dict["Home"] + str(g.timestamp.year))
 	g.away = Team.FromDatabase(dict["Away"] + str(g.timestamp.year))
+	if "ConferenceID" in dict and dict["ConferenceID"]:
+		g.conference = Conference.FromDatabase(dict["ConferenceID"])
+	if "TournamentID" in dict and dict["TournamentID"]:
+		g.tournament_id = dict["TournamentID"]
+	
+	if "HomeScore" in dict and dict["HomeScore"]:
+		g.home_score = dict["HomeScore"]
+		g.away_score = dict["AwayScore"]
 	
 	return g
 

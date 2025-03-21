@@ -1,4 +1,4 @@
-extends Object
+extends RefCounted
 class_name Team
 
 
@@ -8,6 +8,8 @@ var year: int
 
 var wins: int = 0
 var losses: int = 0
+var conf_wins: int = 0
+var conf_losses: int = 0
 
 var head_coach: Coach
 var players: Array[Player]
@@ -36,7 +38,7 @@ static func FromDatabase(team_id: String) -> Team:
 
 
 func DecideStrategy():
-	print("\tSetting Team Strategy")
+	#print("\tSetting Team Strategy")
 	
 	var new_lineup: Array[Player]
 	var new_roles: Array[PlayerRole]
@@ -111,9 +113,9 @@ func DecideStrategy():
 		var role_id = player_dict.keys()[player_dict.values().find(player_dict.values().max())]
 		new_roles.append(Database.player_roles[role_id])
 	
-	print("\t\t", new_lineup)
-	print("\t\t", new_roles)
-	print("---")
+	#print("\t\t", new_lineup)
+	#print("\t\t", new_roles)
+	#print("---")
 	var new_strategy = Strategy.New(new_lineup, new_roles)
 	
 	# save back to DB
@@ -138,6 +140,8 @@ static func _from_dict(dict: Dictionary) -> Team:
 	
 	t.wins = dict["Wins"]
 	t.losses = dict["Losses"]
+	t.conf_wins = dict["ConfWins"]
+	t.conf_losses = dict["ConfLosses"]
 	
 	var coach_id = dict["HeadCoach"]
 	t.head_coach = Coach.FromDatabase(coach_id)
@@ -162,6 +166,8 @@ func ToDict(strify: bool = false) -> Dictionary:
 	
 	d["Wins"] = wins
 	d["Losses"] = losses
+	d["ConfWins"] = conf_wins
+	d["ConfLosses"] = conf_losses
 	
 	d["HeadCoach"] = head_coach.id
 	d["Players"] = players.map(func(p: Player): return p.id)
@@ -171,8 +177,12 @@ func ToDict(strify: bool = false) -> Dictionary:
 	if strify:
 		d["Strategy"] = str(d["Strategy"])
 	
-	print(d)
+	#print(d)
 	return d
+
+
+func Equals(other: Team) -> bool:
+	return id == other.id
 
 
 func _to_string():

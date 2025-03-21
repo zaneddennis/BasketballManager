@@ -6,7 +6,7 @@
 script = ExtResource("1_fpnph")
 display_name = "Slasher"
 display_abb = "SLA"
-valid_positions = "PG,SG,SG,PF"
+valid_positions = "PG,SG,SF,PF"
 prio_shoot = 0.5
 prio_perimeter_dribble = 0.25
 prio_drive = 1.0

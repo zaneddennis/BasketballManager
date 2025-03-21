@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv3ed1u37e8ti"]
+
+[ext_resource type="Script" path="res://ActiveGame/UI/Widgets/Bracket/bracket_widget.gd" id="1_86bug"]
+
+[node name="BracketWidget" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_86bug")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_type_variation = &"PanelFlat"
+
+[node name="NotYet" type="Label" parent="Background"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 19.0
+text = "Tournament has not started yet"

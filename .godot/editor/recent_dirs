@@ -1,3 +1,7 @@
+res://ActiveGame/UI/Pages/Events
+res://ActiveGame/UI/Widgets
+res://ActiveGame/UI/Widgets/Bracket
+res://ActiveGame/UI/Widgets/Table
 res://Util
 res://Data/Images/Miscellaneous
 res://ActiveGame/Games
@@ -5,14 +9,11 @@ res://
 res://Data/DataModels/Strategy/PlayerRoles
 res://Data
 res://MainMenu
-res://ActiveGame/UI/Pages/Events
 res://ActiveGame/UI/Widgets/Strategy
-res://ActiveGame/UI/Widgets
 res://ActiveGame/UI/Widgets/LiveGame
 res://ActiveGame/UI/Pages
 res://ActiveGame/UI/Games
 res://ActiveGame/UI/Widgets/Announcements
-res://ActiveGame/UI/Widgets/Table
 res://ActiveGame/UI/Calendar
 res://ActiveGame/UI
 res://ActiveGame

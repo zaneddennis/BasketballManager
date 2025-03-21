@@ -12,7 +12,8 @@ signal user_game_complete(game: Game, result: GameResult)
 	$PageManager/PracticeEvent,
 	$PageManager/MeetingEvent,
 	$PageManager/PressEvent,
-	$PageManager/GameEvent
+	$PageManager/GameEvent,
+	$PageManager/SelectionShowEvent
 ]
 var current_event: CalendarEvent
 var current_event_page: EventPage
@@ -28,7 +29,7 @@ func Refresh(ag: ActiveGame, ce: CalendarEvent, g_e_t: bool):
 	if current_event and not ag.processed_events_yet:
 		$TopBar/Games.hide()
 		$TopBar/Event.show()
-		$TopBar/Event.text = "Go To %s" % CalendarEvent.EVENT_TYPE.keys()[current_event.event_type]
+		$TopBar/Event.text = "Go To %s" % CalendarEvent.EVENT_TYPE.keys()[current_event.event_type].capitalize()
 		current_event_page = EVENT_PAGES[current_event.event_type]
 	elif games_exist_today and not ag.simmed_games_yet:
 		$TopBar/Event.hide()

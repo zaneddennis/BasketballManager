@@ -57,7 +57,7 @@ func LoadFromSlot(slot: String):
 
 
 func RecordGameResult(result: GameResult, game: Game):
-	print("Recording Game Result: ", game.home, game.away)
+	print("Recording Game Result: ", game, " ", result.away_score, "-", result.home_score)
 	var winner = ""
 	var loser = ""
 	if result.home_score >= result.away_score:
@@ -73,19 +73,27 @@ func RecordGameResult(result: GameResult, game: Game):
 			"AwayScore": result.away_score
 		}
 	)
-	# TODO: use Database.UpdateRow()
+	
 	var s = Database.database.query("""
 		UPDATE Teams
-		SET Wins = Wins + 1
+		SET Wins = Wins + 1%s
 		WHERE ID = '%s%d'
-	""" % [winner, current_time.year])
-	print("Winner query success: ", s)
+	""" % [
+		", ConfWins = ConfWins + 1" if game.conference else "",
+		winner, current_time.year
+	])
 	Database.database.query("""
 		UPDATE Teams
-		SET Losses = Losses + 1
+		SET Losses = Losses + 1%s
 		WHERE ID = '%s%d'
-	""" % [loser, current_time.year])
-	print("Loser query success: ", s)
+	""" % [
+		", ConfLosses = ConfLosses + 1" if game.conference else "",
+		loser, current_time.year
+	])
+	
+	if game.tournament_id:
+		var t = Tournament.FromDatabase(game.tournament_id)
+		t.UpdateWithGameResults()
 
 
 func NewSeason():
@@ -136,21 +144,66 @@ func NewSeason():
 func ConcludeRegularSeason():
 	var conferences = Database.GetColumnAsList("Conferences", "ID", "ID")
 	var content: Array[String] = []
-	for conf in conferences:
-		var standings_df = Database.GetConferenceStandings(conf)
+	for conf_id: String in conferences:
+		var standings_df = Database.GetConferenceStandings(conf_id)
 		var champion = standings_df.GetRow(0)
-		print("%s Champion: " % conf, champion)
-		content.append("%s Champion: %s" % [conf, champion[0]])
+		print("%s Champion: " % conf_id, champion)
+		content.append("%s Champion: %s" % [conf_id, champion[0]])
+		
+		# create Tournament
+		var t = Tournament.New(
+			"%s%d" % [conf_id, current_time.year], conf_id, current_time.year,
+			"""
+			SELECT Teams.ID, SchoolID, Conference, ConfWins, ConfLosses, COALESCE(ConfWins / (ConfWins * 1.0 + ConfLosses), 0.0) AS Quotient
+			FROM Teams JOIN Schools ON Teams.SchoolID = Schools.ID
+			WHERE Conference = '%s'
+			ORDER BY Quotient DESC
+			LIMIT 8
+			""" % conf_id,
+			Timestamp.new(current_time.year, Timestamp.PHASE.CONFERENCE_TOURNAMENT, 0, 0),
+			[[], [2], [3], [4]]
+		)
+		t.Activate()
 		
 	ui.Announce(
-		"202X CONFERENCE CHAMPIONS:",
+		"202X REGULAR SEASON CONFERENCE CHAMPIONS:",
 		content
+	)
+
+
+func AnnounceConferenceTournamentWinners():
+	var conferences = Database.GetColumnAsList("Conferences", "ID", "ID")
+	var content: Array[String] = []
+	for conf_id: String in conferences:
+		var t = Tournament.FromDatabaseByParams(conf_id, current_time.year)
+		content.append("%s Champion: %s" % [conf_id, t.champion.school.short_name])
+	
+	ui.Announce(
+		"202X CONFERENCE TOURNAMENT CHAMPIONS:",
+		content
+	)
+
+func AnnounceNationalChampion():
+	var t = Tournament.FromDatabase("NAT%d" % current_time.year)
+	
+	ui.Announce(
+		"%d NATIONAL CHAMPIONS:" % current_time.year,
+		[
+			"%s %s (%d-%d)" % [
+				t.champion.school.short_name,
+				t.champion.school.mascot,
+				t.champion.wins,
+				t.champion.losses
+			]
+		]
 	)
 
 
 func NewPhase():
 	if current_time.phase == Timestamp.PHASE.CONFERENCE_TOURNAMENT:
 		ConcludeRegularSeason()
+	#elif current_time.phase == Timestamp.PHASE.NATIONAL_TOURNAMENT:
+	#	ConcludeConferenceTournaments()
 
 
 func ConcludeDay():
@@ -194,12 +247,13 @@ func MakeDailyTeamDecisions(games_today: Array[Game]):
 		var team = Team._from_dict(d)
 		var coach = team.head_coach
 		
-		print("Making Daily Team Decisions For ", team)
+		#print("Making Daily Team Decisions For ", team)
 		if coach.id == PLAYER_ID:
-			print("\tUser Team")
+			#print("\tUser Team")
+			pass
 		else:
 			var this_team_game_today = games_today.filter(func(g): return g.home.id == team.id or g.away.id == team.id)
-			print("\t", this_team_game_today)
+			#print("\t", this_team_game_today)
 			if this_team_game_today:
 				#this_team_game_today = this_team_game_today[0]
 				team.DecideStrategy()
@@ -241,13 +295,18 @@ func _on_ui_game_results():
 
 
 func _on_ui_advance_time():
-	ConcludeDay()
+	ConcludeDay()  # TODO: is this even doing anything?
 	
 	var new_things = current_time.Advance()
 	if "season" in new_things:
 		NewSeason()
 	if "phase" in new_things:
 		NewPhase()
+	
+	if current_time.Equals(Timestamp.FromStr("%d-3-0-5" % current_time.year)):
+		AnnounceConferenceTournamentWinners()
+	elif current_time.Equals(Timestamp.FromStr("%d-4-2-0" % current_time.year)):
+		AnnounceNationalChampion()
 	
 	NewDay()
 	SaveGame()

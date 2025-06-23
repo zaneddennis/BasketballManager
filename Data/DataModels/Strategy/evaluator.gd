@@ -11,8 +11,8 @@ func EvaluatePlayer(player: Player, at_role: PlayerRole, coach: Coach) -> float:
 	var sum = 0.0
 	
 	var total_ratio = 0.0
-	for attr in Player.ALL_ATTRS:
-		var val = player.get(attr) / 20.0
+	for attr in Attribute.ALL_ATTRS:
+		var val = player.get(attr).Get() / 20.0
 		var ratio = at_role.get("eval_" + attr)
 		
 		sum += (val * ratio)

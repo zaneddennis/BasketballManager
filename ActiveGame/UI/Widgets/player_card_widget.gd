@@ -16,20 +16,20 @@ func Activate(pos: Vector2, player: Player):
 	$MarginContainer/VBoxContainer/Bio/Texts/BodyArchetype.text = player.GetBodyStr()
 	
 	# physical
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Agility, player.agility)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Strength, player.strength)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Vertical, player.vertical_reach)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Agility, player.agility.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Strength, player.strength.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Physical/VBoxContainer/Vertical, player.vertical_reach.Get())
 	# mental
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/Vision, player.vision)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/OffTheBall, player.off_the_ball)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/Positioning, player.positioning)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/Vision, player.vision.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/OffTheBall, player.off_the_ball.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Left/Mental/VBoxContainer/Positioning, player.positioning.Get())
 	# technical
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Handling, player.ball_handling)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Finishing, player.finishing)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Shooting, player.shooting)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Rebounding, player.rebounding)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Perimeter, player.perimeter_defense)
-	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Interior, player.interior_defense)
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Handling, player.ball_handling.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Finishing, player.finishing.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Shooting, player.shooting.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Rebounding, player.rebounding.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Perimeter, player.perimeter_defense.Get())
+	SetAttribute($MarginContainer/VBoxContainer/Attributes/HBoxContainer/Right/PanelContainer/VBoxContainer/Interior, player.interior_defense.Get())
 	
 	show()
 
@@ -37,8 +37,8 @@ func Activate(pos: Vector2, player: Player):
 func ActivateDebug():
 	var p = Player.New(
 				Character.New("Jared", "Butler"), 0, 12, 75, 195,
-				14, 9, 6,
-				14, 16, 17, 10, 16, 8,
+				14, 9, 6, 10,
+				14, 10, 16, 17, 10, 16, 8,
 				15, 18, 16,
 				School.New(
 					"BAY", "Baylor", "Bears"

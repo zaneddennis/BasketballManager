@@ -1,0 +1,34 @@
+res://PythonScripts/myvenv/Lib/site-packages/sklearn/datasets/data/iris.4.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/random/tests/data/sfc64-testset-2. 0x0.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/random/tests/data/philox-testset-2. 0x0.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/random/tests/data/philox-testset-1. 0xdeadbeaf.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/random/tests/data/pcg64dxsm-testset-2. 0x0.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/random/tests/data/sfc64-testset-1. 0xdeadbeaf.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/random/tests/data/pcg64dxsm-testset-1. 0xdeadbeaf.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arccos.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/sklearn/datasets/data/boston_house_prices.13.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arccosh.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/sklearn/datasets/data/iris.setosa.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arccos.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/sklearn/datasets/data/iris.versicolor.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arccosh.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arcsin.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arcsinh.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arctan.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arctanh.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-cbrt.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arccos.ulperrortol.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-cosh.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-cos.input.translation
+res://PythonScripts/myvenv/Lib/site-packages/sklearn/datasets/data/iris.virginica.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arccosh.ulperrortol.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arcsin.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arcsinh.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arctan.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-cbrt.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arctanh.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-cosh.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-cos.output.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arcsinh.ulperrortol.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arcsin.ulperrortol.translation
+res://PythonScripts/myvenv/Lib/site-packages/numpy/_core/tests/data/umath-validation-set-arctan.ulperrortol.translation

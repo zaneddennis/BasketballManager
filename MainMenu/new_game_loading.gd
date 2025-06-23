@@ -39,8 +39,15 @@ func _complete_hire_coaches():
 
 func _complete_recruit_players():
 	thread.wait_to_finish()
+	#$Panel/VBoxContainer/Age.show()
+	#thread.start(ThreadAgePlayers)
 	$Panel/VBoxContainer/Complete.show()
 	Complete()
+
+"""func _complete_age_players():
+	thread.wait_to_finish()
+	$Panel/VBoxContainer/Complete.show()
+	Complete()"""
 
 
 func Complete():
@@ -78,8 +85,9 @@ func ThreadGeneratePlayers():
 	
 	var next_id = 2 + num_coaches  # num_coaches doesn't include the user Coach
 	for i in num_players:
-		characters.append(character_generator.GeneratePlayer(next_id + i, 1 + i))
-		players.append(player_generator.GeneratePlayer(1 + i, next_id + i))
+		var age = randi_range(1, 4)
+		characters.append(character_generator.GeneratePlayer(next_id + i, 1 + i, age))
+		players.append(player_generator.GenerateRecruit(1 + i, next_id + i, age))
 	
 	Database.database.insert_rows("Characters", characters)
 	Database.database.insert_rows("Players", players)
@@ -148,6 +156,18 @@ func ThreadRecruitPlayers():
 			Database.database.update_rows("Players", "ID = %d" % player_id, {"SchoolID": school_id})
 	
 	call_deferred("_complete_recruit_players")
+
+
+"""func ThreadAgePlayers():
+	print("Aging up players...")
+	
+	# TODO: do this with one single query for all players, not one for each
+	for id: int in num_players:
+		var age = randi_range(1, 4)
+		var eligibility = Constants.YEARS[age - 1]
+		Database.database.update_rows("Players", "ID = %d" % id, {"Eligibility": eligibility})
+	
+	call_deferred("_complete_age_players")"""
 
 
 func _on_start_pressed():

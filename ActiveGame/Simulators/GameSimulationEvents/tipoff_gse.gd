@@ -16,7 +16,7 @@ func Simulate(gs: GameSimulator):
 	
 	var player_home: Player = gs.home_active_lineup[4]  # get the C for each team
 	var player_away: Player = gs.away_active_lineup[4]
-	var vr_diff = player_away.vertical_reach - player_home.vertical_reach  # weigh result by vertical reach
+	var vr_diff = player_away.vertical_reach.Get() - player_home.vertical_reach.Get()  # weigh result by vertical reach
 	var val = randfn(vr_diff, 3.0)
 	if val < 0:
 		won_by = GameSimulator.TEAM.HOME

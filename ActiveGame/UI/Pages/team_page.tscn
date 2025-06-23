@@ -485,7 +485,6 @@ layout_mode = 2
 
 [node name="Table" parent="Content/VBoxContainer/Summary/Schedule/Last5/VBoxContainer" index="2" instance=ExtResource("6_8qrte")]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="Key" type="Panel" parent="Content/VBoxContainer/Summary/Schedule" index="1"]
 layout_mode = 2
@@ -642,10 +641,14 @@ size_flags_horizontal = 3
 [node name="Table" parent="Content/VBoxContainer/Roster/HBoxContainer/Players" index="0" instance=ExtResource("6_8qrte")]
 layout_mode = 1
 anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = -4.0
 offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PlayerDetails" type="VBoxContainer" parent="Content/VBoxContainer/Roster/HBoxContainer" index="1"]
 layout_mode = 2

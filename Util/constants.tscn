@@ -5,8 +5,8 @@
 [sub_resource type="Curve" id="Curve_wffa2"]
 min_value = 68.0
 max_value = 88.0
-_data = [Vector2(0, 68), 0.0, 80.0, 0, 1, Vector2(0.05, 72), 0.0, 8.88889, 0, 1, Vector2(0.5, 76), 0.0, 0.0, 0, 0, Vector2(0.98, 84), 16.6667, 0.0, 1, 0, Vector2(1, 88), 0.0, 0.0, 0, 0]
-point_count = 5
+_data = [Vector2(0, 68), 0.0, 151.6, 0, 0, Vector2(0.05, 72), 18.9499, 18.9499, 0, 0, Vector2(0.237113, 74.3736), 9.83938, 9.83938, 0, 0, Vector2(0.5, 76), 4.38559, 4.38559, 0, 0, Vector2(0.793814, 78.7692), 12.7912, 12.7912, 0, 0, Vector2(0.98, 82), 34.1161, 34.1161, 0, 0, Vector2(1, 86), 0.0, 0.0, 0, 0]
+point_count = 7
 
 [node name="Constants" type="Node"]
 script = ExtResource("1_oqxux")

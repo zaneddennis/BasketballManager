@@ -155,6 +155,6 @@ func GetOpenLocations(
 
 
 static func Roll(player: Player, attrs: Dictionary, randomness: float) -> float:  # ~N(a, r) where a [0.0, 1.0]
-	var wc = WeightedChoice.new(attrs.keys().map(func(k): return float(player.get(k))), attrs.values())
+	var wc = WeightedChoice.new(attrs.keys().map(func(k): return float(player.get(k).Get())), attrs.values())
 	var center = (wc.Average() - 10.0) / 10.0
 	return randfn(center, randomness)

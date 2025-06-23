@@ -2,10 +2,7 @@ extends Node
 
 
 func _ready():
-	Database.Activate("end_reg_season_test_8")
-	
-	#TestCreateTournament()
-	TestTeamRatings()
+	Database.Activate("end_reg_season_test_9")
 
 
 func TestTeamRatings():

@@ -120,6 +120,13 @@ layout_mode = 2
 text = "Recruiting Players to Schools..."
 vertical_alignment = 1
 
+[node name="Age" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Aging Up Generated Players..."
+vertical_alignment = 1
+
 [node name="Complete" type="Label" parent="Panel/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 24)

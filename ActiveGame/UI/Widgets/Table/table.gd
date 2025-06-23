@@ -13,7 +13,6 @@ var data: DataFrame
 
 
 func Render(formatting: Dictionary = {}):
-	#for n in $Background/Rows.get_children():
 	for n in $Scroll/Rows.get_children():
 		n.queue_free()
 	
@@ -26,15 +25,12 @@ func Render(formatting: Dictionary = {}):
 			var cell = TableCell.instantiate()
 			cell.get_node("RichTextLabel").text = c
 			header.add_child(cell)
-		#$Background/Rows.add_child(header)
 		$Scroll/Rows.add_child(header)
 		
-		#$Background/Rows.add_child(HSeparator.new())
 		$Scroll/Rows.add_child(HSeparator.new())
 		
 		for r in row_count:
 			var row = TableRow.instantiate()
-			#$Background/Rows.add_child(row)
 			$Scroll/Rows.add_child(row)
 			
 			for c in range(col_count):

@@ -278,6 +278,7 @@ visible = false
 layout_mode = 1
 
 [node name="SelectionShowEvent" parent="UI/PageManager" instance=ExtResource("22_ew4kk")]
+visible = false
 layout_mode = 1
 
 [node name="PageButtons" type="GridContainer" parent="UI"]

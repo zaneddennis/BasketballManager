@@ -171,7 +171,10 @@ func Activate(slot: String):
 			{"Year": 2003, "Name": "Ethan", "Freq": 1.0},
 			{"Year": 2003, "Name": "Daniel", "Freq": 1.0},
 			{"Year": 2003, "Name": "Christopher", "Freq": 1.0},
-			{"Year": 2003, "Name": "Anthony", "Freq": 1.0}
+			{"Year": 2003, "Name": "Anthony", "Freq": 1.0},
+			{"Year": 2004, "Name": "First", "Freq": 1.0},
+			{"Year": 2005, "Name": "First", "Freq": 1.0},
+			{"Year": 2006, "Name": "First", "Freq": 1.0}
 		]
 	)
 	database.insert_rows(
@@ -193,7 +196,15 @@ func Activate(slot: String):
 			{"Surname": "Moore", "Per100k": 245.57},
 			{"Surname": "Jackson", "Per100k": 240.05},
 			{"Surname": "Martin", "Per100k": 238.19},
-			{"Surname": "Thompson", "Per100k": 225.32}
+			{"Surname": "Lee", "Per100k": 234.94},
+			{"Surname": "Thompson", "Per100k": 225.32},
+			{"Surname": "White", "Per100k": 223.91},
+			{"Surname": "Harris", "Per100k": 211.63},
+			{"Surname": "Clark", "Per100k": 190.75},
+			{"Surname": "Lewis", "Per100k": 180.28},
+			{"Surname": "Robinson", "Per100k": 179.61},
+			{"Surname": "Walker", "Per100k": 177.34},
+			{"Surname": "Young", "Per100k": 164.23}
 		]
 	)
 	

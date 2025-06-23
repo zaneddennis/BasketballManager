@@ -53,11 +53,11 @@ func GenerateCoach(id: int, coach_id: int) -> Dictionary:
 	}
 
 
-func GeneratePlayer(id: int, player_id: int):
+func GeneratePlayer(id: int, player_id: int, age_offset: int):
 	#var min_year = GAME_YEAR - MAX_PLAYER_AGE
 	#var max_year = GAME_YEAR - MIN_PLAYER_AGE
 	#var year = randi_range(min_year, max_year)
-	var year = 2003
+	var year = 2007 - age_offset
 	
 	var firsts = Database.GetFirstNamesForYear(year)
 	var first_picker = WeightedChoice.new(

@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cetcjyi0jmqpe"]
+[gd_scene load_steps=7 format=3 uid="uid://cetcjyi0jmqpe"]
 
 [ext_resource type="PackedScene" uid="uid://1heabk5mac2p" path="res://ActiveGame/UI/Pages/Events/event_page.tscn" id="1_l4ooi"]
 [ext_resource type="Script" path="res://ActiveGame/UI/Pages/Events/practice_event_page.gd" id="2_h850d"]
+[ext_resource type="PackedScene" uid="uid://ddgorxhp6eskm" path="res://ActiveGame/UI/Widgets/dropdown_widget.tscn" id="3_3ildj"]
+[ext_resource type="PackedScene" uid="uid://d24mx5pahbkg2" path="res://ActiveGame/UI/Widgets/player_name_hoverable_widget.tscn" id="4_kp0kv"]
+[ext_resource type="Texture2D" uid="uid://bekyph3wac6bm" path="res://ActiveGame/UI/Icons/deltas.png" id="5_pmnw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ict"]
+atlas = ExtResource("5_pmnw6")
+region = Rect2(0, 0, 20, 20)
 
 [node name="PracticeEvent" instance=ExtResource("1_l4ooi")]
 script = ExtResource("2_h850d")
@@ -9,20 +16,449 @@ script = ExtResource("2_h850d")
 [node name="Label" parent="Title" index="0"]
 text = "PRACTICE "
 
-[node name="Complete" type="Button" parent="Content" index="0"]
-custom_minimum_size = Vector2(512, 64)
+[node name="VBox" type="VBoxContainer" parent="Content" index="0"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -32.0
-offset_right = 256.0
-offset_bottom = 32.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Complete Practice"
+theme_override_constants/separation = 16
 
-[connection signal="pressed" from="Content/Complete" to="." method="_on_complete_pressed"]
+[node name="HBox" type="HBoxContainer" parent="Content/VBox" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Plan" type="VBoxContainer" parent="Content/VBox/HBox" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content/VBox/HBox/Plan" index="0"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Practice Plan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBox/HBox/Plan" index="1"]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="Content/VBox/HBox/Plan" index="2"]
+layout_mode = 2
+text = "Practice Type:"
+
+[node name="Lift" type="Panel" parent="Content/VBox/HBox/Plan" index="3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="VBox" type="VBoxContainer" parent="Content/VBox/HBox/Plan/Lift" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Content/VBox/HBox/Plan/Lift/VBox" index="0"]
+layout_mode = 2
+text = "Weightlifting and Athleticism Training"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBox/HBox/Plan/Lift/VBox" index="1"]
+layout_mode = 2
+
+[node name="Emphasis" type="HBoxContainer" parent="Content/VBox/HBox/Plan/Lift/VBox" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/VBox/HBox/Plan/Lift/VBox/Emphasis" index="0"]
+layout_mode = 2
+text = "Emphasis: "
+
+[node name="DropdownWidget" parent="Content/VBox/HBox/Plan/Lift/VBox/Emphasis" index="1" instance=ExtResource("3_3ildj")]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Coming Soon"
+
+[node name="Attributes" type="Label" parent="Content/VBox/HBox/Plan/Lift/VBox" index="3"]
+layout_mode = 2
+text = "Practices: //"
+
+[node name="Individual" type="Panel" parent="Content/VBox/HBox/Plan" index="4"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="VBox" type="VBoxContainer" parent="Content/VBox/HBox/Plan/Individual" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Content/VBox/HBox/Plan/Individual/VBox" index="0"]
+layout_mode = 2
+text = "Individual Drills"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBox/HBox/Plan/Individual/VBox" index="1"]
+layout_mode = 2
+
+[node name="Emphasis" type="HBoxContainer" parent="Content/VBox/HBox/Plan/Individual/VBox" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/VBox/HBox/Plan/Individual/VBox/Emphasis" index="0"]
+layout_mode = 2
+text = "Emphasis: "
+
+[node name="DropdownWidget" parent="Content/VBox/HBox/Plan/Individual/VBox/Emphasis" index="1" instance=ExtResource("3_3ildj")]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Coming Soon"
+
+[node name="Attributes" type="Label" parent="Content/VBox/HBox/Plan/Individual/VBox" index="3"]
+layout_mode = 2
+text = "Practices: //"
+
+[node name="Scrimmage" type="Panel" parent="Content/VBox/HBox/Plan" index="5"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="VBox" type="VBoxContainer" parent="Content/VBox/HBox/Plan/Scrimmage" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Content/VBox/HBox/Plan/Scrimmage/VBox" index="0"]
+layout_mode = 2
+text = "Team Scrimmage"
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBox/HBox/Plan/Scrimmage/VBox" index="1"]
+layout_mode = 2
+
+[node name="Emphasis" type="HBoxContainer" parent="Content/VBox/HBox/Plan/Scrimmage/VBox" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/VBox/HBox/Plan/Scrimmage/VBox/Emphasis" index="0"]
+layout_mode = 2
+text = "Emphasis: "
+
+[node name="DropdownWidget" parent="Content/VBox/HBox/Plan/Scrimmage/VBox/Emphasis" index="1" instance=ExtResource("3_3ildj")]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Coming Soon"
+
+[node name="Attributes" type="Label" parent="Content/VBox/HBox/Plan/Scrimmage/VBox" index="3"]
+layout_mode = 2
+text = "Practices: //"
+
+[node name="VSeparator" type="VSeparator" parent="Content/VBox/HBox" index="1"]
+layout_mode = 2
+
+[node name="Results" type="VBoxContainer" parent="Content/VBox/HBox" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content/VBox/HBox/Results" index="0"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Practice Results"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBox/HBox/Results" index="1"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Content/VBox/HBox/Results" index="2"]
+custom_minimum_size = Vector2(0, 19)
+layout_mode = 2
+
+[node name="Lift" type="Panel" parent="Content/VBox/HBox/Results" index="3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="GridContainer" type="GridContainer" parent="Content/VBox/HBox/Results/Lift" index="0"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 4
+columns = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="1"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer2" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer2" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator2" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="3"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer3" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer3" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator3" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="5"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer4" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer4" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="HSeparator" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="7"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="8"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="9"]
+layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="10"]
+layout_mode = 2
+
+[node name="HSeparator5" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="11"]
+layout_mode = 2
+
+[node name="HSeparator6" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="12"]
+layout_mode = 2
+
+[node name="HSeparator7" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="13"]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="14"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer5" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer5" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator4" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="15"]
+layout_mode = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="16"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer6" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer6" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator5" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="17"]
+layout_mode = 2
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="18"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer7" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer7" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator6" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="19"]
+layout_mode = 2
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="20"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer8" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer8" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="HSeparator8" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="21"]
+layout_mode = 2
+
+[node name="HSeparator9" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="22"]
+layout_mode = 2
+
+[node name="HSeparator10" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="23"]
+layout_mode = 2
+
+[node name="HSeparator11" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="24"]
+layout_mode = 2
+
+[node name="HSeparator12" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="25"]
+layout_mode = 2
+
+[node name="HSeparator13" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="26"]
+layout_mode = 2
+
+[node name="HSeparator14" type="HSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="27"]
+layout_mode = 2
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="28"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer9" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer9" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator7" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="29"]
+layout_mode = 2
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="30"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer10" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer10" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator8" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="31"]
+layout_mode = 2
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="32"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer11" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer11" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="VSeparator9" type="VSeparator" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="33"]
+layout_mode = 2
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="Content/VBox/HBox/Results/Lift/GridContainer" index="34"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Name" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer12" index="0" instance=ExtResource("4_kp0kv")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Content/VBox/HBox/Results/Lift/GridContainer/HBoxContainer12" index="1"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_p5ict")
+
+[node name="Individual" type="Panel" parent="Content/VBox/HBox/Results" index="4"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="Scrimmage" type="Panel" parent="Content/VBox/HBox/Results" index="5"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"PanelFlat"
+
+[node name="Complete" type="Button" parent="Content/VBox" index="1"]
+custom_minimum_size = Vector2(512, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Practice"
+
+[connection signal="pressed" from="Content/VBox/Complete" to="." method="_on_complete_pressed"]

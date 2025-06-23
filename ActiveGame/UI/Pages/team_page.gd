@@ -22,7 +22,6 @@ func ClearTabs():
 		n.hide()
 
 func ActivateSummary():
-	#var hc_character = Character.FromDatabase(team.head_coach.character_id)
 	var hc_character = team.head_coach.character
 	$Content/VBoxContainer/Summary/Miscellaneous/Coaches/VBoxContainer/Head.right = hc_character.FullName()
 	
@@ -50,14 +49,14 @@ func ActivateRosterPlayer(player_ix: int):
 	var player = team.players[player_ix]
 	$Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Panel/HBoxContainer/Label.text = player.character.FullName()
 	$Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Physical.text = \
-	" %d AGL | %d STR | %d VER" % [player.agility, player.strength, player.vertical_reach]
+	" %d AGL | %d STR | %d VER" % [player.agility.Get(), player.strength.Get(), player.vertical_reach.Get()]
 	$Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Technical.text = \
 	" %d HND | %d FIN | %d SHO | %d REB | %d PER | %d INT" % [
-		player.ball_handling, player.finishing, player.shooting, player.rebounding, player.perimeter_defense, player.interior_defense
+		player.ball_handling.Get(), player.finishing.Get(), player.shooting.Get(), player.rebounding.Get(), player.perimeter_defense.Get(), player.interior_defense.Get()
 	]
 	$Content/VBoxContainer/Roster/HBoxContainer/PlayerDetails/Bio/VBoxContainer/Mental.text = \
 	" %d VIS | %d OFF | %d POS" % [
-		player.vision, player.off_the_ball, player.positioning
+		player.vision.Get(), player.off_the_ball.Get(), player.positioning.Get()
 	]
 
 

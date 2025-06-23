@@ -124,7 +124,7 @@ func GetOptionPriority(option: String, gs: GameSimulator, player: Player, role: 
 	
 	var role_prio = role.get("prio_" + option)  # TODO: different types of shots, e.g. Slashers like Layups and Off Ball Shooters like Threes
 	
-	var vision_val = 1.0 - (player.vision / 20.0)
+	var vision_val = 1.0 - (player.vision.Get() / 20.0)
 	var vision_adj = randfn(0.0, vision_val)
 	return max(minimum, base + situation_prio + role_prio + vision_adj)
 
